@@ -10,8 +10,8 @@
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Stray Cats & Dogs Feeding</h1>
                 <p class="mb-8 leading-relaxed">Street feeding will be a continuous effort by our organization to provide nutritious food for stray dogs and cats around Klang Valley. Our dedicated team members have started this effort since the lockdown and will continue to do so daily.</p>
                 <div class="flex justify-center">
-                    <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</button>
-                    <button class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</button>
+                    <a href="{{ route('detail_donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
+                    <a href="{{ route('project_detail') }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                 </div>
             </div>
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="flex-grow">
                             <p class="leading-relaxed text-base">Your Steps Make a Difference! Join us in a race for a cause, raising funds to support those in need. Lace up and be part of the change!</p>
-                            <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
+                            <a href="{{ route('project_detail') }}" class="mt-3 text-indigo-500 inline-flex items-center">Butiran
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="flex-grow">
                             <p class="leading-relaxed text-base">Growing a Greener World! Join us in planting trees to help our planet thrive. Together, we can make our environment healthier and more beautiful.</p>
-                            <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
+                            <a href="{{ route('project_detail') }}" class="mt-3 text-indigo-500 inline-flex items-center">Butiran
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="flex-grow">
                             <p class="leading-relaxed text-base">Let's Clean Up Together! Join us in picking up litter and keeping our community tidy. Together, we can make a difference, one piece of trash at a time.</p>
-                            <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
+                            <a href="{{ route('project_detail') }}" class="mt-3 text-indigo-500 inline-flex items-center">Butiran
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                 </svg>
@@ -74,6 +74,9 @@
                     </div>
                 </div>
             </div>
+            <a href="{{ route('incoming_project') }}">
+                <button  class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">More Projects</button>
+            </a>
         </div>
     </section>
 
@@ -88,33 +91,36 @@
             <div class="flex flex-wrap -m-4">
                 <div class="xl:w-1/4 md:w-1/2 p-4">
                     <div class="bg-gray-100 p-6 rounded-lg">
-                    <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{ asset('assets/img/kotak_kasih_sayang.jpg') }}" alt="content">
-                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Kotak Kasih Sayang</h2>
-                    <p class="leading-relaxed text-base">Aid #KOTAKKASIHSAYANG  for the poor in southern Thailand</p>
+                        <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{ asset('assets/img/kotak_kasih_sayang.jpg') }}" alt="content">
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Kotak Kasih Sayang</h2>
+                        <p class="leading-relaxed text-base">Aid #KOTAKKASIHSAYANG  for the poor in southern Thailand</p>
                     </div>
                 </div>
                 <div class="xl:w-1/4 md:w-1/2 p-4">
                     <div class="bg-gray-100 p-6 rounded-lg">
-                    <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{ asset('assets/img/edaran_daging_korban.jpg') }}" alt="content">
-                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Ibadah Korban</h2>
-                    <p class="leading-relaxed text-base">Distribution of korban meat for the poor in southern Thailand</p>
+                        <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{ asset('assets/img/edaran_daging_korban.jpg') }}" alt="content">
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Ibadah Korban</h2>
+                        <p class="leading-relaxed text-base">Distribution of korban meat for the poor in southern Thailand</p>
                     </div>
                 </div>
                 <div class="xl:w-1/4 md:w-1/2 p-4">
                     <div class="bg-gray-100 p-6 rounded-lg">
-                    <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{ asset('assets/img/waqaf_al_quran.jpg') }}" alt="content">
-                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Waqaf Al-Quran & Pakaian Solat</h2>
-                    <p class="leading-relaxed text-base"><span class="italic">Waqaf Al-Quran</span> and prayer garments at the mosque</p>                      </div>
+                        <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{ asset('assets/img/waqaf_al_quran.jpg') }}" alt="content">
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Waqaf Al-Quran & Pakaian Solat</h2>
+                        <p class="leading-relaxed text-base"><span class="italic">Waqaf Al-Quran</span> and prayer garments at the mosque</p>
+                    </div>
                 </div>
                 <div class="xl:w-1/4 md:w-1/2 p-4">
                     <div class="bg-gray-100 p-6 rounded-lg">
-                    <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content">
-                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Feeding Orphans</h2>
-                    <p class="leading-relaxed text-base">Food donation for orphaned children</p>
+                        <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content">
+                        <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Feeding Orphans</h2>
+                        <p class="leading-relaxed text-base">Food donation for orphaned children</p>
                     </div>
                 </div>
-                </div>
-            <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">More Projects</button>
+            </div>
+            <a href="{{ route('past_project') }}">
+                <button  class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">More Projects</button>
+            </a>
         </div>
     </section>
 
@@ -128,7 +134,7 @@
             <div class="flex flex-wrap -m-2">
                 <div class="p-2 lg:w-1/3 md:w-1/3 w-full">
                 </div>
-                <div class="p-2 lg:w-1/3 md:w-1/3 w-full">
+                <div class="p-2 lg:w-1/3 md:w-1/3 w-full mb-12">
                     <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                         <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80/edf2f7/a5afbd">
                         <div class="flex-grow">
@@ -139,7 +145,7 @@
                 </div>
                 <div class="p-2 lg:w-1/3 md:w-1/3 w-full">
                 </div>
-                <div class="p-2 lg:w-1/3 md:w-1/3 w-full">
+                <div class="p-2 lg:w-1/2 md:w-1/2 w-full">
                     <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                         <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80/edf2f7/a5afbd">
                         <div class="flex-grow">
@@ -148,21 +154,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-2 lg:w-1/3 md:w-1/3 w-full">
+                <div class="p-2 lg:w-1/2 md:w-1/2 w-full">
                     <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                         <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/84x84/edf2f7/a5afbd">
                         <div class="flex-grow">
                             <h2 class="text-gray-900 title-font font-medium">Sharifah</h2>
-                            <p class="text-gray-500">Manager</p>
+                            <p class="text-gray-500">Secretary</p>
                         </div>
                     </div>
                 </div>
-                <div class="p-2 lg:w-1/3 md:w-1/3 w-full">
+                <div class="p-2 lg:w-1/2 md:w-1/2 w-full">
                     <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
                         <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/88x88/edf2f7/a5afbd">
                         <div class="flex-grow">
                             <h2 class="text-gray-900 title-font font-medium">Zahir</h2>
                             <p class="text-gray-500">Development</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 lg:w-1/2 md:w-1/2 w-full">
+                    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+                        <img alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/88x88/edf2f7/a5afbd">
+                        <div class="flex-grow">
+                            <h2 class="text-gray-900 title-font font-medium">Hanah</h2>
+                            <p class="text-gray-500">Media</p>
                         </div>
                     </div>
                 </div>

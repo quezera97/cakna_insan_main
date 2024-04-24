@@ -29,6 +29,22 @@ Route::get('/donation', function () {
     return view('donation.general_donation');
 })->name('general_donation');
 
+Route::get('/detail-donation', function () {
+    return view('donation.detail_donation');
+})->name('detail_donation');
+
 Route::get('/about-us', function () {
     return view('about_us');
 })->name('about_us');
+
+Route::get('/incoming-project', function () {
+    return view('project.incoming_project');
+})->name('incoming_project');
+
+Route::get('/past-project', function () {
+    return view('project.past_project');
+})->name('past_project');
+
+Route::get('/project-detail', function () {
+    return view('project.project_detail');
+})->name('project_detail');
