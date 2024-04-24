@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PastProjects;
+use App\Models\IncomingProject;
 use Illuminate\Http\Request;
 
-class PastProjectsController extends Controller
+class IncomingProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class PastProjectsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PastProjects $pastProjects)
+    public function show(IncomingProject $incomingProject)
     {
         //
     }
@@ -42,7 +42,7 @@ class PastProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PastProjects $pastProjects)
+    public function edit(IncomingProject $incomingProject)
     {
         //
     }
@@ -50,7 +50,7 @@ class PastProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PastProjects $pastProjects)
+    public function update(Request $request, IncomingProject $incomingProject)
     {
         //
     }
@@ -58,7 +58,7 @@ class PastProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PastProjects $pastProjects)
+    public function destroy(IncomingProject $incomingProject)
     {
         //
     }
