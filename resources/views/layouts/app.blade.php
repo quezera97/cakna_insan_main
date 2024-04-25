@@ -7,7 +7,11 @@
         <link rel="icon" href="{{ asset('assets/img/icon.ico') }}"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
 
+        <title>Cakna Insan Malaysia</title>
+
         @vite('resources/css/app.css')
+
+        @stack('css')
     </head>
     <body>
         @include('layouts.header')

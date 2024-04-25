@@ -10,7 +10,7 @@
                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Stray Cats & Dogs Feeding</h1>
                 <p class="mb-8 leading-relaxed">Street feeding will be a continuous effort by our organization to provide nutritious food for stray dogs and cats around Klang Valley. Our dedicated team members have started this effort since the lockdown and will continue to do so daily.</p>
                 <div class="flex justify-center">
-                    <a href="{{ route('detail_donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
+                    <a href="{{ route('donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
                     <a href="{{ route('project_detail') }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                 </div>
             </div>

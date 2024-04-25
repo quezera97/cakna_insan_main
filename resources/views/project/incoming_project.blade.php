@@ -14,7 +14,7 @@
                             <h2 class="title-font font-medium text-lg text-gray-900">Stray Cats & Dogs Feeding</h2>
                             <p class="mb-4">Street feeding will be a continuous effort by our organization to provide nutritious food for stray dogs and cats around Klang Valley</p>
                             <span class="inline-flex">
-                                <a href="{{ route('detail_donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
+                                <a href="{{ route('donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
                                 <a href="{{ route('project_detail') }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                             </span>
                         </div>
@@ -27,7 +27,7 @@
                             <h2 class="title-font font-medium text-lg text-gray-900">Run for Charity</h2>
                             <p class="mb-4">Your Steps Make a Difference! Join us in a race for a cause, raising funds to support those in need. Lace up and be part of the change!</p>
                             <span class="inline-flex">
-                                <a href="{{ route('detail_donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
+                                <a href="{{ route('donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
                                 <a href="{{ route('project_detail') }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                             </span>
                         </div>
@@ -40,7 +40,7 @@
                             <h2 class="title-font font-medium text-lg text-gray-900">Planting Trees</h2>
                             <p class="mb-4">Growing a Greener World! Join us in planting trees to help our planet thrive. Together, we can make our environment healthier and more beautiful.</p>
                             <span class="inline-flex">
-                                <a href="{{ route('detail_donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
+                                <a href="{{ route('donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
                                 <a href="{{ route('project_detail') }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                             </span>
                         </div>
@@ -53,7 +53,7 @@
                             <h2 class="title-font font-medium text-lg text-gray-900">Trash Collecting</h2>
                             <p class="mb-4">Let's Clean Up Together! Join us in picking up litter and keeping our community tidy. Together, we can make a difference, one piece of trash at a time</p>
                             <span class="inline-flex">
-                                <a href="{{ route('detail_donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
+                                <a href="{{ route('donation') }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Donate Now</a>
                                 <a href="{{ route('project_detail') }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                             </span>
                         </div>

@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'projectable_type',
+        'projectable_id'
+    ];
+
+
+    public function projectable()
+    {
+        return $this->morphTo();
+    }
 }

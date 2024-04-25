@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\JoinUsController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,16 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact_us');
 Route::get('/join-us', [JoinUsController::class, 'index'])->name('join_us');
 
 Route::get('/donation', function () {
-    return view('donation.general_donation');
-})->name('general_donation');
-
-Route::get('/detail-donation', function () {
-    return view('donation.detail_donation');
-})->name('detail_donation');
+    return view('donation');
+})->name('donation');
 
 Route::get('/about-us', function () {
     return view('about_us');

@@ -25,7 +25,7 @@
             <a href="{{ route('contact_us') }}" class="mr-5 hover:text-gray-900">Hubungi Kami</a>
             <a href="{{ route('join_us') }}" class="mr-5 hover:text-gray-900">Sertai Kami</a>
         </nav>
-        <a href="{{ route('general_donation') }}" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
+        <a href="{{ route('donation') }}" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
             Derma Sekarang
         </a>
     </div>

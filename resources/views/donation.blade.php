@@ -4,10 +4,10 @@
     <section class="text-gray-600 body-font">
 
         <div class="container px-5 py-10 mx-auto">
-            <div class="flex flex-col text-center w-full mb-20">
+            <div class="flex flex-col text-center w-full mb-10">
                 <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Sumbangan</h1>
             </div>
-            <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+            <div class="mb-20 lg:w-2/3 w-full mx-auto overflow-auto">
                 <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Pilihan Sumbangan</h1>
                 <table class="table-auto w-full text-left whitespace-no-wrap">
                     <thead>
@@ -44,9 +44,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="lg:w-1/2 md:w-2/3 mx-auto">
-            <div class="flex flex-wrap -m-2">
+            <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                 <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Butiran Penyumbang</h1>
                 <div class="p-2 mb-2 w-full">
                     <div class="relative">
@@ -54,13 +52,13 @@
                         <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </div>
                 </div>
-                <div class="p-2 mb-2 w-1/2">
+                <div class="p-2 mb-2 w-full">
                     <div class="relative">
                         <label for="email" class="leading-7 text-sm text-gray-600">Emel</label>
                         <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </div>
                 </div>
-                <div class="p-2 mb-2 w-1/2">
+                <div class="p-2 mb-2 w-full">
                     <div class="relative">
                         <label for="phone" class="leading-7 text-sm text-gray-600">No. Phone</label>
                         <input type="text" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
