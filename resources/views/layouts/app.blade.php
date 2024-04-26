@@ -25,7 +25,7 @@
                 @yield('content')
 
                 {{-- floating button --}}
-                <a id="floating-button" target="__blank" href="https://wa.me/60123456789" class="fixed bottom-0 right-5">
+                <a id="floating-button" target="__blank" href="https://wa.me/60123903309" class="fixed bottom-0 right-5">
                     <button class="flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
                         <img id="whatsapp-icon" class="h-5 mr-2" alt="hero" src="{{ asset('assets/img/chat_whatsapp.png') }}">
                         <span>Hubungi Kami</span>
