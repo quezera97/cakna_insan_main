@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->longText('details');
+            $table->date('date');
             $table->date('date_from');
             $table->date('date_to');
-            $table->string('image_path');
+            $table->time('time_from');
+            $table->time('time_to');
+            $table->string('poster_image_path');
             $table->timestamps();
         });
     }

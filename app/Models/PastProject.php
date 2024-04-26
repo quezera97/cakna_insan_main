@@ -14,13 +14,17 @@ class PastProject extends Model
         'title',
         'subtitle',
         'details',
-        'date_from',
-        'date_to',
-        'image_path',
+        'date',
+        'poster_image_path',
     ];
 
     public function project(): MorphOne
     {
         return $this->morphOne(project::class, 'projectable');
+    }
+
+    public function pastProjectImages()
+    {
+        return $this->hasMany(ProjectImage::class, 'referenced_id');
     }
 }

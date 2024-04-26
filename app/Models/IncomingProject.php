@@ -14,9 +14,12 @@ class IncomingProject extends Model
         'title',
         'subtitle',
         'details',
+        'date',
         'date_from',
         'date_to',
-        'image_path',
+        'time_from',
+        'time_to',
+        'poster_image_path',
     ];
 
     public function project(): MorphOne

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\IncomingProjectController;
 use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\PastProjectController;
+use App\Http\Controllers\ProjectDetail;
 use App\Models\IncomingProject;
 use App\Models\PastProject;
 use App\Models\Project;
@@ -34,20 +36,15 @@ Route::get('/', function () {
 
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact_us');
 Route::get('/join-us', [JoinUsController::class, 'index'])->name('join_us');
+
 Route::get('/incoming-project', [IncomingProjectController::class, 'index'])->name('incoming_project');
 Route::get('/past-project', [PastProjectController::class, 'index'])->name('past_project');
-
-Route::get('/donation', function () {
-    return view('donation');
-})->name('donation');
+Route::get('/project-detail/{project}', [ProjectDetail::class, 'index'])->name('project_detail');
+Route::get('/donation/{project?}', [DonationController::class, 'index'])->name('donation');
 
 Route::get('/about-us', function () {
     return view('about_us');
 })->name('about_us');
-
-Route::get('/project-detail', function () {
-    return view('project.project_detail');
-})->name('project_detail');
 
 Route::get('/login', function () {
     return view('admin.login');

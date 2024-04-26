@@ -4,19 +4,26 @@ namespace Database\Seeders;
 
 use App\Models\IncomingProject;
 use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class IncomingProjectSeeder extends Seeder
 {
     public function run(): void
     {
+        $timeFrom = Carbon::createFromTime(10, 0, 0);
+        $timeTo = Carbon::createFromTime(19, 0, 0);
+
         $firstIncomingProject = IncomingProject::create([
             'title' => 'Kotak Kasih Insan',
             'subtitle' => '',
             'details' => 'Bantuan makanan untuk golongan yang memerlukan di Selatan Thailand',
+            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
-            'image_path' => 'assets/img/kotak_kasih_sayang.jpg',
+            'time_from' => $timeFrom->format('H:i:s'),
+            'time_to' => $timeTo->format('H:i:s'),
+            'poster_image_path' => 'assets/img/poster/example.jpg',
         ]);
 
         Project::create([
@@ -30,9 +37,12 @@ class IncomingProjectSeeder extends Seeder
             'title' => 'Waqaf Sejadah',
             'subtitle' => '',
             'details' => 'Perwaqafan sejadah-sejadah di beberapa buah masjid',
+            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
-            'image_path' => 'assets/img/edaran_daging_korban.jpg',
+            'time_from' => $timeFrom->format('H:i:s'),
+            'time_to' => $timeTo->format('H:i:s'),
+            'poster_image_path' => 'assets/img/poster/example.jpg',
         ]);
 
         Project::create([
@@ -46,9 +56,12 @@ class IncomingProjectSeeder extends Seeder
             'title' => 'Bantuan Pelarian',
             'subtitle' => '',
             'details' => 'Pemberian keperluan harian kepada para pelarian',
+            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
-            'image_path' => 'assets/img/waqaf_al_quran.jpg',
+            'time_from' => $timeFrom->format('H:i:s'),
+            'time_to' => $timeTo->format('H:i:s'),
+            'poster_image_path' => 'assets/img/poster/example.jpg',
         ]);
 
         Project::create([
@@ -62,9 +75,12 @@ class IncomingProjectSeeder extends Seeder
             'title' => 'Sumbangan Baju Raya',
             'subtitle' => '',
             'details' => 'Sumbangan baju raya pada bulan Ramadhan',
+            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
-            'image_path' => 'assets/img/iftar_selatan_thai.jpeg',
+            'time_from' => $timeFrom->format('H:i:s'),
+            'time_to' => $timeTo->format('H:i:s'),
+            'poster_image_path' => 'assets/img/poster/example.jpg',
         ]);
 
         Project::create([
@@ -78,9 +94,12 @@ class IncomingProjectSeeder extends Seeder
             'title' => 'Sumbangan Kelengkapan Sekolah',
             'subtitle' => '',
             'details' => 'Sumbangan kelengkapan sekolah bagi kanak-kanak di Selatan Thai',
+            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
-            'image_path' => 'assets/img/iftar_selatan_thai.jpeg',
+            'time_from' => $timeFrom->format('H:i:s'),
+            'time_to' => $timeTo->format('H:i:s'),
+            'poster_image_path' => 'assets/img/poster/example.jpg',
         ]);
 
         Project::create([

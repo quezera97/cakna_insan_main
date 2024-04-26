@@ -8,7 +8,18 @@
                 <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Infaq</h1>
             </div>
             <div class="mb-20 lg:w-2/3 w-full mx-auto overflow-auto">
-                <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Pilihan Infaq</h1>
+                <div class="flex flex-col sm:flex-row items-center justify-between mb-5">
+                    <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Pilihan Infaq</h1>
+                    <select class="select2">
+                        <option value="" selected disabled>Sila Pilih</option>
+                        @foreach ($incomingProject as $project)
+                            <option value="{{ $project->id }}" {{ (!is_null($selectedProject) && $project->id == $selectedProject->projectable?->id) ? 'selected' : '' }}>
+                                {{ $project->title }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <table class="table-auto w-full text-left whitespace-no-wrap">
                     <thead>
                         <tr>
@@ -65,7 +76,7 @@
                     </div>
                 </div>
                 <div class="p-2 w-full">
-                    <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Hantar</button>
+                    {{-- <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq</button> --}}
                 </div>
             </div>
         </div>
