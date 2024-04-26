@@ -5,10 +5,10 @@
 
         <div class="container px-5 py-10 mx-auto">
             <div class="flex flex-col text-center w-full mb-10">
-                <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Sumbangan</h1>
+                <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Infaq</h1>
             </div>
             <div class="mb-20 lg:w-2/3 w-full mx-auto overflow-auto">
-                <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Pilihan Sumbangan</h1>
+                <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Pilihan Infaq</h1>
                 <table class="table-auto w-full text-left whitespace-no-wrap">
                     <thead>
                         <tr>
@@ -45,7 +45,7 @@
                 </table>
             </div>
             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Butiran Penyumbang</h1>
+                <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Butiran Pemberi Infaq</h1>
                 <div class="p-2 mb-2 w-full">
                     <div class="relative">
                         <label for="name" class="leading-7 text-sm text-gray-600">Nama</label>

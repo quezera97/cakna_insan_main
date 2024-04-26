@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('projectable_type');
             $table->bigInteger('projectable_id');
+            $table->boolean('has_passed');
+            $table->boolean('is_featured');
             $table->timestamps();
         });
     }

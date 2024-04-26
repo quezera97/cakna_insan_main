@@ -11,9 +11,10 @@ class Project extends Model
 
     protected $fillable = [
         'projectable_type',
-        'projectable_id'
+        'projectable_id',
+        'has_passed',
+        'is_featured',
     ];
-
 
     public function projectable()
     {

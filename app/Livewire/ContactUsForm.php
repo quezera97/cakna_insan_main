@@ -3,14 +3,30 @@
 namespace App\Livewire;
 
 use App\Models\ContactUs;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-
 class ContactUsForm extends Component
 {
     public $name;
     public $email;
     public $organization;
     public $message;
+
+    public $showModal = false;
+
+    public $modalTitle = '';
+    public $modalDescription = '';
+
+
+    public function openModal()
+    {
+        $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+    }
 
     protected $rules = [
         'name' => 'required|string|min:6',
@@ -26,7 +42,15 @@ class ContactUsForm extends Component
 
     public function save()
     {
-        $this->validate();
+        $this->modalTitle = 'Berjaya!';
+        $this->modalDescription = 'Mesej anda telah kami simpan';
+
+        $validatedData = $this->validate([
+            'name' => 'required|string|min:6',
+            'email' => 'required|string|email',
+            'organization' => 'string|min:6',
+            'message' => 'string|max:500',
+        ]);
 
         try {
             DB::beginTransaction();
@@ -39,6 +63,9 @@ class ContactUsForm extends Component
             ]);
 
             DB::commit();
+
+            $this->openModal();
+
         } catch (\Throwable $th) {
             DB::rollback();
             throw $th;
