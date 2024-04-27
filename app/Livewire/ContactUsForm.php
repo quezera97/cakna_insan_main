@@ -28,13 +28,6 @@ class ContactUsForm extends Component
         $this->showModal = false;
     }
 
-    protected $rules = [
-        'name' => 'required|string|min:6',
-        'email' => 'required|string|email',
-        'organization' => 'string|min:6',
-        'message' => 'string|max:500',
-    ];
-
     public function render()
     {
         return view('livewire.forms.contact-us');

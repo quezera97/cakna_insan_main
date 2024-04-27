@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\IncomingProjectController;
@@ -23,14 +24,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-    $featuredProject = Project::with('projectable')->where('has_passed', false)->where('is_featured', true)->inRandomOrder()->limit(1)->first();
-
     $pastProjects = Project::with('projectable')->where('projectable_type', PastProject::class)->inRandomOrder()->limit(4)->get();
 
     $incomingProjects = Project::with('projectable')->where('projectable_type', IncomingProject::class)->inRandomOrder()->limit(3)->get();
 
-    return view('welcome', compact(['featuredProject', 'pastProjects', 'incomingProjects']));
+    return view('welcome', compact(['pastProjects', 'incomingProjects']));
 })->name('welcome');
 
 
@@ -46,6 +44,4 @@ Route::get('/about-us', function () {
     return view('about_us');
 })->name('about_us');
 
-Route::get('/login', function () {
-    return view('admin.login');
-})->name('login');
+Route::get('/login', [AuthController::class, 'indexLogin'])->name('login');

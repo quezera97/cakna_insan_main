@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PastProjectSeeder::class,
             IncomingProjectSeeder::class,
+            AdminSeeder::class,
         ]);
     }
 }

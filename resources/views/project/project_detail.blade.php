@@ -106,7 +106,9 @@
                             </div>
                         </div>
                         @if ($incomingProjectDetail)
-                            <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Sertai Kami</button>
+                            <a href="{{ route('join_us') }}">
+                                <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Sertai Kami</button>
+                            </a>
                         @endif
                     </div>
                 </div>
