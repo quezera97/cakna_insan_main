@@ -6,7 +6,7 @@
 <div x-data="{ showModal: @entangle('showModal') }">
     <div class="bg-gray-100 bg-opacity-75 fixed z-10 inset-0 overflow-y-auto" x-show="showModal">
         <div class="flex items-center justify-center min-h-screen">
-            <div class="bg-white w-1/2 rounded shadow-lg p-8">
+            <div class="bg-white w-1/3 rounded shadow-lg p-8">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold">{{ $modalTitle }}</h2>
                     <button @click="showModal = false" class="text-gray-600 hover:text-gray-800 focus:outline-none">
@@ -25,4 +25,3 @@
         </div>
     </div>
 </div>
-
