@@ -19,7 +19,6 @@ class IncomingProjectSeeder extends Seeder
             'title' => 'Kotak Kasih Insan',
             'subtitle' => '',
             'details' => 'Bantuan makanan untuk golongan yang memerlukan di Selatan Thailand',
-            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
             'time_from' => $timeFrom->format('H:i:s'),
@@ -32,18 +31,12 @@ class IncomingProjectSeeder extends Seeder
             'projectable_id' => $firstIncomingProject->id,
             'has_passed' => false,
             'is_featured' => false,
-            'donation_needed' => 5200.50,
         ]);
-
-        ProjectDonation::create(['project_id' => $firstProject->id, 'donation_amount' => 200.00]);
-        ProjectDonation::create(['project_id' => $firstProject->id, 'donation_amount' => 10.00]);
-        ProjectDonation::create(['project_id' => $firstProject->id, 'donation_amount' => 45.60]);
 
         $secondIncomingProject = IncomingProject::create([
             'title' => 'Waqaf Sejadah',
             'subtitle' => '',
             'details' => 'Perwaqafan sejadah-sejadah di beberapa buah masjid',
-            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
             'time_from' => $timeFrom->format('H:i:s'),
@@ -56,17 +49,12 @@ class IncomingProjectSeeder extends Seeder
             'projectable_id' => $secondIncomingProject->id,
             'has_passed' => false,
             'is_featured' => true,
-            'donation_needed' => 1000000.00,
         ]);
-
-        ProjectDonation::create(['project_id' => $secondProject->id, 'donation_amount' => 34.00]);
-        ProjectDonation::create(['project_id' => $secondProject->id, 'donation_amount' => 99.00]);
 
         $thirdIncomingProject = IncomingProject::create([
             'title' => 'Bantuan Pelarian',
             'subtitle' => '',
             'details' => 'Pemberian keperluan harian kepada para pelarian',
-            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
             'time_from' => $timeFrom->format('H:i:s'),
@@ -85,7 +73,6 @@ class IncomingProjectSeeder extends Seeder
             'title' => 'Sumbangan Baju Raya',
             'subtitle' => '',
             'details' => 'Sumbangan baju raya pada bulan Ramadhan',
-            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
             'time_from' => $timeFrom->format('H:i:s'),
@@ -104,7 +91,6 @@ class IncomingProjectSeeder extends Seeder
             'title' => 'Sumbangan Kelengkapan Sekolah',
             'subtitle' => '',
             'details' => 'Sumbangan kelengkapan sekolah bagi kanak-kanak di Selatan Thai',
-            'date' => '2022-01-01',
             'date_from' => '2022-01-01',
             'date_to' => '2022-12-31',
             'time_from' => $timeFrom->format('H:i:s'),

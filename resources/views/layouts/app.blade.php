@@ -21,7 +21,13 @@
         @livewireStyles
     </head>
     <body>
-        @include('layouts.header')
+        @auth
+            @include('layouts.admin.header')
+        @endauth
+
+        @guest
+            @include('layouts.header')
+        @endguest
 
         <div class="flex flex-col min-h-screen">
             <main class="flex-grow">

@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -35,28 +36,21 @@ class LoginForm extends Component
 
     public function save()
     {
-        $this->modalTitle = 'Gagal!';
-        $this->modalDescription = 'Maklumat yang anda guna adalah salah';
-
         $validatedData = $this->validate([
             'email' => 'required|string|email',
             'password' => 'required',
         ]);
 
-        try {
-            $password = User::where('email', $validatedData['email'])->value('password');
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+            return redirect()->intended('/dashboard');
+        }
+        else{
+            $this->modalTitle = 'Gagal!';
+            $this->modalDescription = 'Maklumat yang anda guna adalah salah';
 
-            if(Hash::check($validatedData['password'], $password)){
-                return redirect('/');
-            }
-            else{
-                $this->reset('password');
+            $this->reset(['password', 'email']);
 
-                $this->openModal();
-            }
-
-        } catch (\Throwable $th) {
-            throw $th;
+            $this->openModal();
         }
     }
 }

@@ -14,7 +14,6 @@ class IncomingProject extends Model
         'title',
         'subtitle',
         'details',
-        'date',
         'date_from',
         'date_to',
         'time_from',

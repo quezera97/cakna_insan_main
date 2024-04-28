@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->longText('details');
-            $table->date('date');
             $table->date('date_from');
             $table->date('date_to');
             $table->time('time_from');

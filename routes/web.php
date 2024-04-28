@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\IncomingProjectController;
 use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\PastProjectController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectDetail;
+use App\Livewire\Admin\Project\ProjectsEdit;
 use App\Models\IncomingProject;
 use App\Models\PastProject;
 use App\Models\Project;
@@ -41,3 +44,13 @@ Route::get('/about-us', function () {
 })->name('about_us');
 
 Route::get('/login', [AuthController::class, 'indexLogin'])->name('login');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::controller(ProjectController::class)->prefix('/project')->name('project.')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/edit-project/{project}', 'editProject')->name('edit');
+    });
+});
