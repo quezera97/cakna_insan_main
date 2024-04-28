@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Components;
+namespace App\Livewire\Home;
 
 use App\Models\Project;
 use Livewire\Component;
 
-class FeaturedProject extends Component
+class FeaturedProjects extends Component
 {
     public $featuredProject;
     public $currentProjectIndex = 0;
@@ -19,12 +19,12 @@ class FeaturedProject extends Component
 
     public function getFeaturedProjects()
     {
-        $this->featuredProject = Project::with('projectable')->where('has_passed', false)->where('is_featured', true)->get();
+        $this->featuredProject = Project::with('projectable')->where('has_passed', false)->where('is_featured', true)->inRandomOrder()->get();
     }
 
     public function render()
     {
-        return view('livewire.components.featured-project');
+        return view('livewire.home.featured-project');
     }
 
     public function changeProjectIndex()

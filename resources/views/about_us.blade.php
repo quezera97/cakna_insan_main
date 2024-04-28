@@ -54,27 +54,28 @@
             </div>
         </div>
     </section>
-    {{-- <section class="text-gray-600 body-font">
-        <div class="container px-5 py-24 mx-auto flex flex-wrap flex-col">
-            <div class="flex mx-auto flex-wrap mb-20">
-                <a class="sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium bg-gray-100 inline-flex items-center leading-none border-indigo-500 text-indigo-500 tracking-wider rounded-t">
-                    2020
-                </a>
-                <a class="sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
-                    2021
-                </a>
-                <a class="sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
-                    2022
-                </a>
-                <a class="sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
-                    2023
-                </a>
+    <section class="text-gray-600 body-font relative">
+        <div class="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
+            <div class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+                <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=3.0289722222,%20101.7622777778+(Pertubuhan%20BCakna%20Insan%20Malaysia)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+                    <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+                        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
+                        <a class="leading-relaxed">18 Jalan 9H, Taman Cheras Jaya, Batu 11 Jalan Cheras, Cheras, Selangor</a>
+                        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">REGISTRATION NO.</h2>
+                        <p class="leading-relaxed">PPM - 029 - 10 - 09102023</p>
+                    </div>
+                    <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+                        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
+                        <a class="text-indigo-500 leading-relaxed">caknainsanmalaysia@gmail.com</a>
+                        <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
+                        <p class="leading-relaxed">+6012-390 3309</p>
+                    </div>
+                </div>
             </div>
-            <img class="xl:w-1/4 lg:w-1/3 md:w-1/2 w-2/3 block mx-auto mb-10 object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
-            <div class="flex flex-col text-center w-full">
-                <h1 class="text-xl font-medium title-font mb-4 text-gray-900">Master Cleanse Reliac Heirloom</h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+            <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+                <img alt="sijil" class="border border-black border-4 w-full lg:h-auto object-cover object-center rounded" src="{{ asset('assets/img/sijil.jpg') }}">
             </div>
         </div>
-    </section> --}}
+    </section>
 @endsection

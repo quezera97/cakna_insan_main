@@ -7,7 +7,7 @@
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Hubungi Kami</h1>
             </div>
 
-            @livewire('contact-us-form')
+            @livewire('forms.contact-us-form')
         </div>
     </section>
 @endsection

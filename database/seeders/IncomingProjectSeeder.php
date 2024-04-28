@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\IncomingProject;
 use App\Models\Project;
+use App\Models\ProjectDonation;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -26,12 +27,17 @@ class IncomingProjectSeeder extends Seeder
             'poster_image_path' => 'assets/img/poster/example.jpg',
         ]);
 
-        Project::create([
+        $firstProject = Project::create([
             'projectable_type' => IncomingProject::class,
             'projectable_id' => $firstIncomingProject->id,
             'has_passed' => false,
             'is_featured' => false,
+            'donation_needed' => 5200.50,
         ]);
+
+        ProjectDonation::create(['project_id' => $firstProject->id, 'donation_amount' => 200.00]);
+        ProjectDonation::create(['project_id' => $firstProject->id, 'donation_amount' => 10.00]);
+        ProjectDonation::create(['project_id' => $firstProject->id, 'donation_amount' => 45.60]);
 
         $secondIncomingProject = IncomingProject::create([
             'title' => 'Waqaf Sejadah',
@@ -45,12 +51,16 @@ class IncomingProjectSeeder extends Seeder
             'poster_image_path' => 'assets/img/poster/example.jpg',
         ]);
 
-        Project::create([
+        $secondProject = Project::create([
             'projectable_type' => IncomingProject::class,
             'projectable_id' => $secondIncomingProject->id,
             'has_passed' => false,
             'is_featured' => true,
+            'donation_needed' => 1000000.00,
         ]);
+
+        ProjectDonation::create(['project_id' => $secondProject->id, 'donation_amount' => 34.00]);
+        ProjectDonation::create(['project_id' => $secondProject->id, 'donation_amount' => 99.00]);
 
         $thirdIncomingProject = IncomingProject::create([
             'title' => 'Bantuan Pelarian',

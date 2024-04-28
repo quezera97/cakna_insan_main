@@ -22,4 +22,9 @@ class Project extends Model
     {
         return $this->morphTo();
     }
+
+    public function projectDonation()
+    {
+        return $this->hasMany(ProjectDonation::class, 'project_id');
+    }
 }

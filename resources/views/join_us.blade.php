@@ -7,7 +7,7 @@
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Sertai Kami</h1>
             </div>
 
-            @livewire('join-us-form')
+            @livewire('forms.join-us-form')
         </div>
     </section>
 @endsection

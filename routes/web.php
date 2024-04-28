@@ -24,11 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $pastProjects = Project::with('projectable')->where('projectable_type', PastProject::class)->inRandomOrder()->limit(4)->get();
-
-    $incomingProjects = Project::with('projectable')->where('projectable_type', IncomingProject::class)->inRandomOrder()->limit(3)->get();
-
-    return view('welcome', compact(['pastProjects', 'incomingProjects']));
+    return view('welcome');
 })->name('welcome');
 
 
