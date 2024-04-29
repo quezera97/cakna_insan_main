@@ -18,6 +18,9 @@ class IncomingProject extends Model
         'date_to',
         'time_from',
         'time_to',
+        'place',
+        'pax',
+        'transport',
         'poster_image_path',
     ];
 

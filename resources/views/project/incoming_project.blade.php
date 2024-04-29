@@ -28,6 +28,9 @@
                     </div>
                 @endforeach
             </div>
+            <div class="mt-10">
+                {{ $incomingProjects->withQueryString()->links('layouts.pagination') }}
+            </div>
         </div>
     </section>
 @endsection

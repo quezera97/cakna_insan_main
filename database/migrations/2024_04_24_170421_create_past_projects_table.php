@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('subtitle');
             $table->longText('details');
             $table->date('date');
+            $table->string('place');
+            $table->integer('pax');
+            $table->boolean('transport');
             $table->string('poster_image_path');
             $table->timestamps();
         });

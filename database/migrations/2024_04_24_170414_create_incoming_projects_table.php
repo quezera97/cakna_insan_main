@@ -20,6 +20,9 @@ return new class extends Migration
             $table->date('date_to');
             $table->time('time_from');
             $table->time('time_to');
+            $table->string('place');
+            $table->integer('pax');
+            $table->boolean('transportation');
             $table->string('poster_image_path');
             $table->timestamps();
         });

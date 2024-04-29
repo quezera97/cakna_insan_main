@@ -1,5 +1,6 @@
 <div>
     <form wire:submit.prevent="save">
+        @csrf
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
             <div class="flex flex-wrap -m-2">
                 <div class="p-2 mb-2 w-full">
