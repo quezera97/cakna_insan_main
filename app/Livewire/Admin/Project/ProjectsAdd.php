@@ -11,11 +11,10 @@ use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class ProjectsEdit extends Component
+class ProjectsAdd extends Component
 {
     use WithFileUploads;
 
-    public $selectedProject;
     public $typeOfProject;
     public $pastProject = PastProject::class;
     public $incomingProject = IncomingProject::class;
@@ -78,42 +77,19 @@ class ProjectsEdit extends Component
         $this->showUploadImagesModal = false;
     }
 
-    public function mount(Project $project)
+    public function render()
     {
-        $this->selectedProject = $project;
+        return view('livewire.admin.project.projects-add');
+    }
 
-        $this->title = $project->projectable?->title;
-        $this->subtitle = $project->projectable?->subtitle;
-        $this->details = $project->projectable?->details;
-
-        if($project->projectable_type == IncomingProject::class){
+    public function selectProject($type)
+    {
+        if($type == 'incoming'){
             $this->typeOfProject = $this->incomingProject;
-
-            $this->date_from = $project->projectable?->date_from;
-            $this->date_to = $project->projectable?->date_to;
-            $this->time_from = $project->projectable?->time_from;
-            $this->time_to = $project->projectable?->time_to;
         }
         else{
             $this->typeOfProject = $this->pastProject;
-
-            $this->date = $project->projectable?->date;
-
-            foreach($project->projectable?->pastProjectImages as $image){
-                $this->uploadedImages[] = $image->image_path;
-            }
         }
-
-        $this->donation_needed = $project->donation_needed;
-        $this->featured = $project->is_featured;
-        $this->place = $project->projectable?->place;
-        $this->pax = $project->projectable?->pax;
-        $this->transportation = $project->projectable?->transportation;
-    }
-
-    public function render()
-    {
-        return view('livewire.admin.project.projects-edit');
     }
 
     public function updatedPosterImageUpload()
@@ -174,7 +150,7 @@ class ProjectsEdit extends Component
 
     }
 
-    public function save(Project $project)
+    public function save()
     {
         $this->modalTitle = 'Berjaya!';
         $this->modalDescription = 'Projek ' . $this->title . ' telah dikemaskini.';
@@ -182,13 +158,8 @@ class ProjectsEdit extends Component
         try {
             DB::beginTransaction();
 
-            $project->update([
-                'is_featured' => $this->featured,
-                'donation_needed' => $this->donation_needed,
-            ]);
-
-            if($project->projectable_type == IncomingProject::class){
-                $project->projectable?->update([
+            if($this->typeOfProject == IncomingProject::class){
+                $incomingProject = IncomingProject::create([
                     'title' => $this->title,
                     'subtitle' => $this->subtitle,
                     'details' => $this->details,
@@ -201,9 +172,17 @@ class ProjectsEdit extends Component
                     'transportation' => $this->transportation,
                     'poster_image_path' => $this->poster_image_path,
                 ]);
+
+                Project::create([
+                    'projectable_type' => IncomingProject::class,
+                    'projectable_id' => $incomingProject->id,
+                    'has_passed' => false,
+                    'is_featured' => $this->featured,
+                    'donation_needed' => $this->donation_needed,
+                ]);
             }
             else{
-                $project->projectable?->update([
+                $pastProject = PastProject::create([
                     'title' => $this->title,
                     'subtitle' => $this->subtitle,
                     'details' => $this->details,
@@ -214,25 +193,23 @@ class ProjectsEdit extends Component
                     'poster_image_path' => $this->poster_image_path,
                 ]);
 
-                if(!empty($this->images_path)){
-                    //delete dalam db
-                    ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->delete();
+                Project::create([
+                    'projectable_type' => PastProject::class,
+                    'projectable_id' => $pastProject->id,
+                    'has_passed' => true,
+                    'is_featured' => false,
+                    'donation_needed' => $this->donation_needed,
+                ]);
 
-                    //delete dalam public folder
-                    $folderPath = public_path('assets/img/'.$this->folder);
-                    File::deleteDirectory($folderPath);
-                    File::delete($folderPath);
-
-                    $this->uploadImages();
-
+                if(!empty($this->images_path)) {
                     foreach ($this->images_path as $key => $imagePath) {
                         ProjectImage::updateOrCreate(
                             [
                                 'image_path' => $imagePath,
                             ],
                             [
-                                'reference_type' => $project->projectable_type,
-                                'referenced_id' => $project->projectable?->id,
+                                'reference_type' => PastProject::class,
+                                'referenced_id' => $pastProject->id,
                                 'title' => '',
                                 'caption' => '',
                             ]

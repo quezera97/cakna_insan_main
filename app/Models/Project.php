@@ -16,6 +16,7 @@ class Project extends Model
         'projectable_id',
         'has_passed',
         'is_featured',
+        'donation_needed',
     ];
 
     public function projectable() : MorphTo

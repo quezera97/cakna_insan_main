@@ -52,5 +52,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(ProjectController::class)->prefix('/project')->name('project.')->group(function () {
         Route::get('/index', 'index')->name('index');
         Route::get('/edit-project/{project}', 'editProject')->name('edit');
+        Route::get('/add-project', 'addProject')->name('add');
     });
 });

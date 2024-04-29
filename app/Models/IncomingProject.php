@@ -20,7 +20,7 @@ class IncomingProject extends Model
         'time_to',
         'place',
         'pax',
-        'transport',
+        'transportation',
         'poster_image_path',
     ];
 

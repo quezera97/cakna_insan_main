@@ -18,4 +18,11 @@ class ProjectController extends Controller
     {
         return view('admin.project.edit', compact(['project']));
     }
+
+    public function addProject()
+    {
+        return view('admin.project.add');
+    }
+
+
 }

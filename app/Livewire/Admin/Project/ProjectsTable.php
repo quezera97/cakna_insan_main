@@ -19,6 +19,11 @@ class ProjectsTable extends Component
         return redirect()->route('project.edit', ['project' => $project]);
     }
 
+    public function addProject()
+    {
+        return redirect()->route('project.add');
+    }
+
     public function render()
     {
         return view('livewire.admin.project.projects-table');

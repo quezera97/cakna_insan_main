@@ -5,7 +5,7 @@
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Projek Lepas</h1>
             </div>
             <div class="flex flex-wrap -m-4">
-                @foreach ($pastRandomProjects as $project)
+                @forelse ($pastRandomProjects ?? [] as $project)
                     <div class="xl:w-1/4 md:w-1/2 p-4">
                         <a href="{{ route('project_detail', $project) }}">
                             <div class="bg-gray-100 p-6 rounded-lg text-center">
@@ -15,7 +15,15 @@
                             </div>
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <div class="p-4 w-full">
+                        <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
+                            <div class="flex items-center mb-3">
+                                <h2 class="text-gray-900 text-lg title-font font-medium">Tiada Projek</h2>
+                            </div>
+                        </div>
+                    </div>
+                @endforelse
             </div>
             <a href="{{ route('past_project') }}">
                 <button  class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Lebih Lanjut</button>

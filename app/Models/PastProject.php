@@ -17,7 +17,7 @@ class PastProject extends Model
         'date',
         'place',
         'pax',
-        'transport',
+        'transportation',
         'poster_image_path',
     ];
 
