@@ -3,23 +3,24 @@
         <div class="container px-5 py-10 mx-auto">
             <h1 class="text-gray-900 text-2xl title-font font-medium mb-4">Sila Pilih Projek</h1>
             <hr><br>
-            <div class="flex flex-wrap -m-4">
-                <button wire:click="selectProject('incoming')" class="p-4 lg:w-1/2">
-                    <div class="bg-gray-100 bg-opacity-75 px-8 rounded-lg overflow-hidden text-center">
+            <div x-data="{ selectedIncoming: @entangle('forIncomingProject'), selectedPast: @entangle('forPastProject') }" class="flex flex-wrap -m-4">
+                <button wire:click="selectProject('incoming')" class="lg:w-1/2 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedIncoming === true }">
+                    <div class="bg-gray-400 bg-opacity-75 rounded-lg overflow-hidden text-center p-2">
                         <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Projek Akan Datang</h1>
                     </div>
                 </button>
-                <button wire:click="selectProject('past')" class="p-4 lg:w-1/2">
-                    <div class="bg-gray-100 bg-opacity-75 px-8 rounded-lg overflow-hidden text-center">
-                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"></h2>
+
+                <button wire:click="selectProject('past')" class="lg:w-1/2 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedPast === true }">
+                    <div class="bg-gray-400 bg-opacity-75 rounded-lg overflow-hidden text-center p-2">
                         <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Projek Lepas</h1>
                     </div>
                 </button>
             </div>
+
         </div>
     </section>
-    <div x-data="{ typeOfProject: @entangle('typeOfProject') }">
-        <div x-show="typeOfProject">
+    <div x-data="{ type_of_project: @entangle('typeOfProject') }">
+        <div x-show="type_of_project">
             <form wire:submit.prevent="save">
                 @csrf
                 <section class="text-gray-600 body-font overflow-hidden">
@@ -32,7 +33,12 @@
                                 <div class="flex flex-wrap -m-2">
                                     <div class="p-2 w-full">
                                         <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title <span class="text-red-700">*</span></label>
-                                        <input type="text" id="title" wire:model.lazy="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                        <div class="flex">
+                                            <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
+                                                Projek
+                                            </span>
+                                            <input type="text" id="title" wire:model.lazy="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                        </div>
                                     </div>
                                     <div class="p-2 w-full">
                                         <label for="subtitle" class="block mb-2 text-sm font-medium text-gray-900">Subtitle <span class="text-red-700">*</span></label>
@@ -42,50 +48,46 @@
                                         <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details <span class="text-red-700">*</span></label>
                                         <textarea id="details" wire:model.lazy="details" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                                     </div>
-                                    <div x-data="{ typeOfProject: @entangle('typeOfProject') }">
-                                        <div x-show="typeOfProject == '{{ $pastProject }}'">
-                                            <div class="p-2 w-full">
-                                                <label for="div-date" class="block mb-2 text-sm font-medium text-gray-900">Tarikh</label>
-                                                <div id="div-date" class="flex items-center">
-                                                    <input id="date" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-                                                </div>
+                                    <div x-data="{ open: @entangle('forPastProject') }">
+                                        <div x-show="open" class="p-2 w-full">
+                                            <label for="div-date" class="block mb-2 text-sm font-medium text-gray-900">Tarikh</label>
+                                            <div id="div-date" class="flex items-center">
+                                                <input id="date" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                             </div>
                                         </div>
                                     </div>
-                                    <div x-data="{ typeOfProject: @entangle('typeOfProject').defer }">
-                                        <div x-show="typeOfProject === '{{ $incomingProject }}'">
-                                            <div class="p-2 w-full">
-                                                <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Tarikh <span class="text-red-700">*</span></label>
-                                                <div id="div-date-range" class="flex items-center">
-                                                    <div class="relative">
-                                                        <div class="relative max-w-sm">
-                                                            <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-                                                        </div>
+                                    <div x-data="{ open: @entangle('forIncomingProject') }">
+                                        <div x-show="open" class="p-2 w-full">
+                                            <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Tarikh <span class="text-red-700">*</span></label>
+                                            <div id="div-date-range" class="flex items-center">
+                                                <div class="relative">
+                                                    <div class="relative max-w-sm">
+                                                        <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                                     </div>
-                                                    <span class="mx-4 text-gray-500">hingga</span>
-                                                    <div class="relative">
-                                                        <div class="relative max-w-sm">
-                                                            <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-                                                        </div>
+                                                </div>
+                                                <span class="mx-4 text-gray-500">hingga</span>
+                                                <div class="relative">
+                                                    <div class="relative max-w-sm">
+                                                        <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="p-2 w-full">
-                                                <form class="max-w-[16rem] mx-auto grid grid-cols-2 gap-4">
-                                                    <div class="my-2">
-                                                        <label for="start-time" class="block mb-2 text-sm font-medium text-gray-900">Masa mula:</label>
-                                                        <div class="relative">
-                                                            <input type="time" id="start-time" wire:model.lazy="time_from" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
-                                                        </div>
+                                        </div>
+                                        <div x-show="open" class="p-2 w-full">
+                                            <form class="max-w-[16rem] mx-auto grid grid-cols-2 gap-4">
+                                                <div class="my-2">
+                                                    <label for="start-time" class="block mb-2 text-sm font-medium text-gray-900">Masa mula:</label>
+                                                    <div class="relative">
+                                                        <input type="time" id="start-time" wire:model.lazy="time_from" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
                                                     </div>
-                                                    <div>
-                                                        <label for="end-time" class="block mb-2 text-sm font-medium text-gray-900">Masa akhir:</label>
-                                                        <div class="relative">
-                                                            <input type="time" id="end-time" wire:model.lazy="time_to" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
-                                                        </div>
+                                                </div>
+                                                <div>
+                                                    <label for="end-time" class="block mb-2 text-sm font-medium text-gray-900">Masa akhir:</label>
+                                                    <div class="relative">
+                                                        <input type="time" id="end-time" wire:model.lazy="time_to" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
                                                     </div>
-                                                </form>
-                                            </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
 
@@ -131,24 +133,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="p-2 w-1/2">
-                                        <div x-data="{ typeOfProject: @entangle('typeOfProject') }">
-                                            <div x-show="typeOfProject == '{{ $pastProject }}'">
-                                                <button type="button" class="mt-10 text-white bg-indigo-500 border-0 py-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg" wire:click="openUploadPosterModal">Muat Naik Poster</button>
+                                    <div class="p-2 w-full">
+                                        <div x-data="{ open: @entangle('forPastProject') }">
+                                            <div x-show="open">
+                                                <button type="button" class="text-white bg-indigo-500 border-0 my-2 pb-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg" wire:click="openUploadPosterModal">Muat Naik Poster</button>
+                                            </div>
+                                            <div x-show="open">
+                                                <button type="button" class="text-white bg-indigo-500 border-0 my-2 pb-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg" wire:click="openUploadImagesModal">Muat Naik Gambar</button>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="p-2 w-1/2">
-                                        <div x-data="{ typeOfProject: @entangle('typeOfProject') }">
-                                            <div x-show="typeOfProject == '{{ $pastProject }}'">
-                                                <button type="button" class="mt-10 text-white bg-indigo-500 border-0 py-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg" wire:click="openUploadImagesModal">Muat Naik Gambar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-2 w-1/2">
-                                        <div x-data="{ typeOfProject: @entangle('typeOfProject') }">
-                                            <div x-show="typeOfProject == '{{ $incomingProject }}'">
-                                                <button type="button" class="mt-10 text-white bg-indigo-500 border-0 py-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg" wire:click="openUploadPosterModal">Muat Naik Poster</button>
+                                        <div x-data="{ open: @entangle('forIncomingProject') }">
+                                            <div x-show="open">
+                                                <button type="button" class="text-white bg-indigo-500 border-0 py-2 px-7 focus:outline-none hover:bg-indigo-600 rounded text-lg" wire:click="openUploadPosterModal">Muat Naik Poster</button>
                                             </div>
                                         </div>
                                     </div>

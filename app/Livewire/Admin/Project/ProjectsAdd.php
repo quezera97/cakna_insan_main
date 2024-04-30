@@ -82,13 +82,22 @@ class ProjectsAdd extends Component
         return view('livewire.admin.project.projects-add');
     }
 
+    public $forIncomingProject = false;
+    public $forPastProject = false;
+
     public function selectProject($type)
     {
         if($type == 'incoming'){
             $this->typeOfProject = $this->incomingProject;
+
+            $this->forIncomingProject = true;
+            $this->forPastProject = false;
         }
         else{
             $this->typeOfProject = $this->pastProject;
+
+            $this->forIncomingProject = false;
+            $this->forPastProject = true;
         }
     }
 
@@ -186,7 +195,7 @@ class ProjectsAdd extends Component
                     'title' => $this->title,
                     'subtitle' => $this->subtitle,
                     'details' => $this->details,
-                    'date' => $this->date_from,
+                    'date' => $this->date,
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,

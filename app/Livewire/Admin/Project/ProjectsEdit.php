@@ -207,7 +207,7 @@ class ProjectsEdit extends Component
                     'title' => $this->title,
                     'subtitle' => $this->subtitle,
                     'details' => $this->details,
-                    'date' => $this->date_from,
+                    'date' => $this->date,
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
@@ -220,8 +220,9 @@ class ProjectsEdit extends Component
 
                     //delete dalam public folder
                     $folderPath = public_path('assets/img/'.$this->folder);
-                    File::deleteDirectory($folderPath);
-                    File::delete($folderPath);
+                    if (File::exists($folderPath)) {
+                        File::deleteDirectory($folderPath);
+                    }
 
                     $this->uploadImages();
 

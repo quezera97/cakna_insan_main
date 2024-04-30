@@ -26,7 +26,7 @@
                                 <div class="p-2 w-1/2">
                                     <label for="div-date" class="block mb-2 text-sm font-medium text-gray-900">Tarikh</label>
                                     <div id="div-date" class="flex items-center">
-                                        <input id="date" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" disabled>
+                                        <input id="date" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                     </div>
                                 </div>
                             @elseif ($typeOfProject == $incomingProject)
@@ -66,7 +66,7 @@
 
                             <div class="p-2 w-1/2">
                                 <label for="donation_needed" class="block mb-2 text-sm font-medium text-gray-900">Donation Needed</label>
-                                <input type="number" id="donation_needed" wire:model.lazy="donation_needed" @if ($typeOfProject == $pastProject) disabled @endif class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="number" id="donation_needed" wire:model.lazy="donation_needed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-1/2">
                                 <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-700">*</span></label>

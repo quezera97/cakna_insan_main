@@ -7,6 +7,7 @@
         <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
             <a href="{{ route('project.index') }}" class="mr-5 hover:text-gray-900">Projek</a>
+            <a href="{{ route('poster.index') }}" class="mr-5 hover:text-gray-900">Poster</a>
             <button id="dropdownScreenLink" data-dropdown-toggle="dropdownScreenNavbar" class="flex items-center py-2 px-3 mr-5 hover:text-gray-900">
                 Skrin
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">

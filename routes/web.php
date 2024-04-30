@@ -7,12 +7,9 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\IncomingProjectController;
 use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\PastProjectController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\ProjectDetail;
-use App\Livewire\Admin\Project\ProjectsEdit;
-use App\Models\IncomingProject;
-use App\Models\PastProject;
-use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,5 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/index', 'index')->name('index');
         Route::get('/edit-project/{project}', 'editProject')->name('edit');
         Route::get('/add-project', 'addProject')->name('add');
+    });
+
+    Route::controller(PosterController::class)->prefix('/poster')->name('poster.')->group(function () {
+        Route::get('/index', 'index')->name('index');
     });
 });
