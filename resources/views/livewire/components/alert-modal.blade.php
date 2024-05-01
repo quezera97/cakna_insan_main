@@ -18,7 +18,7 @@
                 <p class="text-gray-700 mb-4">{{ $alertModalDescription }}</p>
                 <div class="flex justify-end mt-15">
                     <button wire:click="closeAlertModal" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2">
-                        Tutup
+                        Close
                     </button>
                 </div>
             </div>

@@ -3,7 +3,7 @@
         <div class="flex items-center justify-center min-h-screen">
             <div class="bg-white w-1/4 h-auto rounded shadow-lg p-8">
                 <div class="flex justify-between items-center mb-4">
-                    <label for="upload-poster" class="text-xl font-bold">Muat Naik Poster</label>
+                    <label for="upload-poster" class="text-xl font-bold">Upload Poster</label>
                     <button wire:click="closeUploadPosterModal" class="text-gray-600 hover:text-gray-800 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -31,13 +31,13 @@
                             Photo Uploaded:
                             <img src="{{ asset('assets/img/poster/'.$fileName) }}">
                         @else
-                            Tiada Poster
+                            No Poster
                         @endif
                     @endif
                 </div>
                 <div class="flex justify-between mt-10">
                     <div></div>
-                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2" wire:click="uploadPoster">Muat Naik</button>
+                    <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2" wire:click="uploadPoster">Upload</button>
                 </div>
             </div>
         </div>

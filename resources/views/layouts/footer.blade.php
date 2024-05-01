@@ -33,7 +33,7 @@
                 <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Terms & Conditions</h2>
             </div>
             <div class="lg:w-1/2 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">PEJABAT</h2>
+                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">OFFICE</h2>
                 <p>18 Jalan 9H, Taman Cheras Jaya,</p>
                 <p>Batu 11 Jalan Cheras, Cheras, Selangor</p>
             </div>

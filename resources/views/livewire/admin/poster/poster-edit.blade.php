@@ -16,8 +16,9 @@
         <div class="p-4 w-full">
             <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                 <div class="flex items-center mb-3">
-                    <h2 class="text-gray-900 text-lg title-font font-medium">Tiada Poster</h2>
+                    <h2 class="text-gray-900 text-lg title-font font-medium">No Poster</h2>
                 </div>
+                <a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">Add Project</a>
             </div>
         </div>
     @endforelse

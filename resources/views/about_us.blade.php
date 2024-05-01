@@ -9,7 +9,7 @@
               </div>
             <div class="flex flex-wrap w-full">
                 <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
-                    <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Objektif</h1>
+                    <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Objectives</h1>
                     <div class="flex relative pb-5">
                         <div class="flex-shrink-0 w-3 h-3 mt-2 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10"></div>
                         <div class="flex-grow pl-4">
@@ -36,7 +36,7 @@
                             <img class="object-cover object-center rounded" alt="hero" src="{{ asset('assets/img/vision.png') }}">
                         </div>
                         <div class="flex-grow sm:text-left text-center">
-                            <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-2">Visi</h1>
+                            <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-2">Vision</h1>
                             <p class="leading-relaxed text-base">Menjadi sebuah badan NGO global yang memberi khidmat untuk masyarakat yang terpinggir dari segala aspek, kemudahan, pendidikan, bantuan serta infrastruktur didalam mahupun di luar negara</p>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                             <img class="object-cover object-center rounded" alt="hero" src="{{ asset('assets/img/mission.png') }}">
                         </div>
                         <div class="flex-grow sm:text-left text-center">
-                            <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-2">Misi</h1>
+                            <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-2">Mission</h1>
                             <p class="leading-relaxed text-base">Menjadi salah satu badan kebajikan yang komprehensif, progresif serta cakna kepada masyarakat dimana menjadi contoh yang terbaik dalam kalangan badan bukan kerajaan di peringkat global</p>
                         </div>
                     </div>

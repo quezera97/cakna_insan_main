@@ -7,8 +7,8 @@
                     <h1 id="featured-project-title" class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $featuredProject[$currentProjectIndex]->projectable->title }}</h1>
                     <p class="mb-8 leading-relaxed">{{ $featuredProject[$currentProjectIndex]->projectable?->details }}</p>
                     <div class="flex justify-center">
-                        <a href="{{ route('donation', $featuredProject[$currentProjectIndex]) }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Sekarang</a>
-                        <a href="{{ route('project_detail', $featuredProject[$currentProjectIndex]) }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Butiran</a>
+                        <a href="{{ route('donation', $featuredProject[$currentProjectIndex]) }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                        <a href="{{ route('project_detail', $featuredProject[$currentProjectIndex]) }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">ButiraDetailsn</a>
                     </div>
                 </div>
                 <div class="lg:max-w-sm lg:w-full md:w-1/2 w-1/2">

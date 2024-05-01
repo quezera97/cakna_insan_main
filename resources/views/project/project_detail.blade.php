@@ -67,7 +67,7 @@
                                         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                         <path d="M22 4L12 14.01l-3-3"></path>
                                     </svg>
-                                    <span class="title-font font-medium">Tempat: {{ $project->projectable?->place }}</span>
+                                    <span class="title-font font-medium">Place: {{ $project->projectable?->place ?? 'TBD' }}</span>
                                 </div>
                             </div>
                             <div class="p-2 w-full">
@@ -77,17 +77,23 @@
                                         <path d="M22 4L12 14.01l-3-3"></path>
                                     </svg>
                                     @if ($incomingProjectDetail)
-                                        @if (isset($project->projectable?->date_to))
+                                        @if (isset($project->projectable?->date_from) && isset($project->projectable?->date_to))
                                             <span class="title-font font-medium">
-                                                Tarikh: {{ date('j F Y', strtotime($project->projectable->date_from)) }} <span class="text-lg mx-4">-</span> {{ date('j F Y', strtotime($project->projectable->date_to)) }}
+                                                Date: {{ date('j F Y', strtotime($project->projectable->date_from)) }} <span class="text-lg mx-4">-</span> {{ date('j F Y', strtotime($project->projectable->date_to)) }}
+                                            </span>
+                                        @elseif (isset($project->projectable?->date_from) && !isset($project->projectable?->date_to))
+                                            <span class="title-font font-medium">
+                                                Date: {{ date('j F Y', strtotime($project->projectable->date_from)) }}
                                             </span>
                                         @else
-                                            <span class="title-font font-medium">
-                                                Tarikh: {{ date('j F Y', strtotime($project->projectable->date_from)) }}
-                                            </span>
+                                            <span class="title-font font-medium">Date: TBD</span>
                                         @endif
                                     @else
-                                        <span class="title-font font-medium">Tarikh: {{ date('j F Y', strtotime($project->projectable->date)) }}</span>
+                                        @if (isset($project->projectable?->date_to))
+                                            <span class="title-font font-medium">Date: {{ date('j F Y', strtotime($project->projectable->date)) }}</span>
+                                        @else
+                                            <span class="title-font font-medium">Date: TBD</span>
+                                        @endif
                                     @endif
                                 </div>
                             </div>
@@ -99,14 +105,16 @@
                                             <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                             <path d="M22 4L12 14.01l-3-3"></path>
                                         </svg>
-                                        @if (isset($project->projectable?->time_to))
+                                        @if (isset($project->projectable?->time_from) && isset($project->projectable?->time_to))
                                             <span class="title-font font-medium">
-                                                Masa: {{ date('h:i A', strtotime($project->projectable?->time_from)) }} - {{ date('h:i A', strtotime($project->projectable?->time_to)) }}
+                                                Time: {{ date('h:i A', strtotime($project->projectable?->time_from)) }} - {{ date('h:i A', strtotime($project->projectable?->time_to)) }}
+                                            </span>
+                                        @elseif (isset($project->projectable?->time_from) && !isset($project->projectable?->time_to))
+                                            <span class="title-font font-medium">
+                                                Time: {{ date('h:i A', strtotime($project->projectable?->time_from)) }}
                                             </span>
                                         @else
-                                            <span class="title-font font-medium">
-                                                Masa: {{ date('h:i A', strtotime($project->projectable?->time_from)) }}
-                                            </span>
+                                            <span class="title-font font-medium">Time: TBD</span>
                                         @endif
                                     </div>
                                 </div>
@@ -118,7 +126,7 @@
                                         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                         <path d="M22 4L12 14.01l-3-3"></path>
                                     </svg>
-                                    <span class="title-font font-medium">Peserta: {{ $project->projectable?->pax }}</span>
+                                    <span class="title-font font-medium">Volunteer Pax: {{ $project->projectable?->pax ?? 'TBD' }}</span>
                                 </div>
                             </div>
                             <div class="p-2 sm:w-1/2 w-full">
@@ -127,7 +135,7 @@
                                         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                         <path d="M22 4L12 14.01l-3-3"></path>
                                     </svg>
-                                    <span class="title-font font-medium">Pengangkutan: {{ $project->projectable?->transportation == true ? 'Disediakan' : 'Tidak Disediakan' }}</span>
+                                    <span class="title-font font-medium">Transportation: {{ $project->projectable?->transportation == true ? 'Provided' : 'Not Provided' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +146,7 @@
                                 </div>
                             @endif
                             <a href="{{ route('donation', $project) }}">
-                                <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Sekarang</button>
+                                <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</button>
                             </a>
                         @endif
                     </div>

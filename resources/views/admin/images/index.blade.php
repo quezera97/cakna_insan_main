@@ -20,7 +20,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($projects as $project)
+                            @forelse ($projects as $project)
                                 <tr class="bg-white border-b border-gray-400">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                         {{ $project->projectable?->title }}
@@ -36,7 +36,12 @@
                                         </td>
                                     @endif
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">No Projects</th>
+                                    <td class="px-6 py-4 flex flex-col space-y-3 items-center"><a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">Add</a></td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

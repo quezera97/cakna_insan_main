@@ -4,8 +4,8 @@
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Projek Lepas</h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Projek-projek yang lepas dianjurkan oleh Cakna Insan Malaysia</p>
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Past Projects</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Past projects that have been handled by Cakna Insan Malaysia</p>
             </div>
             <div class="flex flex-wrap -m-2">
                 @forelse ($pastProjects as $project)
@@ -47,7 +47,7 @@
                     <div class="p-4 w-full">
                         <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                             <div class="flex items-center mb-3">
-                                <h2 class="text-gray-900 text-lg title-font font-medium">Tiada Projek</h2>
+                                <h2 class="text-gray-900 text-lg title-font font-medium">No Projects</h2>
                             </div>
                         </div>
                     </div>

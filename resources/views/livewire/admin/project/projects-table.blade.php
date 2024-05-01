@@ -26,12 +26,12 @@
                     </th>
                     <td class="px-6 py-4 flex flex-col space-y-3 items-center">
                         @if ($project->projectable_type == $incomingProject)
-                            <a href="#" wire:click="openConfirmationModal('completeProject', {{ $project->id }})" class="font-medium text-pink-600 hover:underline">Projek Tamat</a>
+                            <a href="#" wire:click="openConfirmationModal('completeProject', {{ $project->id }})" class="font-medium text-pink-600 hover:underline">Ending Project</a>
                         @endif
 
-                        <a href="#" wire:click="editProject({{ $project }})" class="font-medium text-blue-600 hover:underline">Kemaskini Projek</a>
+                        <a href="#" wire:click="editProject({{ $project }})" class="font-medium text-blue-600 hover:underline">Edit Project</a>
 
-                        <a href="#" wire:click="openConfirmationModal('deleteProject', {{ $project->id }})" class="font-medium text-red-600 hover:underline">Hapus Projek</a>
+                        <a href="#" wire:click="openConfirmationModal('deleteProject', {{ $project->id }})" class="font-medium text-red-600 hover:underline">Delete Project</a>
                     </td>
                 </tr>
             @endforeach

@@ -9,9 +9,9 @@
             </div>
             <div class="mb-20 lg:w-2/3 w-full mx-auto overflow-auto">
                 <div class="flex flex-col sm:flex-row items-center justify-between mb-5">
-                    <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Pilihan Infaq</h1>
+                    <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Infaq Options</h1>
                     <select class="select2">
-                        <option value="" selected disabled>Sila Pilih</option>
+                        <option value="" selected disabled>Please Choose</option>
                         @foreach ($incomingProject as $project)
                             <option value="{{ $project->id }}" {{ (!is_null($selectedProject) && $project->id == $selectedProject->projectable?->id) ? 'selected' : '' }}>
                                 {{ $project->title }}
@@ -23,7 +23,7 @@
                 <table class="table-auto w-full text-left whitespace-no-wrap">
                     <thead>
                         <tr>
-                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Pilihan</th>
+                        <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Options</th>
                         <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
                         </tr>
                     </thead>
@@ -56,22 +56,22 @@
                 </table>
             </div>
             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Butiran Pemberi Infaq</h1>
+                <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-5">Infaq Details</h1>
                 <div class="p-2 mb-2 w-full">
                     <div class="relative">
-                        <label for="name" class="leading-7 text-sm text-gray-600">Nama</label>
+                        <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
                         <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </div>
                 </div>
                 <div class="p-2 mb-2 w-full">
                     <div class="relative">
-                        <label for="email" class="leading-7 text-sm text-gray-600">Emel</label>
+                        <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
                         <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </div>
                 </div>
                 <div class="p-2 mb-2 w-full">
                     <div class="relative">
-                        <label for="phone" class="leading-7 text-sm text-gray-600">No. Phone</label>
+                        <label for="phone" class="leading-7 text-sm text-gray-600">Phone No.</label>
                         <input type="text" id="phone" name="phone" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </div>
                 </div>
