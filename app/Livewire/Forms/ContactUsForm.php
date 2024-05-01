@@ -13,20 +13,20 @@ class ContactUsForm extends Component
     public $organization;
     public $message;
 
-    public $showModal = false;
+    public $showAlertModal = false;
 
-    public $modalTitle = '';
-    public $modalDescription = '';
+    public $alertModalTitle = '';
+    public $alertModalDescription = '';
 
 
-    public function openModal()
+    public function openAlertModal()
     {
-        $this->showModal = true;
+        $this->showAlertModal = true;
     }
 
-    public function closeModal()
+    public function closeAlertModal()
     {
-        $this->showModal = false;
+        $this->showAlertModal = false;
     }
 
     public function render()
@@ -36,8 +36,8 @@ class ContactUsForm extends Component
 
     public function save()
     {
-        $this->modalTitle = 'Berjaya!';
-        $this->modalDescription = 'Mesej anda telah kami simpan';
+        $this->alertModalTitle = 'Berjaya!';
+        $this->alertModalDescription = 'Mesej anda telah kami simpan';
 
         $validatedData = $this->validate([
             'name' => 'required|string|min:6',
@@ -58,7 +58,7 @@ class ContactUsForm extends Component
 
             DB::commit();
 
-            $this->openModal();
+            $this->openAlertModal();
 
         } catch (\Throwable $th) {
             DB::rollback();

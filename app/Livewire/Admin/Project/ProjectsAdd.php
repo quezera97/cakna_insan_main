@@ -36,19 +36,19 @@ class ProjectsAdd extends Component
     public $uploadedImages = [];
 
     //modal untuk notification
-    public $showModal = false;
+    public $showAlertModal = false;
 
-    public $modalTitle = '';
-    public $modalDescription = '';
+    public $alertModalTitle = '';
+    public $alertModalDescription = '';
 
-    public function openModal()
+    public function openAlertModal()
     {
-        $this->showModal = true;
+        $this->showAlertModal = true;
     }
 
-    public function closeModal()
+    public function closeAlertModal()
     {
-        $this->showModal = false;
+        $this->showAlertModal = false;
     }
 
     //upload poster
@@ -161,8 +161,8 @@ class ProjectsAdd extends Component
 
     public function save()
     {
-        $this->modalTitle = 'Berjaya!';
-        $this->modalDescription = 'Projek ' . $this->title . ' telah dikemaskini.';
+        $this->alertModalTitle = 'Berjaya!';
+        $this->alertModalDescription = 'Projek ' . $this->title . ' telah dikemaskini.';
 
         try {
             DB::beginTransaction();
@@ -229,7 +229,7 @@ class ProjectsAdd extends Component
 
             DB::commit();
 
-            $this->openModal();
+            $this->openAlertModal();
 
         } catch (\Throwable $th) {
             DB::rollback();

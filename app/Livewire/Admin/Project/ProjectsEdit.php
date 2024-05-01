@@ -34,22 +34,20 @@ class ProjectsEdit extends Component
     public $pax;
     public $transportation;
 
-    public $uploadedImages = [];
-
     //modal untuk notification
-    public $showModal = false;
+    public $showAlertModal = false;
 
-    public $modalTitle = '';
-    public $modalDescription = '';
+    public $alertModalTitle = '';
+    public $alertModalDescription = '';
 
-    public function openModal()
+    public function openAlertModal()
     {
-        $this->showModal = true;
+        $this->showAlertModal = true;
     }
 
-    public function closeModal()
+    public function closeAlertModal()
     {
-        $this->showModal = false;
+        $this->showAlertModal = false;
     }
 
     //upload poster
@@ -66,6 +64,7 @@ class ProjectsEdit extends Component
     }
 
     //upload gambar
+    public $uploadedImages = [];
     public $showUploadImagesModal = false;
 
     public function openUploadImagesModal()
@@ -176,8 +175,8 @@ class ProjectsEdit extends Component
 
     public function save(Project $project)
     {
-        $this->modalTitle = 'Berjaya!';
-        $this->modalDescription = 'Projek ' . $this->title . ' telah dikemaskini.';
+        $this->alertModalTitle = 'Berjaya!';
+        $this->alertModalDescription = 'Projek ' . $this->title . ' telah dikemaskini.';
 
         try {
             DB::beginTransaction();
@@ -199,7 +198,7 @@ class ProjectsEdit extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $this->poster_image_path,
+                    'poster_image_path' => $this->poster_image_path ?? $project->projectable?->poster_image_path,
                 ]);
             }
             else{
@@ -211,12 +210,15 @@ class ProjectsEdit extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $this->poster_image_path,
+                    'poster_image_path' => $this->poster_image_path ?? $project->projectable?->poster_image_path,
                 ]);
 
                 if(!empty($this->images_path)){
                     //delete dalam db
-                    ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->delete();
+                    $projectImage = ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->get();
+                    foreach($projectImage as $image){
+                        $image->delete();
+                    }
 
                     //delete dalam public folder
                     $folderPath = public_path('assets/img/'.$this->folder);
@@ -244,7 +246,7 @@ class ProjectsEdit extends Component
 
             DB::commit();
 
-            $this->openModal();
+            $this->openAlertModal();
 
         } catch (\Throwable $th) {
             DB::rollback();

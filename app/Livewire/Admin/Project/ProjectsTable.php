@@ -9,26 +9,47 @@ use App\Models\ProjectImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ProjectsTable extends Component
 {
+    use WithFileUploads;
+
     public $listOfProjects;
     public $incomingProject = IncomingProject::class;
     public $pastProject = PastProject::class;
 
-    public $showModal = false;
+    //untuk confirmation modal
+    public $showConfirmationModal = false;
 
-    public $modalTitle = '';
-    public $modalDescription = '';
+    public $functionPassed;
+    public $paramPassed;
 
-    public function openModal()
+    public $confirmationModalTitle = '';
+    public $confirmationModalDescription = '';
+
+    public function openConfirmationModal($function, $param)
     {
-        $this->showModal = true;
+        $this->functionPassed = $function;
+        $this->paramPassed = $param;
+
+        $this->confirmationModalTitle = 'Are you sure?';
+
+        $this->showConfirmationModal = true;
     }
 
-    public function closeModal()
+    public function closeConfirmationModal()
     {
-        $this->showModal = false;
+        $this->showConfirmationModal = false;
+    }
+
+    public function acceptConfirmationModal()
+    {
+        if (method_exists($this, $this->functionPassed)) {
+            call_user_func_array([$this, $this->functionPassed], [$this->paramPassed]);
+        }
+
+        $this->showConfirmationModal = false;
     }
 
     public function mount($projects)
@@ -46,8 +67,10 @@ class ProjectsTable extends Component
         return redirect()->route('project.add');
     }
 
-    public function completeProject(Project $project)
+    public function completeProject($projectId)
     {
+        $project = Project::find($projectId);
+
         try {
             DB::beginTransaction();
 
@@ -73,11 +96,6 @@ class ProjectsTable extends Component
 
             DB::commit();
 
-            $this->modalTitle = 'Berjaya!';
-            $this->modalDescription = 'Projek ' . $project->projectable?->title . ' telah dikemaskini.';
-
-            $this->openModal();
-
             return redirect()->route('project.index');
 
         } catch (\Throwable $th) {
@@ -91,14 +109,17 @@ class ProjectsTable extends Component
         return redirect()->route('project.delete_images', ['project' => $project]);
     }
 
-    public function deleteProject(Project $project)
+    public function deleteProject($projectId)
     {
+        $project = Project::find($projectId);
+
         try {
             DB::beginTransaction();
 
+            $title = strtolower($project->projectable?->title);
+            $title = str_replace(' ', '_', $title);
+
             if($project->projectable_type == PastProject::class){
-                $title = strtolower($project->projectable?->title);
-                $title = str_replace(' ', '_', $title);
 
                 ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->delete();
 
@@ -118,11 +139,6 @@ class ProjectsTable extends Component
             $project->delete();
 
             DB::commit();
-
-            $this->modalTitle = 'Berjaya!';
-            $this->modalDescription = 'Projek telah dihapus.';
-
-            $this->openModal();
 
             return redirect()->route('project.index');
 

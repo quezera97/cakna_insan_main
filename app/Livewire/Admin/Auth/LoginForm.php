@@ -13,20 +13,20 @@ class LoginForm extends Component
     public $email;
     public $password;
 
-    public $showModal = false;
+    public $showAlertModal = false;
 
-    public $modalTitle = '';
-    public $modalDescription = '';
+    public $alertModalTitle = '';
+    public $alertModalDescription = '';
 
 
-    public function openModal()
+    public function openAlertModal()
     {
-        $this->showModal = true;
+        $this->showAlertModal = true;
     }
 
-    public function closeModal()
+    public function closeAlertModal()
     {
-        $this->showModal = false;
+        $this->showAlertModal = false;
     }
 
     public function render()
@@ -45,12 +45,12 @@ class LoginForm extends Component
             return redirect()->intended('/dashboard');
         }
         else{
-            $this->modalTitle = 'Gagal!';
-            $this->modalDescription = 'Maklumat yang anda guna adalah salah';
+            $this->alertModalTitle = 'Gagal!';
+            $this->alertModalDescription = 'Maklumat yang anda guna adalah salah';
 
             $this->reset(['password', 'email']);
 
-            $this->openModal();
+            $this->openAlertModal();
         }
     }
 }

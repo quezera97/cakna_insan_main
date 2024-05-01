@@ -20,5 +20,12 @@ class AdminSeeder extends Seeder
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('nasira66'),
         ]);
+
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => Hash::make('87654321'),
+        ]);
     }
 }

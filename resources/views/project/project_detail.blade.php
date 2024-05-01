@@ -60,13 +60,6 @@
                             <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Project {{ $project->projectable?->title }}</h1>
                             <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">{{ $project->projectable?->details }}</p>
                         </div>
-                        {{-- <div class="container px-5 mb-10 mx-auto">
-                            <div class="w-full mx-auto text-center">
-                              <p class="leading-relaxed text-lg">Ayat Quran/Hadis</p>
-                                <span class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"></span>
-                                <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">Quran/Hadis</h2>
-                            </div>
-                        </div> --}}
                         <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
                             <div class="p-2 w-full">
                                 <div class="bg-gray-300 rounded flex p-4 h-full items-center">

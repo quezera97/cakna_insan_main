@@ -13,20 +13,20 @@ class JoinUsForm extends Component
     public $help_needed = [];
     public $expertise;
 
-    public $showModal = false;
+    public $showAlertModal = false;
 
-    public $modalTitle = '';
-    public $modalDescription = '';
+    public $alertModalTitle = '';
+    public $alertModalDescription = '';
 
 
-    public function openModal()
+    public function openAlertModal()
     {
-        $this->showModal = true;
+        $this->showAlertModal = true;
     }
 
-    public function closeModal()
+    public function closeAlertModal()
     {
-        $this->showModal = false;
+        $this->showAlertModal = false;
     }
 
     public function render()
@@ -36,8 +36,8 @@ class JoinUsForm extends Component
 
     public function save()
     {
-        $this->modalTitle = 'Berjaya!';
-        $this->modalDescription = 'Penyertaan anda telah direkodkan, kami akan menghubungi anda melalui emel/whatsapp';
+        $this->alertModalTitle = 'Berjaya!';
+        $this->alertModalDescription = 'Penyertaan anda telah direkodkan, kami akan menghubungi anda melalui emel/whatsapp';
 
         $validatedData = $this->validate([
             'name' => 'required|string|min:6',
@@ -62,7 +62,7 @@ class JoinUsForm extends Component
 
             DB::commit();
 
-            $this->openModal();
+            $this->openAlertModal();
 
         } catch (\Throwable $th) {
             DB::rollback();

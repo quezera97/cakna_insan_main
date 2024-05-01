@@ -13,10 +13,10 @@
         <tbody>
             <tr class="bg-white border-b border-gray-400">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Tambah Projek
+                    Add Project
                 </th>
                 <td class="px-6 py-4 flex flex-col space-y-3 items-center">
-                    <a href="#" wire:click="addProject" class="font-medium text-blue-600 hover:underline">Tambah</a>
+                    <a href="#" wire:click="addProject" class="font-medium text-blue-600 hover:underline">Add</a>
                 </td>
             </tr>
             @foreach ($listOfProjects ?? [] as $project)
@@ -26,17 +26,17 @@
                     </th>
                     <td class="px-6 py-4 flex flex-col space-y-3 items-center">
                         @if ($project->projectable_type == $incomingProject)
-                            <a href="#" wire:click="completeProject({{ $project }})" class="font-medium text-pink-600 hover:underline">Projek Tamat</a>
+                            <a href="#" wire:click="openConfirmationModal('completeProject', {{ $project->id }})" class="font-medium text-pink-600 hover:underline">Projek Tamat</a>
                         @endif
 
                         <a href="#" wire:click="editProject({{ $project }})" class="font-medium text-blue-600 hover:underline">Kemaskini Projek</a>
 
-                        <a href="#" wire:click="deleteProject({{ $project }})" class="font-medium text-red-600 hover:underline">Hapus Projek</a>
+                        <a href="#" wire:click="openConfirmationModal('deleteProject', {{ $project->id }})" class="font-medium text-red-600 hover:underline">Hapus Projek</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
-    @include('livewire.components.alert-modal', ['modalTitle' => $modalTitle, 'modalDescription' => $modalDescription])
+    @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
 </div>

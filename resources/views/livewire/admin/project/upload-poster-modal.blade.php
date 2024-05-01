@@ -12,6 +12,7 @@
                 </div>
                 <div>
                     <input id="upload-poster" type="file" wire:model="poster_image_upload" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300" required>
+                    @error('poster_image_upload') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <div class="p-2 w-full mt-5" wire:loading wire:target="poster_image_upload">Uploading...</div>
                 <div class="p-2 w-full mt-5">

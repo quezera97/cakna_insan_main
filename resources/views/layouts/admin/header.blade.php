@@ -6,8 +6,9 @@
         </a>
         <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
-            <a href="{{ route('project.index') }}" class="mr-5 hover:text-gray-900">Projek</a>
+            <a href="{{ route('project.index') }}" class="mr-5 hover:text-gray-900">Project</a>
             <a href="{{ route('poster.index') }}" class="mr-5 hover:text-gray-900">Poster</a>
+            <a href="{{ route('images.index') }}" class="mr-5 hover:text-gray-900">Images</a>
             <button id="dropdownScreenLink" data-dropdown-toggle="dropdownScreenNavbar" class="flex items-center py-2 px-3 mr-5 hover:text-gray-900">
                 Skrin
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -17,22 +18,22 @@
             <div id="dropdownScreenNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-light-700">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                     <li>
-                        <a href="{{ route('incoming_project') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Projek Akan Datang</a>
+                        <a href="{{ route('incoming_project') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Incoming Projects</a>
                     </li>
                     <li>
-                        <a href="{{ route('past_project') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Projek Lepas</a>
+                        <a href="{{ route('past_project') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Past Projects</a>
                     </li>
                     <li>
-                        <a href="{{ route('about_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Tentang Kami</a>
+                        <a href="{{ route('about_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">About Us</a>
                     </li>
                     <li>
-                        <a href="{{ route('contact_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Hubungi Kami</a>
+                        <a href="{{ route('contact_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Contact Us</a>
                     </li>
                     <li>
-                        <a href="{{ route('join_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Sertai Kami</a>
+                        <a href="{{ route('join_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Join Us</a>
                     </li>
                     <li>
-                        <a href="{{ route('join_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Infaq Sekarang</a>
+                        <a href="{{ route('donation') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Infaq Now</a>
                     </li>
                 </ul>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonationController;
@@ -54,5 +55,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::controller(PosterController::class)->prefix('/poster')->name('poster.')->group(function () {
         Route::get('/index', 'index')->name('index');
+    });
+
+    Route::controller(ImagesController::class)->prefix('/images')->name('images.')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/edit-images/{type}/{project}', 'editImages')->name('edit');
+        Route::get('/delete-all-images/{project}', 'deleteAllImages')->name('deleteAllImages');
     });
 });

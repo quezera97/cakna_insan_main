@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class AlertModal extends Component
 {
-    public $modalTitle;
-    public $modalDescription;
+    public $alertModalTitle;
+    public $alertModalDescription;
 
     public function render()
     {

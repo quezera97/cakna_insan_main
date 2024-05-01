@@ -36,5 +36,5 @@
         </div>
     </form>
 
-    @include('livewire.components.alert-modal', ['modalTitle' => $modalTitle, 'modalDescription' => $modalDescription])
+    @include('livewire.components.alert-modal', ['alertModalTitle' => $alertModalTitle, 'alertModalDescription' => $alertModalDescription])
 </div>
