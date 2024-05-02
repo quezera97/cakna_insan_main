@@ -1,6 +1,6 @@
 <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
     <a class="block relative h-48 rounded overflow-hidden">
-        <img alt="{{ $projectImage->title }}" class="object-cover object-center w-full h-full block" src="{{ asset($projectImage->image_path) }}">
+        <img alt="{{ $projectImage->title }}" class="object-cover object-center w-full h-full block" src="{{ asset('storage/'.$projectImage->image_path) }}">
     </a>
     <div class="mt-4">
         <h2 class="text-gray-900 title-font text-lg font-medium">{{ $projectImage->title }}</h2>
@@ -20,7 +20,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
-                    <img src="{{ asset($projectImage->image_path) }}" alt="Full Size Image" class="lg:h-auto md:h-auto h-full lg:w-1/2 md:w-1/2 w-full mx-auto">
+                    <img src="{{ asset('storage/'.$projectImage->image_path) }}" alt="Full Size Image" class="lg:h-auto md:h-auto h-full lg:w-1/2 md:w-1/2 w-full mx-auto">
                 </div>
             </div>
         </div>

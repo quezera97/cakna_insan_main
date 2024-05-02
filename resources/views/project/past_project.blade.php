@@ -4,8 +4,7 @@
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Past Projects</h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Past projects that have been handled by Cakna Insan Malaysia</p>
+                <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Past Projects</h1>
             </div>
             <div class="flex flex-wrap -m-2">
                 @forelse ($pastProjects as $project)
@@ -17,7 +16,7 @@
                                     <p class="text-center text-4xl font-black text-white">{{ $project->projectable?->title }}</p>
                                 </div>
                                 @if ($project->projectable?->pastProjectImages->isNotEmpty())
-                                    <img id="image-{{ $project->projectable?->id }}" class="rounded w-full h-full object-cover object-center" src="{{ asset($project->projectable?->pastProjectImages[0]->image_path) }}" alt="content">
+                                    <img id="image-{{ $project->projectable?->id }}" class="rounded w-full h-full object-cover object-center" src="{{ asset('storage/'.$project->projectable?->pastProjectImages[0]->image_path) }}" alt="content">
                                 @endif
                             </div>
                         </a>

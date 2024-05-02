@@ -89,9 +89,9 @@ class PosterEdit extends Component
         $folderPath = str_replace(' ', '_', $folderPath);
         $fileName = $folderPath.'.jpg';
 
-        $this->poster_image_upload->storeAs('poster', $fileName, 'poster_public_path');
+        $this->poster_image_upload->storeAs('poster', $fileName, 'public');
 
-        $this->poster_image_path = asset('assets/img/poster/'.$fileName);
+        $this->poster_image_path = 'poster/'.$fileName;
 
         try {
             DB::beginTransaction();

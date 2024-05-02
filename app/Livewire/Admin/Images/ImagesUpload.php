@@ -63,8 +63,8 @@ class ImagesUpload extends Component
 
             foreach ($this->images_upload as $key => $photo) {
                 $fileName = $key.'.jpg';
-                $photo->storeAs($folderPath, $fileName, 'images_public_path');
-                $this->images_path[] = asset('assets/img/'.$folderPath.'/'.$fileName);
+                $photo->storeAs($folderPath, $fileName, 'public');
+                $this->images_path[] = asset($folderPath.'/'.$fileName);
             }
 
             foreach ($this->images_path as $key => $imagePath) {

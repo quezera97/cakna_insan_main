@@ -23,7 +23,7 @@
                 @forelse ($uploadedImages as $key => $image)
                     @if ($image)
                         Photo Uploaded:
-                        <img class="mb-3" src="{{ asset($image) }}">
+                        <img class="mb-3" src="{{ asset('storage/'.$image) }}">
                     @endif
                 @empty
                     No Images

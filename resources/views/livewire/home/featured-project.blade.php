@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="lg:max-w-sm lg:w-full md:w-1/2 w-1/2">
-                    <img class="object-cover object-center rounded" alt="Poster" src="{{ asset($featuredProject[$currentProjectIndex]->projectable?->poster_image_path) }}">
+                    <img class="object-cover object-center rounded" alt="Poster" src="{{ asset('storage/'.$featuredProject[$currentProjectIndex]->projectable?->poster_image_path) }}">
                 </div>
             </div>
         </section>

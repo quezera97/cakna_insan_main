@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- Jumbotron --}}
+
+    {{-- Tazkirah/Hadis/Ayat Quran --}}
+
     {{-- Featured Project --}}
     @livewire('home.featured-projects')
 

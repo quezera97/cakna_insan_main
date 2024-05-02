@@ -18,7 +18,7 @@
                 @if ($incomingProjectDetail)
                     <div class="lg:w-1/3 p-4">
                         <div class="flex relative">
-                            <img alt="{{ $project->projectable?->title }}" class="inset-0 w-full h-full object-cover object-center" src="{{ asset($project->projectable?->poster_image_path) }}">
+                            <img alt="{{ $project->projectable?->title }}" class="inset-0 w-full h-full object-cover object-center" src="{{ asset('storage/'.$project->projectable?->poster_image_path) }}">
                         </div>
                     </div>
                 @else
@@ -26,7 +26,7 @@
                         <div class="relative lg:h-full h-96 overflow-hidden rounded-lg">
                             @foreach ($project->projectable?->pastProjectImages as $projectDetail)
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="{{ asset($projectDetail->image_path) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                    <img src="{{ asset('storage/'.$projectDetail->image_path) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                                 </div>
                             @endforeach
                         </div>

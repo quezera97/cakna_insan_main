@@ -19,17 +19,8 @@
                     Photo Preview:
                     <img src="{{ $poster_image_upload->temporaryUrl() }}">
                 @else
-                    @php
-                        $fileName = $folder_path.'.jpg';
-                        $filePath = public_path('assets/img/poster/' . $fileName);
-                    @endphp
-
-                    @if(\Illuminate\Support\Facades\File::exists($filePath))
-                        Photo Uploaded:
-                        <img src="{{ asset('assets/img/poster/'.$fileName) }}">
-                    @else
-                        No Poster
-                    @endif
+                    Photo Uploaded:
+                    <img src="{{ asset('storage/poster/'.$folder_path.'.jpg') }}">
                 @endif
             </div>
             <div class="flex justify-between mt-10">
