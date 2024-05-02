@@ -9,16 +9,14 @@ use App\Models\ProjectImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
-use Livewire\WithFileUploads;
-
 class ProjectsEdit extends Component
 {
-    use WithFileUploads;
-
     public $selectedProject;
     public $typeOfProject;
     public $pastProject = PastProject::class;
     public $incomingProject = IncomingProject::class;
+
+    public $folder_path;
 
     public $title;
     public $subtitle;
@@ -50,36 +48,11 @@ class ProjectsEdit extends Component
         $this->showAlertModal = false;
     }
 
-    //upload poster
-    public $showUploadPosterModal = false;
-
-    public function openUploadPosterModal()
-    {
-        $this->showUploadPosterModal = true;
-    }
-
-    public function closeUploadPosterModal()
-    {
-        $this->showUploadPosterModal = false;
-    }
-
-    //upload gambar
-    public $uploadedImages = [];
-    public $showUploadImagesModal = false;
-
-    public function openUploadImagesModal()
-    {
-        $this->showUploadImagesModal = true;
-    }
-
-    public function closeUploadImagesModal()
-    {
-        $this->showUploadImagesModal = false;
-    }
-
     public function mount(Project $project)
     {
         $this->selectedProject = $project;
+
+        $this->folder_path = $project->folder_path;
 
         $this->title = $project->projectable?->title;
         $this->subtitle = $project->projectable?->subtitle;
@@ -97,10 +70,6 @@ class ProjectsEdit extends Component
             $this->typeOfProject = $this->pastProject;
 
             $this->date = $project->projectable?->date;
-
-            foreach($project->projectable?->pastProjectImages as $image){
-                $this->uploadedImages[] = $image->image_path;
-            }
         }
 
         $this->donation_needed = $project->donation_needed;
@@ -115,68 +84,10 @@ class ProjectsEdit extends Component
         return view('livewire.admin.project.projects-edit');
     }
 
-    public function updatedPosterImageUpload()
-    {
-        $this->validate([
-            'poster_image_upload' => 'image|max:1024',
-        ]);
-    }
-
-    //untuk upload poster
-    public $poster_image_upload;
-    public $poster_image_path;
-
-    public function uploadPoster()
-    {
-        $this->poster_image_path = '';
-
-        $this->validate([
-            'poster_image_upload' => 'image|max:1024',
-        ]);
-
-        $title = strtolower($this->title);
-        $title = str_replace(' ', '_', $title);
-        $fileName = $title.'.jpg';
-
-        $this->poster_image_upload->storeAs('poster', $fileName, 'poster_public_path');
-
-        $this->poster_image_path = asset('assets/img/poster/'.$fileName);
-
-        $this->closeUploadPosterModal();
-    }
-
-    //untuk upload gambar
-    public $images_upload;
-    public $folder;
-    public $images_path = [];
-
-    public function uploadImages()
-    {
-        $this->images_path = [];
-        $this->validate([
-            'images_upload.*' => 'image|max:1024',
-        ],[],[
-            'images_upload.*' => 'Image Uploaded',
-        ]);
-
-        $title = strtolower($this->title);
-        $title = str_replace(' ', '_', $title);
-        $this->folder = $title;
-
-        foreach ($this->images_upload as $key => $photo) {
-            $fileName = $key.'.jpg';
-            $photo->storeAs($this->folder, $fileName, 'images_public_path');
-            $this->images_path[] = asset('assets/img/'.$this->folder.'/'.$fileName);
-        }
-
-        $this->closeUploadImagesModal();
-
-    }
-
     public function save(Project $project)
     {
-        $this->alertModalTitle = 'Berjaya!';
-        $this->alertModalDescription = 'Projek ' . $this->title . ' telah dikemaskini.';
+        $this->alertModalTitle = 'Success!';
+        $this->alertModalDescription = 'Project ' . $this->title . ' successfully edited.';
 
         try {
             DB::beginTransaction();
@@ -198,7 +109,7 @@ class ProjectsEdit extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $this->poster_image_path ?? $project->projectable?->poster_image_path,
+                    'poster_image_path' => $project->projectable?->poster_image_path ?? null,
                 ]);
             }
             else{
@@ -210,38 +121,8 @@ class ProjectsEdit extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $this->poster_image_path ?? $project->projectable?->poster_image_path,
+                    'poster_image_path' => $project->projectable?->poster_image_path ?? null,
                 ]);
-
-                if(!empty($this->images_path)){
-                    //delete dalam db
-                    $projectImage = ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->get();
-                    foreach($projectImage as $image){
-                        $image->delete();
-                    }
-
-                    //delete dalam public folder
-                    $folderPath = public_path('assets/img/'.$this->folder);
-                    if (File::exists($folderPath)) {
-                        File::deleteDirectory($folderPath);
-                    }
-
-                    $this->uploadImages();
-
-                    foreach ($this->images_path as $key => $imagePath) {
-                        ProjectImage::updateOrCreate(
-                            [
-                                'image_path' => $imagePath,
-                            ],
-                            [
-                                'reference_type' => $project->projectable_type,
-                                'referenced_id' => $project->projectable?->id,
-                                'title' => '',
-                                'caption' => '',
-                            ]
-                        );
-                    }
-                }
             }
 
             DB::commit();

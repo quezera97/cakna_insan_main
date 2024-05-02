@@ -12,9 +12,19 @@
                 @endif
             </div>
             <div class="flex flex-wrap -m-4">
-                @forelse ($project->projectable?->pastProjectImages as $key => $projectImage)
-                    @livewire('admin.images.images-edit', ['projectImage' => $projectImage, 'key' => $key])
-                @empty
+                @if (isset($project->projectable?->pastProjectImages))
+                    @forelse ($project->projectable?->pastProjectImages as $key => $projectImage)
+                        @livewire('admin.images.images-edit', ['projectImage' => $projectImage, 'key' => $key])
+                    @empty
+                        <div class="p-4 w-full">
+                            <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
+                                <div class="flex items-center mb-3">
+                                    <h2 class="text-gray-900 text-lg title-font font-medium">No Images</h2>
+                                </div>
+                            </div>
+                        </div>
+                    @endforelse
+                @else
                     <div class="p-4 w-full">
                         <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                             <div class="flex items-center mb-3">
@@ -22,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                @endforelse
+                @endif
             </div>
         </div>
   </section>

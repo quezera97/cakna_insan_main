@@ -12,7 +12,7 @@ class ImagesController extends Controller
 {
     public function index()
     {
-        $projects = Project::with(['projectable', 'projectable.pastProjectImages'])->get();
+        $projects = Project::with(['projectable'])->get();
 
         return view('admin.images.index', compact(['projects']));
     }

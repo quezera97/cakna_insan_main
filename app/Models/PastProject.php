@@ -23,7 +23,7 @@ class PastProject extends Model
 
     public function project(): MorphOne
     {
-        return $this->morphOne(project::class, 'projectable');
+        return $this->morphOne(Project::class, 'projectable');
     }
 
     public function pastProjectImages()

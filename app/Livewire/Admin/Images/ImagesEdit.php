@@ -50,6 +50,8 @@ class ImagesEdit extends Component
 
     public function mount(projectImage $projectImage, $key)
     {
+        $this->showConfirmationModal = false;
+
         $this->key = $key;
         $this->projectImage = $projectImage;
     }
@@ -75,10 +77,10 @@ class ImagesEdit extends Component
         $projectImage = ProjectImage::with(['pastProject', 'pastProject.project'])->find($projectImageId);
         $project = $projectImage->pastProject?->project;
 
-        $title = strtolower($projectImage->pastProject?->title);
-        $title = str_replace(' ', '_', $title);
+        $folderPath = strtolower($projectImage->pastProject?->project?->folder_path);
+        $folderPath = str_replace(' ', '_', $folderPath);
 
-        $imagePath = public_path('assets/img/'.$title.'/'.$imageName.'.jpg');
+        $imagePath = public_path('assets/img/'.$folderPath.'/'.$imageName.'.jpg');
 
         try {
             DB::beginTransaction();

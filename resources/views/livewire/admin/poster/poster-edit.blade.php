@@ -23,6 +23,11 @@
         </div>
     @endforelse
 
-    @include('livewire.admin.project.upload-poster-modal')
-    @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
+    @if ($showUploadPosterModal)
+        @include('livewire.admin.project.upload-poster-modal')
+    @endif
+
+    @if ($showConfirmationModal)
+        @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
+    @endif
 </div>

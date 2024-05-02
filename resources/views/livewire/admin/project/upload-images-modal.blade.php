@@ -14,11 +14,6 @@
         </div>
         <div class="p-2 w-full mt-5" wire:loading wire:target="images_upload">Uploading...</div>
         <div class="p-2 w-full mt-5">
-            @php
-                $title = strtolower($title);
-                $folder = str_replace(' ', '_', $title);
-            @endphp
-
             @forelse($images_upload ?? [] as $image)
                 @if ($image)
                     Photo Preview:

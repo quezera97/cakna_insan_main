@@ -89,7 +89,7 @@
                                             <span class="title-font font-medium">Date: TBD</span>
                                         @endif
                                     @else
-                                        @if (isset($project->projectable?->date_to))
+                                        @if (isset($project->projectable?->date))
                                             <span class="title-font font-medium">Date: {{ date('j F Y', strtotime($project->projectable->date)) }}</span>
                                         @else
                                             <span class="title-font font-medium">Date: TBD</span>

@@ -36,8 +36,8 @@ class ContactUsForm extends Component
 
     public function save()
     {
-        $this->alertModalTitle = 'Berjaya!';
-        $this->alertModalDescription = 'Mesej anda telah kami simpan';
+        $this->alertModalTitle = 'Success!';
+        $this->alertModalDescription = 'Your message has been saved';
 
         $validatedData = $this->validate([
             'name' => 'required|string|min:6',

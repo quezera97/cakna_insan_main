@@ -36,8 +36,8 @@ class JoinUsForm extends Component
 
     public function save()
     {
-        $this->alertModalTitle = 'Berjaya!';
-        $this->alertModalDescription = 'Penyertaan anda telah direkodkan, kami akan menghubungi anda melalui emel/whatsapp';
+        $this->alertModalTitle = 'Success!';
+        $this->alertModalDescription = 'Your participation has been recorded, we will contact you via email/WhatsApp.';
 
         $validatedData = $this->validate([
             'name' => 'required|string|min:6',

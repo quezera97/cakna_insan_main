@@ -56,5 +56,7 @@
         </div>
     </form>
 
-    @include('livewire.components.alert-modal', ['alertModalTitle' => $alertModalTitle, 'alertModalDescription' => $alertModalDescription])
+    @if ($showAlertModal)
+        @include('livewire.components.alert-modal', ['alertModalTitle' => $alertModalTitle, 'alertModalDescription' => $alertModalDescription])
+    @endif
 </div>

@@ -26,11 +26,11 @@
                                         {{ $project->projectable?->title }}
                                     </th>
 
-                                    @if($project->projectable?->pastProjectImages->isNotEmpty())
+                                    @if(isset($project->projectable?->pastProjectImages) && $project->projectable?->pastProjectImages?->isNotEmpty())
                                         <td class="px-6 py-4 flex flex-col space-y-3 items-center">
                                             <a href="{{ route('images.edit', ['edit', $project]) }}" class="font-medium text-blue-600 hover:underline">Edit</a>
                                         </td>
-                                    @else
+                                    @elseif (isset($project->projectable?->pastProjectImages) && $project->projectable?->pastProjectImages?->isEmpty())
                                         <td class="px-6 py-4 flex flex-col space-y-3 items-center">
                                             <a href="{{ route('images.edit', ['upload', $project]) }}"class="font-medium text-indigo-600 hover:underline">Upload</a>
                                         </td>

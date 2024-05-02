@@ -104,11 +104,6 @@ class ProjectsTable extends Component
         }
     }
 
-    public function deleteImages(Project $project)
-    {
-        return redirect()->route('project.delete_images', ['project' => $project]);
-    }
-
     public function deleteProject($projectId)
     {
         $project = Project::find($projectId);
@@ -116,21 +111,22 @@ class ProjectsTable extends Component
         try {
             DB::beginTransaction();
 
-            $title = strtolower($project->projectable?->title);
-            $title = str_replace(' ', '_', $title);
-
             if($project->projectable_type == PastProject::class){
 
-                ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->delete();
+                $projectImages = ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->get();
+
+                foreach ($projectImages as $projectImage) {
+                    $projectImage->delete();
+                }
 
                 //delete dalam public folder
-                $folderPath = public_path('assets/img/'.$title);
+                $folderPath = public_path('assets/img/'.$project->folder_path);
                 if (File::exists($folderPath)) {
                     File::deleteDirectory($folderPath);
                 }
             }
 
-            $posterPath = public_path('assets/img/poster/'.$title.'.jpg');
+            $posterPath = public_path('assets/img/poster/'.$project->folder_path.'.jpg');
             if (file_exists($posterPath)) {
                 unlink($posterPath);
             }

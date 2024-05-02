@@ -12,7 +12,7 @@ class PosterEdit extends Component
     use WithFileUploads;
 
     public $projects;
-    public $title;
+    public $folder_path;
     public $selectedProject;
 
     public $showConfirmationModal = false;
@@ -52,7 +52,7 @@ class PosterEdit extends Component
 
     public function openUploadPosterModal(Project $project)
     {
-        $this->title = $project->projectable?->title;
+        $this->folder_path = $project->folder_path;
         $this->selectedProject = $project;
 
         $this->showUploadPosterModal = true;
@@ -85,9 +85,9 @@ class PosterEdit extends Component
             'poster_image_upload' => 'image|max:1024',
         ]);
 
-        $title = strtolower($this->title);
-        $title = str_replace(' ', '_', $title);
-        $fileName = $title.'.jpg';
+        $folderPath = strtolower($this->folder_path);
+        $folderPath = str_replace(' ', '_', $folderPath);
+        $fileName = $folderPath.'.jpg';
 
         $this->poster_image_upload->storeAs('poster', $fileName, 'poster_public_path');
 
@@ -114,10 +114,10 @@ class PosterEdit extends Component
     {
         $project = Project::find($projectId);
 
-        $title = strtolower($project->projectable?->title);
-        $title = str_replace(' ', '_', $title);
+        $folderPath = strtolower($project->folder_path);
+        $folderPath = str_replace(' ', '_', $folderPath);
 
-        $posterPath = public_path('assets/img/poster/'.$title.'.jpg');
+        $posterPath = public_path('assets/img/poster/'.$folderPath.'.jpg');
 
         try {
             DB::beginTransaction();

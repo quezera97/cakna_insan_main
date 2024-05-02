@@ -10,8 +10,9 @@
         <button wire:click="previewSelectedImage" class="mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Preview</button>
         <button wire:click="openConfirmationModal('deleteImages', {{ $projectImage->id, $key }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Delete</button>
     </div>
-    <div x-data="{ showImage: @entangle('previewImage') }">
-        <div class="bg-gray-100 bg-opacity-75 fixed z-50 inset-0 overflow-y-auto" x-show="showImage">
+
+    @if ($previewImage)
+        <div class="bg-gray-100 bg-opacity-75 fixed z-50 inset-0 overflow-y-auto">
             <div class="flex items-center justify-center h-full">
                 <div class="max-w-screen-lg w-full mx-auto p-4">
                     <button wire:click="closeSelectedImage" class="absolute top-0 right-0 m-4 text-white hover:text-gray-300 focus:outline-none">
@@ -23,7 +24,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
-    @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
+    @if ($showConfirmationModal)
+        @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
+    @endif
 </div>

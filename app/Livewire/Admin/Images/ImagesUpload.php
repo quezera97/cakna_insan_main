@@ -12,7 +12,7 @@ class ImagesUpload extends Component
 {
     use WithFileUploads;
 
-    public $title;
+    public $folder_path;
     public $project;
 
     //upload gambar
@@ -31,7 +31,7 @@ class ImagesUpload extends Component
 
     public function mount(Project $project)
     {
-        $this->title = $project->projectable?->title;
+        $this->folder_path = $project->folder_path;
         $this->project = $project;
 
         $this->openUploadImagesModal();
@@ -44,7 +44,6 @@ class ImagesUpload extends Component
 
     //untuk upload gambar
     public $images_upload;
-    public $folder;
     public $images_path = [];
 
     public function uploadImages()
@@ -56,17 +55,16 @@ class ImagesUpload extends Component
             'images_upload.*' => 'Image Uploaded',
         ]);
 
-        $title = strtolower($this->title);
-        $title = str_replace(' ', '_', $title);
-        $this->folder = $title;
+        $folderPath = strtolower($this->folder_path);
+        $folderPath = str_replace(' ', '_', $folderPath);
 
         try {
             DB::beginTransaction();
 
             foreach ($this->images_upload as $key => $photo) {
                 $fileName = $key.'.jpg';
-                $photo->storeAs($this->folder, $fileName, 'images_public_path');
-                $this->images_path[] = asset('assets/img/'.$this->folder.'/'.$fileName);
+                $photo->storeAs($folderPath, $fileName, 'images_public_path');
+                $this->images_path[] = asset('assets/img/'.$folderPath.'/'.$fileName);
             }
 
             foreach ($this->images_path as $key => $imagePath) {

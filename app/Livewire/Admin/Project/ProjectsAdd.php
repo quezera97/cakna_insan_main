@@ -5,16 +5,11 @@ namespace App\Livewire\Admin\Project;
 use App\Models\IncomingProject;
 use App\Models\PastProject;
 use App\Models\Project;
-use App\Models\ProjectImage;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class ProjectsAdd extends Component
 {
-    use WithFileUploads;
-
     public $typeOfProject;
     public $pastProject = PastProject::class;
     public $incomingProject = IncomingProject::class;
@@ -33,8 +28,6 @@ class ProjectsAdd extends Component
     public $pax;
     public $transportation;
 
-    public $uploadedImages = [];
-
     //modal untuk notification
     public $showAlertModal = false;
 
@@ -49,32 +42,6 @@ class ProjectsAdd extends Component
     public function closeAlertModal()
     {
         $this->showAlertModal = false;
-    }
-
-    //upload poster
-    public $showUploadPosterModal = false;
-
-    public function openUploadPosterModal()
-    {
-        $this->showUploadPosterModal = true;
-    }
-
-    public function closeUploadPosterModal()
-    {
-        $this->showUploadPosterModal = false;
-    }
-
-    //upload gambar
-    public $showUploadImagesModal = false;
-
-    public function openUploadImagesModal()
-    {
-        $this->showUploadImagesModal = true;
-    }
-
-    public function closeUploadImagesModal()
-    {
-        $this->showUploadImagesModal = false;
     }
 
     public function render()
@@ -101,68 +68,10 @@ class ProjectsAdd extends Component
         }
     }
 
-    public function updatedPosterImageUpload()
-    {
-        $this->validate([
-            'poster_image_upload' => 'image|max:1024',
-        ]);
-    }
-
-    //untuk upload poster
-    public $poster_image_upload;
-    public $poster_image_path;
-
-    public function uploadPoster()
-    {
-        $this->poster_image_path = '';
-
-        $this->validate([
-            'poster_image_upload' => 'image|max:1024',
-        ]);
-
-        $title = strtolower($this->title);
-        $title = str_replace(' ', '_', $title);
-        $fileName = $title.'.jpg';
-
-        $this->poster_image_upload->storeAs('poster', $fileName, 'poster_public_path');
-
-        $this->poster_image_path = asset('assets/img/poster/'.$fileName);
-
-        $this->closeUploadPosterModal();
-    }
-
-    //untuk upload gambar
-    public $images_upload;
-    public $folder;
-    public $images_path = [];
-
-    public function uploadImages()
-    {
-        $this->images_path = [];
-        $this->validate([
-            'images_upload.*' => 'image|max:1024',
-        ],[],[
-            'images_upload.*' => 'Image Uploaded',
-        ]);
-
-        $title = strtolower($this->title);
-        $title = str_replace(' ', '_', $title);
-        $this->folder = $title;
-
-        foreach ($this->images_upload as $key => $photo) {
-            $fileName = $key.'.jpg';
-            $photo->storeAs($this->folder, $fileName, 'images_public_path');
-            $this->images_path[] = asset('assets/img/'.$this->folder.'/'.$fileName);
-        }
-
-        $this->closeUploadImagesModal();
-
-    }
-
     public function save()
     {
-        $this->alertModalTitle = 'Berjaya!';
-        $this->alertModalDescription = 'Projek ' . $this->title . ' telah dikemaskini.';
+        $folderPath = strtolower($this->title);
+        $folderPath = str_replace(' ', '_', $folderPath);
 
         try {
             DB::beginTransaction();
@@ -179,7 +88,7 @@ class ProjectsAdd extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $this->poster_image_path,
+                    'poster_image_path' => null,
                 ]);
 
                 Project::create([
@@ -188,6 +97,7 @@ class ProjectsAdd extends Component
                     'has_passed' => false,
                     'is_featured' => $this->featured,
                     'donation_needed' => $this->donation_needed,
+                    'folder_path' => $folderPath,
                 ]);
             }
             else{
@@ -199,7 +109,7 @@ class ProjectsAdd extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $this->poster_image_path,
+                    'poster_image_path' => null,
                 ]);
 
                 Project::create([
@@ -208,28 +118,13 @@ class ProjectsAdd extends Component
                     'has_passed' => true,
                     'is_featured' => false,
                     'donation_needed' => $this->donation_needed,
+                    'folder_path' => $folderPath,
                 ]);
-
-                if(!empty($this->images_path)) {
-                    foreach ($this->images_path as $key => $imagePath) {
-                        ProjectImage::updateOrCreate(
-                            [
-                                'image_path' => $imagePath,
-                            ],
-                            [
-                                'reference_type' => PastProject::class,
-                                'referenced_id' => $pastProject->id,
-                                'title' => '',
-                                'caption' => '',
-                            ]
-                        );
-                    }
-                }
             }
 
             DB::commit();
 
-            $this->openAlertModal();
+            return redirect()->route('project.index');
 
         } catch (\Throwable $th) {
             DB::rollback();

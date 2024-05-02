@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('projectable_type');
             $table->bigInteger('projectable_id');
-            $table->boolean('has_passed');
-            $table->boolean('is_featured');
+            $table->boolean('has_passed')->default(0);
+            $table->boolean('is_featured')->default(0);
             $table->decimal('donation_needed', 10, 2)->default(0.00);
+            $table->string('folder_path')->nullable();
             $table->timestamps();
         });
     }

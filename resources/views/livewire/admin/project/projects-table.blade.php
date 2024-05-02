@@ -38,5 +38,7 @@
         </tbody>
     </table>
 
-    @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
+    @if ($showConfirmationModal)
+        @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
+    @endif
 </div>
