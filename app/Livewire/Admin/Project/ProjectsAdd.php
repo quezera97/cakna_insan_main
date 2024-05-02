@@ -17,6 +17,7 @@ class ProjectsAdd extends Component
     public $title;
     public $subtitle;
     public $details;
+    public $folder_path;
     public $donation_needed;
     public $featured;
     public $date;
@@ -68,10 +69,24 @@ class ProjectsAdd extends Component
         }
     }
 
+    public function updatedTitle()
+    {
+        $this->folder_path = strtolower($this->title);
+        $this->folder_path = str_replace(' ', '_', $this->folder_path);
+    }
+
+    public function updatedFolderPath()
+    {
+        $this->folder_path = strtolower($this->folder_path);
+        $this->folder_path = str_replace(' ', '_', $this->folder_path);
+    }
+
     public function save()
     {
-        $folderPath = strtolower($this->title);
-        $folderPath = str_replace(' ', '_', $folderPath);
+        $this->validate([
+            'title' => 'required|string|min:6|unique:incoming_projects|unique:past_projects',
+            'folder_path' => 'required|string|min:6|unique:projects',
+        ]);
 
         try {
             DB::beginTransaction();
@@ -97,7 +112,7 @@ class ProjectsAdd extends Component
                     'has_passed' => false,
                     'is_featured' => $this->featured ?? 0,
                     'donation_needed' => $this->donation_needed ?? 0.00,
-                    'folder_path' => $folderPath,
+                    'folder_path' => $this->folder_path,
                 ]);
             }
             else{
@@ -118,7 +133,7 @@ class ProjectsAdd extends Component
                     'has_passed' => true,
                     'is_featured' => false,
                     'donation_needed' => $this->donation_needed ?? 0.00,
-                    'folder_path' => $folderPath,
+                    'folder_path' => $this->folder_path,
                 ]);
             }
 

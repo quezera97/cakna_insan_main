@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Poster;
 
 use App\Models\Project;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -114,15 +115,12 @@ class PosterEdit extends Component
     {
         $project = Project::find($projectId);
 
-        $folderPath = strtolower($project->folder_path);
-        $folderPath = str_replace(' ', '_', $folderPath);
-
-        $posterPath = public_path('assets/img/poster/'.$folderPath.'.jpg');
+        $posterPath = public_path('storage/poster/'.$project->folder_path.'.jpg');
 
         try {
             DB::beginTransaction();
 
-            if (file_exists($posterPath)) {
+            if (File::exists($posterPath)) {
                 unlink($posterPath);
             }
 

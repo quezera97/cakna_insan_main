@@ -24,12 +24,7 @@ class ImagesController extends Controller
 
     public function deleteAllImages(Project $project)
     {
-        $title = $project->projectable?->title;
-        $title = strtolower($title);
-        $title = str_replace(' ', '_', $title);
-        $folderName = $title;
-
-        $folderPath = public_path('assets/img/'.$folderName);
+        $folderPath = public_path('storage/'.$project->folder_path);
 
         try {
             DB::beginTransaction();

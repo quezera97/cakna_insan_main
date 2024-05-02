@@ -44,20 +44,6 @@ return [
             'throw' => false,
         ],
 
-        'poster_public_path' => [
-            'driver' => 'local',
-            'root' => public_path('assets/img'),
-            'url' => env('APP_URL').'/public',
-            'visibility' => 'public',
-        ],
-
-        'images_public_path' => [
-            'driver' => 'local',
-            'root' => public_path('assets/img'),
-            'url' => env('APP_URL').'/public',
-            'visibility' => 'public',
-        ],
-
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

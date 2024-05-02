@@ -39,7 +39,7 @@ class ContactUsForm extends Component
         $this->alertModalTitle = 'Success!';
         $this->alertModalDescription = 'Your message has been saved';
 
-        $validatedData = $this->validate([
+        $this->validate([
             'name' => 'required|string|min:6',
             'email' => 'required|string|email',
             'organization' => 'string|min:6',

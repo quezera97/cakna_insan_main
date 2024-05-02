@@ -39,7 +39,7 @@ class JoinUsForm extends Component
         $this->alertModalTitle = 'Success!';
         $this->alertModalDescription = 'Your participation has been recorded, we will contact you via email/WhatsApp.';
 
-        $validatedData = $this->validate([
+        $this->validate([
             'name' => 'required|string|min:6',
             'email' => 'required|string|email',
             'phone' => 'string|min:6',

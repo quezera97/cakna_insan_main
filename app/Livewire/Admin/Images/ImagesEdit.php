@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Images;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -77,15 +78,12 @@ class ImagesEdit extends Component
         $projectImage = ProjectImage::with(['pastProject', 'pastProject.project'])->find($projectImageId);
         $project = $projectImage->pastProject?->project;
 
-        $folderPath = strtolower($projectImage->pastProject?->project?->folder_path);
-        $folderPath = str_replace(' ', '_', $folderPath);
-
-        $imagePath = public_path('assets/img/'.$folderPath.'/'.$imageName.'.jpg');
+        $imagePath = public_path('storage/'.$project->folder_path.'/'.$imageName.'.jpg');
 
         try {
             DB::beginTransaction();
 
-            if (file_exists($imagePath)) {
+            if (File::exists($imagePath)) {
                 unlink($imagePath);
             }
 
@@ -94,7 +92,7 @@ class ImagesEdit extends Component
             DB::commit();
 
 
-            return redirect()->route('images.edit', ['project' => $project]);
+            return redirect()->route('images.edit', ['type' => 'edit', 'project' => $project]);
 
         } catch (\Throwable $th) {
             DB::rollback();

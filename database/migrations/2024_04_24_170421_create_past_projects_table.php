@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('past_projects', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('title')->nullable()->unique();
             $table->string('subtitle')->nullable();
             $table->longText('details')->nullable();
             $table->date('date')->nullable();

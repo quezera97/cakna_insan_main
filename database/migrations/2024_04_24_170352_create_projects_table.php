@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('has_passed')->nullable()->default(0);
             $table->boolean('is_featured')->nullable()->default(0);
             $table->decimal('donation_needed', 10, 2)->nullable()->default(0.00);
-            $table->string('folder_path')->nullable();
+            $table->string('folder_path')->nullable()->unique();
             $table->timestamps();
         });
     }

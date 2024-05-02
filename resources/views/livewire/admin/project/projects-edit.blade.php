@@ -10,21 +10,32 @@
                     <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
                         <div class="flex flex-wrap -m-2">
                             <div class="p-2 w-full">
-                                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title <span class="text-red-700">*</span></label>
-                                <input type="text" id="title" wire:model.lazy="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title <span class="text-red-600">*</span></label>
+                                <div class="flex">
+                                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
+                                        Projek
+                                    </span>
+                                    <input type="text" id="title" wire:model.live="title" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                                @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
                             <div class="p-2 w-full">
-                                <label for="subtitle" class="block mb-2 text-sm font-medium text-gray-900">Subtitle <span class="text-red-700">*</span></label>
+                                <label for="subtitle" class="block mb-2 text-sm font-medium text-gray-900">Subtitle</label>
                                 <input type="text" id="subtitle" wire:model.lazy="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-full">
-                                <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details <span class="text-red-700">*</span></label>
+                                <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details</label>
                                 <textarea id="details" wire:model.lazy="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                            </div>
+                            <div class="p-2 w-full">
+                                <label for="folder_path" class="block mb-2 text-sm font-medium text-gray-900">Folder Path <span class="text-red-600">*</span></label>
+                                <input type="text" id="folder_path" wire:model.live="folder_path" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                @error('folder_path') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
 
                             @if ($typeOfProject == $incomingProject)
                                 <div class="p-2 w-full">
-                                    <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Date <span class="text-red-700">*</span></label>
+                                    <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Date</label>
                                     <div id="div-date-range" class="flex items-center">
                                         <div class="relative">
                                             <div class="relative max-w-sm">
@@ -53,15 +64,15 @@
                                 </div>
                             @endif
                             <div class="p-2 w-full">
-                                <label for="place" class="block mb-2 text-sm font-medium text-gray-900">Place <span class="text-red-700">*</span></label>
+                                <label for="place" class="block mb-2 text-sm font-medium text-gray-900">Place</label>
                                 <input type="text" id="place" wire:model.lazy="place" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-1/2">
-                                <label for="pax" class="block mb-2 text-sm font-medium text-gray-900">Pax <span class="text-red-700">*</span></label>
+                                <label for="pax" class="block mb-2 text-sm font-medium text-gray-900">Pax</label>
                                 <input type="number" id="pax" wire:model.lazy="pax" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-1/2">
-                                <label for="div-transportation" class="block mb-2 text-sm font-medium text-gray-900">Transportation Provided <span class="text-red-700">*</span></label>
+                                <label for="div-transportation" class="block mb-2 text-sm font-medium text-gray-900">Transportation Provided</label>
                                 <div class="flex" id="div-transportation">
                                     <div class="flex items-center mx-2 my-0">
                                         <input id="transportation_yes" type="radio" value="1" name="radio-transportation" wire:model.lazy="transportation" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
@@ -79,7 +90,7 @@
                             </div>
                             @if ($typeOfProject == $incomingProject)
                                 <div class="p-2 w-1/2">
-                                    <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-700">*</span></label>
+                                    <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured</label>
                                     <div class="flex" id="div-donation-needed">
                                         <div class="flex items-center mx-2 my-0">
                                             <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">

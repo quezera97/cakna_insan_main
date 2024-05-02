@@ -107,6 +107,7 @@ class ProjectsTable extends Component
     public function deleteProject($projectId)
     {
         $project = Project::find($projectId);
+        $folderPath = public_path('storage/'.$project->folder_path);
 
         try {
             DB::beginTransaction();
@@ -119,15 +120,13 @@ class ProjectsTable extends Component
                     $projectImage->delete();
                 }
 
-                //delete dalam public folder
-                $folderPath = public_path('assets/img/'.$project->folder_path);
                 if (File::exists($folderPath)) {
                     File::deleteDirectory($folderPath);
                 }
             }
 
-            $posterPath = public_path('assets/img/poster/'.$project->folder_path.'.jpg');
-            if (file_exists($posterPath)) {
+            $posterPath = public_path('storage/poster/'.$project->folder_path.'.jpg');
+            if (File::exists($posterPath)) {
                 unlink($posterPath);
             }
 

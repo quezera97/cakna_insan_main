@@ -14,9 +14,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 
         {{-- buat sementara pakai ni utk production --}}
-        <script src="https://cdn.tailwindcss.com"></script>
+        {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 
-        {{-- @vite('resources/css/app.css') --}}
+        @vite('resources/css/app.css')
 
         @stack('css')
 

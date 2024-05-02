@@ -19,8 +19,10 @@
                     Photo Preview:
                     <img src="{{ $poster_image_upload->temporaryUrl() }}">
                 @else
-                    Photo Uploaded:
-                    <img src="{{ asset('storage/poster/'.$folder_path.'.jpg') }}">
+                    @if (Illuminate\Support\Facades\File::exists('storage/poster/'.$folder_path.'.jpg'))
+                        Photo Uploaded:
+                        <img src="{{ asset('storage/poster/'.$folder_path.'.jpg') }}">
+                    @endif
                 @endif
             </div>
             <div class="flex justify-between mt-10">

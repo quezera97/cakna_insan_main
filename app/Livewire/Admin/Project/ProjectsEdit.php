@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 class ProjectsEdit extends Component
 {
@@ -16,11 +17,10 @@ class ProjectsEdit extends Component
     public $pastProject = PastProject::class;
     public $incomingProject = IncomingProject::class;
 
-    public $folder_path;
-
     public $title;
     public $subtitle;
     public $details;
+    public $folder_path;
     public $donation_needed;
     public $featured;
     public $date;
@@ -84,10 +84,52 @@ class ProjectsEdit extends Component
         return view('livewire.admin.project.projects-edit');
     }
 
+    public function updatedTitle()
+    {
+        $this->folder_path = strtolower($this->title);
+        $this->folder_path = str_replace(' ', '_', $this->folder_path);
+    }
+
+    public function updatedFolderPath()
+    {
+        $this->folder_path = strtolower($this->folder_path);
+        $this->folder_path = str_replace(' ', '_', $this->folder_path);
+    }
+
     public function save(Project $project)
     {
+        $this->validate([
+            'title' => [
+                'required',
+                'string',
+                'min:6',
+                Rule::unique('incoming_projects')->ignore($project->id),
+                Rule::unique('past_projects')->ignore($project->id),
+            ],
+            'folder_path' => [
+                'required',
+                'string',
+                'min:6',
+                Rule::unique('projects')->ignore($project->id),
+            ],
+        ]);
+
+        $currentFolderPath = public_path('storage/'.$project->folder_path);
+        $newFolderPath = public_path('storage/'.$this->folder_path);
+        if (File::exists($currentFolderPath)) {
+            File::move($currentFolderPath, $newFolderPath);
+        }
+
+        $currentPosterPath = public_path('storage/poster/'.$project->folder_path.'.jpg');
+        $newPosterPath = public_path('storage/poster/'.$this->folder_path.'.jpg');
+        if (File::exists($currentPosterPath)) {
+            File::move($currentPosterPath, $newPosterPath);
+        }
+
         $this->alertModalTitle = 'Success!';
         $this->alertModalDescription = 'Project ' . $this->title . ' successfully edited.';
+
+        $poster_image_path = 'poster/'.$this->folder_path.'.jpg';
 
         try {
             DB::beginTransaction();
@@ -95,6 +137,7 @@ class ProjectsEdit extends Component
             $project->update([
                 'is_featured' => $this->featured,
                 'donation_needed' => $this->donation_needed,
+                'folder_path' => $this->folder_path,
             ]);
 
             if($project->projectable_type == IncomingProject::class){
@@ -109,7 +152,7 @@ class ProjectsEdit extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $project->projectable?->poster_image_path ?? null,
+                    'poster_image_path' => $poster_image_path ?? null,
                 ]);
             }
             else{
@@ -121,7 +164,7 @@ class ProjectsEdit extends Component
                     'place' => $this->place,
                     'pax' => $this->pax,
                     'transportation' => $this->transportation,
-                    'poster_image_path' => $project->projectable?->poster_image_path ?? null,
+                    'poster_image_path' => $poster_image_path ?? null,
                 ]);
             }
 
