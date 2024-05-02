@@ -78,16 +78,16 @@ class ProjectsAdd extends Component
 
             if($this->typeOfProject == IncomingProject::class){
                 $incomingProject = IncomingProject::create([
-                    'title' => $this->title,
-                    'subtitle' => $this->subtitle,
-                    'details' => $this->details,
-                    'date_from' => $this->date_from,
-                    'date_to' => $this->date_to,
-                    'time_from' => $this->time_from,
-                    'time_to' => $this->time_to,
-                    'place' => $this->place,
-                    'pax' => $this->pax,
-                    'transportation' => $this->transportation,
+                    'title' => $this->title ?? null,
+                    'subtitle' => $this->subtitle ?? null,
+                    'details' => $this->details ?? null,
+                    'date_from' => $this->date_from ?? null,
+                    'date_to' => $this->date_to ?? null,
+                    'time_from' => $this->time_from ?? null,
+                    'time_to' => $this->time_to ?? null,
+                    'place' => $this->place ?? null,
+                    'pax' => $this->pax ?? null,
+                    'transportation' => $this->transportation ?? null,
                     'poster_image_path' => null,
                 ]);
 
@@ -95,20 +95,20 @@ class ProjectsAdd extends Component
                     'projectable_type' => IncomingProject::class,
                     'projectable_id' => $incomingProject->id,
                     'has_passed' => false,
-                    'is_featured' => $this->featured,
-                    'donation_needed' => $this->donation_needed,
+                    'is_featured' => $this->featured ?? 0,
+                    'donation_needed' => $this->donation_needed ?? 0.00,
                     'folder_path' => $folderPath,
                 ]);
             }
             else{
                 $pastProject = PastProject::create([
-                    'title' => $this->title,
-                    'subtitle' => $this->subtitle,
-                    'details' => $this->details,
-                    'date' => $this->date,
-                    'place' => $this->place,
-                    'pax' => $this->pax,
-                    'transportation' => $this->transportation,
+                    'title' => $this->title ?? null,
+                    'subtitle' => $this->subtitle ?? null,
+                    'details' => $this->details ?? null,
+                    'date' => $this->date ?? null,
+                    'place' => $this->place ?? null,
+                    'pax' => $this->pax ?? null,
+                    'transportation' => $this->transportation ?? null,
                     'poster_image_path' => null,
                 ]);
 
@@ -117,7 +117,7 @@ class ProjectsAdd extends Component
                     'projectable_id' => $pastProject->id,
                     'has_passed' => true,
                     'is_featured' => false,
-                    'donation_needed' => $this->donation_needed,
+                    'donation_needed' => $this->donation_needed ?? 0.00,
                     'folder_path' => $folderPath,
                 ]);
             }

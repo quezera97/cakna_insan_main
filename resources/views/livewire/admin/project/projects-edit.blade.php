@@ -73,24 +73,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-2 w-1/2">
+                            <div class="p-2 {{ $typeOfProject == $incomingProject ? 'w-1/2' : 'w-full' }}">
                                 <label for="donation_needed" class="block mb-2 text-sm font-medium text-gray-900">Donation Needed</label>
                                 <input type="number" id="donation_needed" wire:model.lazy="donation_needed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
-                            <div class="p-2 w-1/2">
-                                <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-700">*</span></label>
-                                <div class="flex" id="div-donation-needed">
-                                    <div class="flex items-center mx-2 my-0">
-                                        <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
-                                        <label for="featured_yes" class="ms-2 leading-7 text-sm text-gray-600">Yes</label>
-                                    </div>
-                                    <div class="flex items-center mx-2 my-0">
-                                        <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
-                                        <label for="featured_no" class="ms-2 leading-7 text-sm text-gray-600">No</label>
+                            @if ($typeOfProject == $incomingProject)
+                                <div class="p-2 w-1/2">
+                                    <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-700">*</span></label>
+                                    <div class="flex" id="div-donation-needed">
+                                        <div class="flex items-center mx-2 my-0">
+                                            <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                            <label for="featured_yes" class="ms-2 leading-7 text-sm text-gray-600">Yes</label>
+                                        </div>
+                                        <div class="flex items-center mx-2 my-0">
+                                            <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                            <label for="featured_no" class="ms-2 leading-7 text-sm text-gray-600">No</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            @if ($typeOfProject == $incomingProject)
                                 <div class="p-2 w-full">
                                     <form class="max-w-[16rem] mx-auto grid grid-cols-2 gap-4">
                                         <div class="my-2">

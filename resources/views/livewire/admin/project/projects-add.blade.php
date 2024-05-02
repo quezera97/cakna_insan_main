@@ -172,11 +172,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="p-2 w-1/2">
+                                <div class="p-2 w-full">
                                     <label for="donation_needed-past" class="block mb-2 text-sm font-medium text-gray-900">Donation Needed</label>
                                     <input type="number" id="donation_needed-past" wire:model.lazy="donation_needed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
-                                <div class="p-2 w-1/2">
+                                {{-- <div class="p-2 w-1/2">
                                     <label for="div-featured-past" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-700">*</span></label>
                                     <div class="flex" id="div-featured-past">
                                         <div class="flex items-center mx-2 my-0">
@@ -188,7 +188,7 @@
                                             <label for="featured_no-past" class="ms-2 leading-7 text-sm text-gray-600">No</label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
