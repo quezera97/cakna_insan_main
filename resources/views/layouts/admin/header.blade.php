@@ -6,6 +6,7 @@
         </a>
         <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
+            <a href="{{ route('banner.index') }}" class="mr-5 hover:text-gray-900">Banner</a>
             <a href="{{ route('project.index') }}" class="mr-5 hover:text-gray-900">Project</a>
             <a href="{{ route('poster.index') }}" class="mr-5 hover:text-gray-900">Poster</a>
             <a href="{{ route('images.index') }}" class="mr-5 hover:text-gray-900">Images</a>

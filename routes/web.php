@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\HomeBanner;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
@@ -68,6 +69,10 @@ Route::get('/login', [AuthController::class, 'indexLogin'])->name('login');
 Route::group(['middleware' => 'auth'], function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::controller(HomeBanner::class)->prefix('/banner')->name('banner.')->group(function () {
+        Route::get('/index', 'index')->name('index');
+    });
 
     Route::controller(ProjectController::class)->prefix('/project')->name('project.')->group(function () {
         Route::get('/index', 'index')->name('index');

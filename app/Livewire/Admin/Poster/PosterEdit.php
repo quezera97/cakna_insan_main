@@ -83,7 +83,7 @@ class PosterEdit extends Component
         $this->poster_image_path = '';
 
         $this->validate([
-            'poster_image_upload' => 'image|max:1024',
+            'poster_image_upload' => 'required|image|max:1024',
         ]);
 
         $folderPath = strtolower($this->folder_path);

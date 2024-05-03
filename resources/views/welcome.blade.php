@@ -2,6 +2,7 @@
 
 @section('content')
     {{-- Jumbotron --}}
+    @livewire('home.welcome-banner')
 
     {{-- Tazkirah/Hadis/Ayat Quran --}}
 

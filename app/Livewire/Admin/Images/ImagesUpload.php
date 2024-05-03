@@ -50,7 +50,7 @@ class ImagesUpload extends Component
     {
         $this->images_path = [];
         $this->validate([
-            'images_upload.*' => 'image|max:1024',
+            'images_upload.*' => 'required|image|max:1024',
         ],[],[
             'images_upload.*' => 'Image Uploaded',
         ]);
