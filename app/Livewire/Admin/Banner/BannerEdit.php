@@ -216,7 +216,10 @@ class BannerEdit extends Component
 
         $this->banner_image_upload->storeAs('banner', $fileName, 'public');
 
-        return redirect()->route('banner.index');
+        $this->alertModalTitle = 'Success!';
+        $this->alertModalDescription = 'Banner has been saved';
+
+        $this->openAlertModal();
     }
 
     public function deleteBanner($bannerId)
