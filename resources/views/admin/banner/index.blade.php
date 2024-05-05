@@ -7,7 +7,9 @@
                 <h1 class="text-2xl font-medium title-font mb-4 text-gray-900">Banner</h1>
             </div>
 
-            @livewire('admin.banner.banner-edit', ['bannerJumbotron' => $bannerJumbotron])
+            <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+                @livewire('admin.banner.banner-edit', ['bannerJumbotron' => $bannerJumbotron])
+            </div>
         </div>
     </section>
 @endsection
