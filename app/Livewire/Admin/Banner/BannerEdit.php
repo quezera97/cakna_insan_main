@@ -78,6 +78,14 @@ class BannerEdit extends Component
 
     public function openUploadBannerModal()
     {
+        $this->title = null;
+        $this->subtitle = null;
+        $this->details = null;
+        $this->date_from = null;
+        $this->date_to = null;
+        $this->featured = null;
+        $this->banner_file_name = null;
+
         $this->showUploadBannerModal = true;
     }
 
