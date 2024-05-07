@@ -20,7 +20,7 @@ class IncomingProjects extends Component
 
     public function getIncomingProjects()
     {
-        $this->incomingProjects = Project::with('projectable')->where('projectable_type', IncomingProject::class)->get();
+        $this->incomingProjects = Project::with(['projectable', 'donationDetail'])->where('projectable_type', IncomingProject::class)->get();
 
         $this->getIncomingRandomProjects();
     }

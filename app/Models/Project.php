@@ -29,4 +29,9 @@ class Project extends Model
     {
         return $this->hasMany(ProjectDonation::class, 'project_id');
     }
+
+    public function donationDetail()
+    {
+        return $this->hasOne(DonationDetail::class, 'project_id');
+    }
 }

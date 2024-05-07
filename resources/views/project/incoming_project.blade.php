@@ -15,7 +15,9 @@
                                 <h2 class="title-font font-medium text-lg text-gray-900">{{ $project->projectable?->title }}</h2>
                                 <p class="mb-4">{{ $project->projectable?->details }}</p>
                                 <span class="inline-flex">
-                                    <a href="{{ route('donation', $project) }}" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                                    @if (isset($project->donationDetail) && !is_null($project->donationDetail?->donation_url))
+                                        <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                                    @endif
                                     <a href="{{ route('project_detail', $project) }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                                 </span>
                                 @if (!empty($project->donation_needed) && $project->donation_needed != 0)

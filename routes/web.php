@@ -11,6 +11,7 @@ use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\PastProjectController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PosterController;
+use App\Http\Controllers\DonationDetailController;
 use App\Http\Controllers\ProjectDetail;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -25,27 +26,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/symlink', function () {
-    Artisan::call('storage:link');
-});
-
-Route::get('/symlink_public', function () {
-    $targetDir = '/home6/caknains/cakna_insan/public';
-    $linkDir = '/home6/caknains/public_test';
-
-    $command = "ln -nfs $targetDir $linkDir";
-    $output = [];
-    $returnValue = 0;
-
-    exec($command, $output, $returnValue);
-
-    if ($returnValue !== 0) {
-        return 'Error creating symbolic link: ' . implode("\n", $output);
-    } else {
-        return 'Symbolic link created successfully.';
-    }
-});
 
 Route::get('/', function () {
     return view('welcome');
@@ -66,11 +46,41 @@ Route::get('/about-us', function () {
 
 Route::get('/login', [AuthController::class, 'indexLogin'])->name('login');
 
+
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/symlink', function () {
+        Artisan::call('storage:link');
+    });
+
+    Route::get('/migrate', function () {
+        Artisan::call('migrate');
+    });
+
+    Route::get('/symlink_public', function () {
+        $targetDir = '/home6/caknains/cakna_insan/public';
+        $linkDir = '/home6/caknains/public_test';
+
+        $command = "ln -nfs $targetDir $linkDir";
+        $output = [];
+        $returnValue = 0;
+
+        exec($command, $output, $returnValue);
+
+        if ($returnValue !== 0) {
+            return 'Error creating symbolic link: ' . implode("\n", $output);
+        } else {
+            return 'Symbolic link created successfully.';
+        }
+    });
+
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::controller(HomeBanner::class)->prefix('/banner')->name('banner.')->group(function () {
+        Route::get('/index', 'index')->name('index');
+    });
+
+    Route::controller(DonationDetailController::class)->prefix('/donation-detail')->name('donation-detail.')->group(function () {
         Route::get('/index', 'index')->name('index');
     });
 

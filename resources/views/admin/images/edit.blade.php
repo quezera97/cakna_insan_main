@@ -3,7 +3,7 @@
 @section('content')
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
-            <div class="flex flex-col text-center w-full mb-10">
+            <div class="flex flex-col text-center w-full mb-5">
                 <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">{{ $project->projectable?->title }}</h1>
                 @if ($type == 'edit')
                     <button onclick="deleteAllImages({{ $project->id }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Delete All Images</button>

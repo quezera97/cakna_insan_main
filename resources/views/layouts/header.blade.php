@@ -11,7 +11,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
             </button>
-            <div id="dropdownProjectNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-light-700">
+            <div id="dropdownProjectNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-light-700">
                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                     <li>
                         <a href="{{ route('incoming_project') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Incoming Project</a>
@@ -25,8 +25,8 @@
             <a href="{{ route('contact_us') }}" class="mr-5 hover:text-gray-900">Contact Us</a>
             <a href="{{ route('join_us') }}" class="mr-5 hover:text-gray-900">Join Us</a>
         </nav>
-        <a href="{{ route('donation') }}" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
+        {{-- <a href="{{ route('donation') }}" class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
             Infaq Now
-        </a>
+        </a> --}}
     </div>
 </header>

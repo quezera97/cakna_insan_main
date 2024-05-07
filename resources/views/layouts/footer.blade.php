@@ -1,7 +1,7 @@
-<footer class="text-gray-600 body-font bg-amber-100 mt-auto">
+<footer class="text-gray-600 body-font bg-cyan-100 mt-auto">
     <div class="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div class="w-80 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-            <a class="mb-3 flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <a class="mb-3 flex title-font font-medium items-center md:justify-start justify-center text-gray-500">
                 <img class="h-16" src="{{ asset('assets/img/logo.png') }}" alt="">
                 <div class="flex flex-col">
                     <span class="ml-3 text-xl">CAKNA INSAN MALAYSIA</span>
@@ -29,11 +29,11 @@
         </div>
         <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
             <div class="lg:w-1/2 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Privacy Policy</h2>
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Terms & Conditions</h2>
+                <h2 class="title-font font-medium text-gray-500 tracking-widest text-sm mb-3">Privacy Policy</h2>
+                <h2 class="title-font font-medium text-gray-500 tracking-widest text-sm mb-3">Terms & Conditions</h2>
             </div>
             <div class="lg:w-1/2 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">OFFICE</h2>
+                <h2 class="title-font font-medium text-gray-500 tracking-widest text-sm mb-3">OFFICE</h2>
                 <p>18 Jalan 9H, Taman Cheras Jaya,</p>
                 <p>Batu 11 Jalan Cheras, Cheras, Selangor</p>
             </div>
