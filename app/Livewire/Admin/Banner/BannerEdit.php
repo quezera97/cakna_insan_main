@@ -86,6 +86,9 @@ class BannerEdit extends Component
         $this->featured = null;
         $this->banner_file_name = null;
 
+        $this->banner_image_path = null;
+        $this->banner_image_upload = null;
+
         $this->showUploadBannerModal = true;
     }
 
@@ -178,7 +181,7 @@ class BannerEdit extends Component
         $this->validate([
             'title' => 'required|string',
             'banner_file_name' => 'required|min:6|unique:banner_jumbotrons|string',
-            'banner_image_upload' => 'required|image|max:1024',
+            'banner_image_upload' => 'required|image|max:5120',
             'featured' => 'required',
         ]);
 

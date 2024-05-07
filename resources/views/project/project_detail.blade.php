@@ -155,7 +155,7 @@
                                     @livewire('components.donation-progress-bar', ['projectId' => $project->id, 'projectTitle' => $project->projectable?->title, 'projectDonationNeeded' => $project->donation_needed ?? 0.00])
                                 </div>
                             @endif
-                            <a href="{{ route('donation', $project) }}">
+                            <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank">
                                 <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</button>
                             </a>
                         @endif
