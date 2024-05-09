@@ -7,7 +7,7 @@
         }
         @media (max-width: 1023px) {
             .custom-screen-size {
-                height: 65vh;
+                height: 55vh;
             }
         }
         @media (max-width: 767px) {
@@ -17,6 +17,7 @@
         }
     </style>
 @endpush
+
 
 
 <div>

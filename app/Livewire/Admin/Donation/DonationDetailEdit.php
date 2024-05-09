@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\DonationDetail;
+namespace App\Livewire\Admin\Donation;
 
 use App\Models\DonationDetail;
 use App\Models\Project;
@@ -15,7 +15,7 @@ class DonationDetailEdit extends Component
 
     public $showAlertModal = false;
 
-    public $alertModalTitle = '';
+    public $alertModalType = '';
     public $alertModalDescription = '';
 
 
@@ -59,7 +59,6 @@ class DonationDetailEdit extends Component
     public $paramPassed;
 
     public $confirmationModalTitle = '';
-    public $confirmationModalDescription = '';
 
     public function openConfirmationModal($function, $param)
     {
@@ -93,7 +92,7 @@ class DonationDetailEdit extends Component
 
     public function render()
     {
-        return view('livewire.admin.donation-detail.donation-detail-edit');
+        return view('livewire.admin.donation.donation-detail-edit');
     }
 
     public function saveDonationDetail()
@@ -114,7 +113,7 @@ class DonationDetailEdit extends Component
 
             DB::commit();
 
-            return redirect()->route('donation-detail.index');
+            return redirect()->route('donation.donation-detail');
 
         } catch (\Throwable $th) {
             DB::rollback();
@@ -134,7 +133,7 @@ class DonationDetailEdit extends Component
 
             DB::commit();
 
-            return redirect()->route('donation-detail.index');
+            return redirect()->route('donation.donation-detail');
 
         } catch (\Throwable $th) {
             DB::rollback();

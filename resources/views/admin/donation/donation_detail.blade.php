@@ -8,7 +8,7 @@
             </div>
 
             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                @livewire('admin.donation-detail.donation-detail-edit')
+                @livewire('admin.donation.donation-detail-edit')
             </div>
         </div>
     </section>

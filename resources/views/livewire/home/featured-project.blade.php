@@ -1,4 +1,4 @@
-<div>
+<div class="px-4">
     @if ($featuredProject->isNotEmpty())
         <section class="text-gray-700 body-font">
             <div class="container mx-auto flex lg:px-36 py-10 md:flex-row flex-col items-center">

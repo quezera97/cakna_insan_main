@@ -15,7 +15,7 @@ class LoginForm extends Component
 
     public $showAlertModal = false;
 
-    public $alertModalTitle = '';
+    public $alertModalType = '';
     public $alertModalDescription = '';
 
 
@@ -45,7 +45,7 @@ class LoginForm extends Component
             return redirect()->intended('/dashboard');
         }
         else{
-            $this->alertModalTitle = 'Gagal!';
+            $this->alertModalType = 'error';
             $this->alertModalDescription = 'Maklumat yang anda guna adalah salah';
 
             $this->reset(['password', 'email']);

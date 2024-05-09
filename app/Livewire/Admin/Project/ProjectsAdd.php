@@ -32,7 +32,7 @@ class ProjectsAdd extends Component
     //modal untuk notification
     public $showAlertModal = false;
 
-    public $alertModalTitle = '';
+    public $alertModalType = '';
     public $alertModalDescription = '';
 
     public function openAlertModal()

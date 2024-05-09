@@ -15,7 +15,7 @@ class ContactUsForm extends Component
 
     public $showAlertModal = false;
 
-    public $alertModalTitle = '';
+    public $alertModalType = '';
     public $alertModalDescription = '';
 
 
@@ -36,7 +36,7 @@ class ContactUsForm extends Component
 
     public function save()
     {
-        $this->alertModalTitle = 'Success!';
+        $this->alertModalType = 'success';
         $this->alertModalDescription = 'Your message has been saved';
 
         $this->validate([

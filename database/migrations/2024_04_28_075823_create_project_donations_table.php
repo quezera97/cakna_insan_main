@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id');
             $table->decimal('donation_amount', 10, 2)->default(0.00);
+            $table->string('billTo');
+            $table->string('billEmail');
+            $table->string('billPhone');
+            $table->string('billpaymentInvoiceNo');
+            $table->string('billPaymentDate');
             $table->timestamps();
         });
     }

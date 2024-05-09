@@ -15,7 +15,7 @@ class JoinUsForm extends Component
 
     public $showAlertModal = false;
 
-    public $alertModalTitle = '';
+    public $alertModalType = '';
     public $alertModalDescription = '';
 
 
@@ -36,7 +36,7 @@ class JoinUsForm extends Component
 
     public function save()
     {
-        $this->alertModalTitle = 'Success!';
+        $this->alertModalType = 'success';
         $this->alertModalDescription = 'Your participation has been recorded, we will contact you via email/WhatsApp.';
 
         $this->validate([

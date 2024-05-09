@@ -10,7 +10,24 @@
             <a href="{{ route('project.index') }}" class="mr-5 hover:text-gray-900">Project</a>
             <a href="{{ route('poster.index') }}" class="mr-5 hover:text-gray-900">Poster</a>
             <a href="{{ route('images.index') }}" class="mr-5 hover:text-gray-900">Images</a>
-            <a href="{{ route('donation-detail.index') }}" class="mr-5 hover:text-gray-900">Donation</a>
+
+            <button id="dropdownDonationLink" data-dropdown-toggle="dropdownDonationNavbar" class="flex items-center py-2 px-3 mr-5 hover:text-gray-900">
+                Donation
+                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            <div id="dropdownDonationNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-light-700">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="{{ route('donation.donation-detail') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Donation Details</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('donation.donation-progress') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Donation Progress</a>
+                    </li>
+                </ul>
+            </div>
+
             <button id="dropdownScreenLink" data-dropdown-toggle="dropdownScreenNavbar" class="flex items-center py-2 px-3 mr-5 hover:text-gray-900">
                 Screen
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -33,9 +50,6 @@
                     </li>
                     <li>
                         <a href="{{ route('join_us') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Join Us</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('donation') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Infaq Now</a>
                     </li>
                 </ul>
             </div>

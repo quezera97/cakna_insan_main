@@ -1,6 +1,6 @@
 <div class="bg-gray-100 bg-opacity-75 fixed z-10 inset-0 overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen">
-        <div class="bg-white w-1/4 h-auto rounded shadow-lg p-8">
+        <div class="bg-white w-1/2 h-auto rounded shadow-lg p-8">
             <div class="flex justify-between items-center mb-4">
                 <label for="upload-poster" class="text-xl font-bold">Upload Poster</label>
                 <button wire:click="closeUploadPosterModal" class="text-gray-600 hover:text-gray-800 focus:outline-none">

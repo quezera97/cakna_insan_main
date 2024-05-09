@@ -7,7 +7,6 @@ use Livewire\Component;
 class ConfirmationModal extends Component
 {
     public $confirmationModalTitle;
-    public $confirmationModalDescription;
 
     public function render()
     {

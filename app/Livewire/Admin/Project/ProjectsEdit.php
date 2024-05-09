@@ -35,7 +35,7 @@ class ProjectsEdit extends Component
     //modal untuk notification
     public $showAlertModal = false;
 
-    public $alertModalTitle = '';
+    public $alertModalType = '';
     public $alertModalDescription = '';
 
     public function openAlertModal()
@@ -103,8 +103,8 @@ class ProjectsEdit extends Component
                 'required',
                 'string',
                 'min:6',
-                Rule::unique('incoming_projects')->ignore($project->id),
-                Rule::unique('past_projects')->ignore($project->id),
+                Rule::unique('incoming_projects')->ignore($project->projectable_id),
+                Rule::unique('past_projects')->ignore($project->projectable_id),
             ],
             'folder_path' => [
                 'required',
@@ -126,7 +126,7 @@ class ProjectsEdit extends Component
             File::move($currentPosterPath, $newPosterPath);
         }
 
-        $this->alertModalTitle = 'Success!';
+        $this->alertModalType = 'success';
         $this->alertModalDescription = 'Project ' . $this->title . ' successfully edited.';
 
         $poster_image_path = 'poster/'.$this->folder_path.'.jpg';

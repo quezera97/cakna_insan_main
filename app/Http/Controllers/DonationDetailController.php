@@ -6,6 +6,6 @@ class DonationDetailController extends Controller
 {
     public function index()
     {
-        return view('admin.donation_detail.index');
+        return view('admin.donation.donation_detail');
     }
 }

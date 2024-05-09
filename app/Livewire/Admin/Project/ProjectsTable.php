@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Admin\Project;
 
+use App\Models\DonationDetail;
 use App\Models\IncomingProject;
 use App\Models\PastProject;
 use App\Models\Project;
+use App\Models\ProjectDonation;
 use App\Models\ProjectImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -26,7 +28,6 @@ class ProjectsTable extends Component
     public $paramPassed;
 
     public $confirmationModalTitle = '';
-    public $confirmationModalDescription = '';
 
     public function openConfirmationModal($function, $param)
     {
@@ -106,7 +107,7 @@ class ProjectsTable extends Component
 
     public function deleteProject($projectId)
     {
-        $project = Project::find($projectId);
+        $project = Project::with(['projectDonation', 'donationDetail'])->find($projectId);
         $folderPath = public_path('storage/'.$project->folder_path);
 
         try {
@@ -129,6 +130,12 @@ class ProjectsTable extends Component
             if (File::exists($posterPath)) {
                 unlink($posterPath);
             }
+
+            foreach($project->projectDonation as $donation){
+                $donation->delete();
+            }
+
+            $project->donationDetail?->delete();
 
             $project->projectable?->delete();
             $project->delete();

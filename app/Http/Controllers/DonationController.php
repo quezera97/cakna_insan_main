@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\IncomingProject;
+use App\Models\DonationDetail;
 use App\Models\Project;
-use Illuminate\Http\Request;
+use App\Models\ProjectDonation;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class DonationController extends Controller
 {
-    public function index(Project $project)
+    public function index()
     {
-        $selectedProject = $project ?? null;
-        $incomingProject = IncomingProject::get(['id', 'title']);
+        $donationDetails = DonationDetail::with(['project', 'project.projectable'])->get();
 
-        return view('donation', compact(['selectedProject', 'incomingProject']));
+        return view('admin.donation.donation_progress', compact(['donationDetails']));
     }
 }

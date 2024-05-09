@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center min-h-screen">
-    <div class="bg-white w-1/4 h-auto rounded shadow-lg p-8">
+    <div class="bg-white w-1/2 h-auto rounded shadow-lg p-8">
         <div class="flex justify-between items-center mb-4">
             <label for="upload-images" class="text-xl font-bold">Upload Images</label>
             <button wire:click="closeUploadImagesModal" class="text-gray-600 hover:text-gray-800 focus:outline-none">

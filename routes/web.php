@@ -38,7 +38,6 @@ Route::get('/join-us', [JoinUsController::class, 'index'])->name('join_us');
 Route::get('/incoming-project', [IncomingProjectController::class, 'index'])->name('incoming_project');
 Route::get('/past-project', [PastProjectController::class, 'index'])->name('past_project');
 Route::get('/project-detail/{project}', [ProjectDetail::class, 'index'])->name('project_detail');
-Route::get('/donation/{project?}', [DonationController::class, 'index'])->name('donation');
 
 Route::get('/about-us', function () {
     return view('about_us');
@@ -80,8 +79,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/index', 'index')->name('index');
     });
 
-    Route::controller(DonationDetailController::class)->prefix('/donation-detail')->name('donation-detail.')->group(function () {
-        Route::get('/index', 'index')->name('index');
+    Route::prefix('/donation')->name('donation.')->group( function () {
+        Route::get('/donation-progress', [DonationController::class, 'index'])->name('donation-progress');
+
+        Route::get('/donation-detail', [DonationDetailController::class, 'index'])->name('donation-detail');
     });
 
     Route::controller(ProjectController::class)->prefix('/project')->name('project.')->group(function () {

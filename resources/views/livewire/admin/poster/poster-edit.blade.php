@@ -38,6 +38,6 @@
     @endif
 
     @if ($showConfirmationModal)
-        @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle, 'confirmationModalDescription' => $confirmationModalDescription])
+        @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle])
     @endif
 </div>

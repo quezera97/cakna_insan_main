@@ -23,7 +23,6 @@ class ImagesEdit extends Component
     public $paramPassed;
 
     public $confirmationModalTitle = '';
-    public $confirmationModalDescription = '';
 
     public function openConfirmationModal($function, $param)
     {

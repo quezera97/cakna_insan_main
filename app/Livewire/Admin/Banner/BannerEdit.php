@@ -26,7 +26,7 @@ class BannerEdit extends Component
 
     public $showAlertModal = false;
 
-    public $alertModalTitle = '';
+    public $alertModalType = '';
     public $alertModalDescription = '';
 
 
@@ -47,7 +47,6 @@ class BannerEdit extends Component
     public $paramPassed;
 
     public $confirmationModalTitle = '';
-    public $confirmationModalDescription = '';
 
     public function openConfirmationModal($function, $param)
     {
@@ -227,7 +226,7 @@ class BannerEdit extends Component
 
         $this->banner_image_upload->storeAs('banner', $fileName, 'public');
 
-        $this->alertModalTitle = 'Success!';
+        $this->alertModalType = 'success';
         $this->alertModalDescription = 'Banner has been saved';
 
         $this->openAlertModal();
@@ -283,7 +282,7 @@ class BannerEdit extends Component
             File::move($currentBannerPath, $newBannerPath);
         }
 
-        $this->alertModalTitle = 'Success!';
+        $this->alertModalType = 'success';
         $this->alertModalDescription = 'Banner details has been saved';
 
         try {

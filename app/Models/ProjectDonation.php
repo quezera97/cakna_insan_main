@@ -12,6 +12,11 @@ class ProjectDonation extends Model
     protected $fillable = [
         'project_id',
         'donation_amount',
+        'billTo',
+        'billEmail',
+        'billPhone',
+        'billpaymentInvoiceNo',
+        'billPaymentDate',
     ];
 
     public function project()
