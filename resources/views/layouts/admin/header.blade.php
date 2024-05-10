@@ -7,11 +7,28 @@
         <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <a href="{{ route('dashboard') }}" class="mr-5 hover:text-gray-900">Dashboard</a>
             <a href="{{ route('banner.index') }}" class="mr-5 hover:text-gray-900">Banner</a>
-            <a href="{{ route('project.index') }}" class="mr-5 hover:text-gray-900">Project</a>
-            <a href="{{ route('poster.index') }}" class="mr-5 hover:text-gray-900">Poster</a>
-            <a href="{{ route('images.index') }}" class="mr-5 hover:text-gray-900">Images</a>
 
-            <button id="dropdownDonationLink" data-dropdown-toggle="dropdownDonationNavbar" class="flex items-center py-2 px-3 mr-5 hover:text-gray-900">
+            <button id="dropdownProjectLink" data-dropdown-toggle="dropdownProjectNavbar" class="flex items-center py-2 mr-5 hover:text-gray-900">
+                Projects
+                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+            </button>
+            <div id="dropdownProjectNavbar" class="z-50 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-46 dark:bg-light-700">
+                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="{{ route('project.index') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Project Details</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('poster.index') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Project Poster</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('images.index') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Project Images (Past Projects)</a>
+                    </li>
+                </ul>
+            </div>
+
+            <button id="dropdownDonationLink" data-dropdown-toggle="dropdownDonationNavbar" class="flex items-center py-2 mr-5 hover:text-gray-900">
                 Donation
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -28,7 +45,7 @@
                 </ul>
             </div>
 
-            <button id="dropdownScreenLink" data-dropdown-toggle="dropdownScreenNavbar" class="flex items-center py-2 px-3 mr-5 hover:text-gray-900">
+            <button id="dropdownScreenLink" data-dropdown-toggle="dropdownScreenNavbar" class="flex items-center py-2 mr-5 hover:text-gray-900">
                 Screen
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -54,6 +71,12 @@
                 </ul>
             </div>
         </nav>
+        <a href="#" class="inline-flex items-center bg-gray-100 border-0 py-2 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+            Settings
+            <svg class="w-4 h-4 me-2 ml-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z"/>
+            </svg>
+        </a>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             @method('DELETE')
