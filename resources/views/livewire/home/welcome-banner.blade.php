@@ -18,8 +18,6 @@
     </style>
 @endpush
 
-
-
 <div>
     <section class="text-gray-600 body-font">
         <div class="pb-10">

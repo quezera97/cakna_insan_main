@@ -51,47 +51,47 @@
                         @csrf
                         <div class="p-2 mb-4 w-full">
                             <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title <span class="text-red-600">*</span></label>
-                            <input type="text" id="title" wire:model.live="title" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="text" id="title" wire:model="title" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="p-2 w-full">
                             <label for="subtitle" class="block mb-2 text-sm font-medium text-gray-900">Subtitle</label>
-                            <input type="text" id="subtitle" wire:model.lazy="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="text" id="subtitle" wire:model="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="p-2 w-full">
                             <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details</label>
-                            <textarea id="details" wire:model.lazy="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                            <textarea id="details" wire:model="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="p-2 w-full">
                             <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Date</label>
                             <div id="div-date-range" class="flex items-center">
                                 <div class="relative">
                                     <div class="relative max-w-sm">
-                                        <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
+                                        <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                     </div>
                                 </div>
                                 <span class="mx-4 text-gray-500">to</span>
                                 <div class="relative">
                                     <div class="relative max-w-sm">
-                                        <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
+                                        <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="p-2 w-full">
+                        {{-- <div class="p-2 w-full">
                             <label for="banner_file_name" class="block mb-2 text-sm font-medium text-gray-900">Banner File Name <span class="text-red-600">*</span></label>
-                            <input type="text" id="banner_file_name" wire:model.live="banner_file_name" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="text" id="banner_file_name" wire:model="banner_file_name" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             @error('banner_file_name') <span class="text-red-500">{{ $message }}</span> @enderror
-                        </div>
+                        </div> --}}
                         <div class="p-2 w-full">
                             <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-600">*</span></label>
                             <div class="flex" id="div-donation-needed">
                                 <div class="flex items-center mx-2 my-0">
-                                    <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model.lazy="featured" required class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                    <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model="featured" required class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                     <label for="featured_yes" class="ms-2 leading-7 text-sm text-gray-600">Yes</label>
                                 </div>
                                 <div class="flex items-center mx-2 my-0">
-                                    <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                    <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                     <label for="featured_no" class="ms-2 leading-7 text-sm text-gray-600">No</label>
                                 </div>
                             </div>
@@ -201,47 +201,47 @@
                         @csrf
                         <div class="p-2 mb-4 w-full">
                             <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title <span class="text-red-600">*</span></label>
-                            <input type="text" id="title" wire:model.live="title" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="text" id="title" wire:model="title" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="p-2 w-full">
                             <label for="subtitle" class="block mb-2 text-sm font-medium text-gray-900">Subtitle</label>
-                            <input type="text" id="subtitle" wire:model.lazy="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="text" id="subtitle" wire:model="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="p-2 w-full">
                             <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details</label>
-                            <textarea id="details" wire:model.lazy="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                            <textarea id="details" wire:model="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="p-2 w-full">
                             <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Date</label>
                             <div id="div-date-range" class="flex items-center">
                                 <div class="relative">
                                     <div class="relative max-w-sm">
-                                        <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
+                                        <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                     </div>
                                 </div>
                                 <span class="mx-4 text-gray-500">to</span>
                                 <div class="relative">
                                     <div class="relative max-w-sm">
-                                        <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
+                                        <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="p-2 w-full">
                             <label for="banner_file_name" class="block mb-2 text-sm font-medium text-gray-900">Banner File Name <span class="text-red-600">*</span></label>
-                            <input type="text" id="banner_file_name" wire:model.live="banner_file_name" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="text" id="banner_file_name" wire:model="banner_file_name" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             @error('banner_file_name') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="p-2 w-full">
                             <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-600">*</span></label>
                             <div class="flex" id="div-donation-needed">
                                 <div class="flex items-center mx-2 my-0">
-                                    <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model.lazy="featured" required class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                    <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model="featured" required class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                     <label for="featured_yes" class="ms-2 leading-7 text-sm text-gray-600">Yes</label>
                                 </div>
                                 <div class="flex items-center mx-2 my-0">
-                                    <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                    <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                     <label for="featured_no" class="ms-2 leading-7 text-sm text-gray-600">No</label>
                                 </div>
                             </div>

@@ -15,23 +15,23 @@
                                     <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
                                         Projek
                                     </span>
-                                    <input type="text" id="title" wire:model.live="title" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="title" wire:model="title" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                                 @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
                             </div>
                             <div class="p-2 w-full">
                                 <label for="subtitle" class="block mb-2 text-sm font-medium text-gray-900">Subtitle</label>
-                                <input type="text" id="subtitle" wire:model.lazy="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="text" id="subtitle" wire:model="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-full">
                                 <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details</label>
-                                <textarea id="details" wire:model.lazy="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                                <textarea id="details" wire:model="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                             </div>
-                            <div class="p-2 w-full">
+                            {{-- <div class="p-2 w-full">
                                 <label for="folder_path" class="block mb-2 text-sm font-medium text-gray-900">Folder Path <span class="text-red-600">*</span></label>
-                                <input type="text" id="folder_path" wire:model.live="folder_path" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="text" id="folder_path" wire:model="folder_path" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 @error('folder_path') <span class="text-red-500">{{ $message }}</span> @enderror
-                            </div>
+                            </div> --}}
 
                             @if ($typeOfProject == $incomingProject)
                                 <div class="p-2 w-full">
@@ -39,13 +39,13 @@
                                     <div id="div-date-range" class="flex items-center">
                                         <div class="relative">
                                             <div class="relative max-w-sm">
-                                                <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
+                                                <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                             </div>
                                         </div>
                                         <span class="mx-4 text-gray-500">to</span>
                                         <div class="relative">
                                             <div class="relative max-w-sm">
-                                                <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
+                                                <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                             </div>
                                         </div>
                                     </div>
@@ -59,45 +59,45 @@
                                 <div class="p-2 w-full">
                                     <label for="div-date" class="block mb-2 text-sm font-medium text-gray-900">Date</label>
                                     <div id="div-date" class="flex items-center">
-                                        <input id="date" datepicker-format="dd/mm/yyyy" type="date" wire:model.lazy="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
+                                        <input id="date" datepicker-format="dd/mm/yyyy" type="date" wire:model="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                     </div>
                                 </div>
                             @endif
                             <div class="p-2 w-full">
                                 <label for="place" class="block mb-2 text-sm font-medium text-gray-900">Place</label>
-                                <input type="text" id="place" wire:model.lazy="place" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="text" id="place" wire:model="place" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-1/2">
                                 <label for="pax" class="block mb-2 text-sm font-medium text-gray-900">Pax</label>
-                                <input type="number" id="pax" wire:model.lazy="pax" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="number" id="pax" wire:model="pax" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-1/2">
                                 <label for="div-transportation" class="block mb-2 text-sm font-medium text-gray-900">Transportation Provided</label>
                                 <div class="flex" id="div-transportation">
                                     <div class="flex items-center mx-2 my-0">
-                                        <input id="transportation_yes" type="radio" value="1" name="radio-transportation" wire:model.lazy="transportation" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                        <input id="transportation_yes" type="radio" value="1" name="radio-transportation" wire:model="transportation" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                         <label for="transportation_yes" class="ms-2 leading-7 text-sm text-gray-600">Yes</label>
                                     </div>
                                     <div class="flex items-center mx-2 my-0">
-                                        <input id="transportation_no" type="radio" value="0" name="radio-transportation" wire:model.lazy="transportation" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                        <input id="transportation_no" type="radio" value="0" name="radio-transportation" wire:model="transportation" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                         <label for="transportation_no" class="ms-2 leading-7 text-sm text-gray-600">No</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="p-2 {{ $typeOfProject == $incomingProject ? 'w-1/2' : 'w-full' }}">
                                 <label for="donation_needed" class="block mb-2 text-sm font-medium text-gray-900">Donation Needed</label>
-                                <input type="number" id="donation_needed" wire:model.lazy="donation_needed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="number" id="donation_needed" wire:model="donation_needed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             @if ($typeOfProject == $incomingProject)
                                 <div class="p-2 w-1/2">
                                     <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured</label>
                                     <div class="flex" id="div-donation-needed">
                                         <div class="flex items-center mx-2 my-0">
-                                            <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                            <input id="featured_yes" type="radio" value="1" name="radio-featured" wire:model="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                             <label for="featured_yes" class="ms-2 leading-7 text-sm text-gray-600">Yes</label>
                                         </div>
                                         <div class="flex items-center mx-2 my-0">
-                                            <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model.lazy="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
+                                            <input id="featured_no" type="radio" value="0" name="radio-featured" wire:model="featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600">
                                             <label for="featured_no" class="ms-2 leading-7 text-sm text-gray-600">No</label>
                                         </div>
                                     </div>
@@ -107,13 +107,13 @@
                                         <div class="my-2">
                                             <label for="start-time" class="block mb-2 text-sm font-medium text-gray-900">Start Time:</label>
                                             <div class="relative">
-                                                <input type="time" id="start-time" wire:model.lazy="time_from" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
+                                                <input type="time" id="start-time" wire:model="time_from" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
                                             </div>
                                         </div>
                                         <div>
                                             <label for="end-time" class="block mb-2 text-sm font-medium text-gray-900">End Time:</label>
                                             <div class="relative">
-                                                <input type="time" id="end-time" wire:model.lazy="time_to" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
+                                                <input type="time" id="end-time" wire:model="time_to" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="00:00" />
                                             </div>
                                         </div>
                                     </form>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="p-2 w-full mt-5">
-                    <button type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Save</button>
+                    <button id="buttonSave" type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Save</button>
                 </div>
             </div>
         </section>
@@ -133,3 +133,35 @@
         @include('livewire.components.alert-modal', ['alertModalType' => $alertModalType, 'alertModalDescription' => $alertModalDescription])
     @endif
 </div>
+
+{{-- @push('js-livewire')
+    <script>
+        $(document).ready(function(){
+            var detailsEditor;
+
+            detailsEditor = $('#details').summernote({
+                placeholder: 'Enter Here',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    // ['para', ['ul', 'ol', 'paragraph']],
+                    ['para', ['paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+            });
+
+            detailsEditor.summernote('code', @json($details));
+
+            $('#buttonSave').click(function() {
+                var detailsContent = detailsEditor.summernote('code');
+                @this.set('details', detailsContent);
+            });
+        });
+
+    </script>
+@endpush --}}

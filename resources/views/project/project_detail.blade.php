@@ -1,167 +1,150 @@
 @extends('layouts.app')
 
 @section('content')
-    @php
-        $incomingProjectDetail = false;
-
-        if($project->projectable_type == \App\Models\IncomingProject::class){
-            $incomingProjectDetail = true;
-        }
-
-    @endphp
     <section class="text-gray-600 body-font">
-        <div class="container px-5 py-10 mx-auto">
-
-            @include('layouts.breadcrumb')
-
-            <div class="flex flex-wrap -m-4">
-                @if ($incomingProjectDetail)
-                    <div class="lg:w-1/3 p-4">
-                        <div class="flex relative">
-                            <img alt="{{ $project->projectable?->title }}" class="inset-0 w-full h-full object-cover object-center" src="{{ asset('storage/'.$project->projectable?->poster_image_path) }}">
-                        </div>
-                    </div>
-                @else
-                    @if($project->projectable?->pastProjectImages->isNotEmpty())
-                        <div id="default-carousel" class="relative lg:w-1/3 w-full" data-carousel="slide">
-                            <div class="relative lg:h-full h-96 overflow-hidden rounded-lg">
-                                @foreach ($project->projectable?->pastProjectImages as $projectDetail)
-                                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                        <img src="{{ asset('storage/'.$projectDetail->image_path) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                                @foreach ($project->projectable?->pastProjectImages as $key => $projectDetail)
-                                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide {{ $loop->iteration }}" data-carousel-slide-to="{{ $key }}"></button>
-                                @endforeach
-                            </div>
-                            <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                        <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                                    </svg>
-                                    <span class="sr-only">Previous</span>
-                                </span>
-                            </button>
-                            <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                        <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                                    </svg>
-                                    <span class="sr-only">Next</span>
-                                </span>
-                            </button>
-                        </div>
-                    @else
-                        <div class="relative lg:w-1/3 w-full p-4">
-                            <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
-                                <div class="flex items-center mb-3">
-                                    <h2 class="text-gray-900 text-lg title-font font-medium">No Images</h2>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                @endif
-
-                <div class="lg:w-2/3 p-4">
-                    <div class="container px-5 py-10 mx-auto">
-                        <div class="text-center mb-10">
-                            <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Project {{ $project->projectable?->title }}</h1>
-                            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">{{ $project->projectable?->details }}</p>
-                        </div>
-                        <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-                            <div class="p-2 w-full">
-                                <div class="bg-gray-300 rounded flex p-4 h-full items-center">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                        <path d="M22 4L12 14.01l-3-3"></path>
-                                    </svg>
-                                    <span class="title-font font-medium">Place: {{ $project->projectable?->place ?? 'TBD' }}</span>
-                                </div>
-                            </div>
-                            <div class="p-2 w-full">
-                                <div class="bg-gray-300 rounded flex p-4 h-full items-center">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                        <path d="M22 4L12 14.01l-3-3"></path>
-                                    </svg>
-                                    @if ($incomingProjectDetail)
-                                        @if (isset($project->projectable?->date_from) && isset($project->projectable?->date_to))
-                                            <span class="title-font font-medium">
-                                                Date: {{ date('j F Y', strtotime($project->projectable->date_from)) }} <span class="text-lg mx-4">-</span> {{ date('j F Y', strtotime($project->projectable->date_to)) }}
-                                            </span>
-                                        @elseif (isset($project->projectable?->date_from) && !isset($project->projectable?->date_to))
-                                            <span class="title-font font-medium">
-                                                Date: {{ date('j F Y', strtotime($project->projectable->date_from)) }}
-                                            </span>
-                                        @else
-                                            <span class="title-font font-medium">Date: TBD</span>
-                                        @endif
-                                    @else
-                                        @if (isset($project->projectable?->date))
-                                            <span class="title-font font-medium">Date: {{ date('j F Y', strtotime($project->projectable->date)) }}</span>
-                                        @else
-                                            <span class="title-font font-medium">Date: TBD</span>
-                                        @endif
-                                    @endif
-                                </div>
-                            </div>
-
-                            @if ($incomingProjectDetail)
-                                <div class="p-2 sm:w-1/2 w-full">
-                                    <div class="bg-gray-300 rounded flex p-4 h-full items-center">
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                            <path d="M22 4L12 14.01l-3-3"></path>
-                                        </svg>
-                                        @if (isset($project->projectable?->time_from) && isset($project->projectable?->time_to))
-                                            <span class="title-font font-medium">
-                                                Time: {{ date('h:i A', strtotime($project->projectable?->time_from)) }} - {{ date('h:i A', strtotime($project->projectable?->time_to)) }}
-                                            </span>
-                                        @elseif (isset($project->projectable?->time_from) && !isset($project->projectable?->time_to))
-                                            <span class="title-font font-medium">
-                                                Time: {{ date('h:i A', strtotime($project->projectable?->time_from)) }}
-                                            </span>
-                                        @else
-                                            <span class="title-font font-medium">Time: TBD</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            @endif
-
-                            <div class="p-2 sm:w-1/2 w-full">
-                                <div class="bg-gray-300 rounded flex p-4 h-full items-center">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                        <path d="M22 4L12 14.01l-3-3"></path>
-                                    </svg>
-                                    <span class="title-font font-medium">Volunteer: {{ $project->projectable?->pax ?? 'TBD' }}</span>
-                                </div>
-                            </div>
-                            <div class="p-2 sm:w-1/2 w-full">
-                                <div class="bg-gray-300 rounded flex p-4 h-full items-center">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                        <path d="M22 4L12 14.01l-3-3"></path>
-                                    </svg>
-                                    <span class="title-font font-medium">Transportation: {{ $project->projectable?->transportation == true ? 'Provided' : 'Not Provided' }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        @if ($incomingProjectDetail)
-                            @if (!empty($project->donation_needed) && $project->donation_needed != 0)
-                                <div class="mt-10 lg:px-20">
-                                    @livewire('components.donation-progress-bar', ['projectId' => $project->id, 'projectTitle' => $project->projectable?->title, 'projectDonationNeeded' => $project->donation_needed ?? 0.00])
-                                </div>
-                            @endif
-                            <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank">
-                                <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</button>
-                            </a>
-                        @endif
+        <div class="container px-5 py-10 mx-auto flex flex-col">
+            <div class="lg:w-5/6 mx-auto">
+                <div class="rounded-lg w-full h-auto overflow-hidden">
+                    <img alt="{{ $project->projectable?->title }}" class="inset-0 w-full h-full object-cover object-center" src="{{ asset('storage/'.$project->banner?->image_path) }}">
+                </div>
+                <div class="flex flex-col sm:flex-row mt-10">
+                    <div class="sm:pl-8 sm:py-8 mt-2 pt-4 sm:mt-0 text-center sm:text-left">
+                        <p class="leading-relaxed text-lg mb-4">{{ $project->banner?->caption }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-10 mx-auto">
+            <div class="flex flex-wrap -m-4">
+                <div class="lg:w-1/3 p-4">
+                    <div class="flex relative">
+                        <img alt="{{ $project->projectable?->title }}" class="inset-0 w-full h-full object-cover object-center" src="{{ asset('storage/'.$project->projectable?->poster_image_path) }}">
+                    </div>
+                </div>
+                <div class="lg:w-2/3 p-4">
+                    <div class="container px-5 py-10 mx-auto">
+                        <div class="text-center mb-10">
+                            <h1 class="text-gray-900 text-2xl title-font font-medium mb-4">{{ $project->projectable?->title ?? '' }}</h1>
+                            <h2 class="text-sm title-font text-gray-500 tracking-widest mb-4">{{ $project->projectable?->subtitle ?? '' }}</h2>
+                            <hr><br>
+                            <p class="text-base leading-relaxed w-full mx-auto">{{ $project->projectable?->details }}</p>
+                        </div>
+                        <br>
+                        @if (!empty($project->donation_needed) && $project->donation_needed != 0)
+                            <div class="my-10">
+                                @livewire('components.donation-progress-bar', ['projectId' => $project->id, 'projectTitle' => $project->projectable?->title, 'projectDonationNeeded' => $project->donation_needed ?? 0.00])
+                            </div>
+                        @endif
+                        <div class="flex flex-wrap w-full text-center sm:mx-auto sm:mb-2 -mx-2">
+                            <div class="p-2 w-full">
+                                <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="lg:hidden md:hidden">
+        @if (isset($project->projectable?->pastProjectImages))
+            @foreach ($project->projectable->pastProjectImages as $key => $image)
+                <section class="text-gray-600 body-font">
+                    <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
+                        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                            <img class="object-cover object-center rounded h-96" alt="{{ $project->projectable?->title }}" src="{{ asset('storage/'.$image->image_path) }}">
+                        </div>
+                            <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $image->title }}</h1>
+                                <p class="mb-8 leading-relaxed">{{ $image->caption }}</p>
+                            </div>
+                        </div>
+                </section>
+            @endforeach
+        @elseif (isset($project->projectable?->incomingProjectImages))
+            @foreach ($project->projectable->incomingProjectImages as $key => $image)
+                <section class="text-gray-600 body-font">
+                    <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
+                        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                            <img class="object-cover object-center rounded h-96" alt="{{ $project->projectable?->title }}" src="{{ asset('storage/'.$image->image_path) }}">
+                        </div>
+                            <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $image->title }}</h1>
+                                <p class="mb-8 leading-relaxed">{{ $image->caption }}</p>
+                            </div>
+                        </div>
+                </section>
+            @endforeach
+        @endif
+
+
+
+    </div>
+
+    <div class="hidden lg:block md:block">
+        @if (isset($project->projectable?->pastProjectImages))
+            @foreach ($project->projectable->pastProjectImages as $key => $image)
+                    @if ($key % 2 == 0)
+                <section class="text-gray-600 body-font">
+                        <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
+                        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $image->title }}</h1>
+                            <p class="mb-8 leading-relaxed">{{ $image->caption }}</p>
+                        </div>
+                        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                            <img class="object-cover object-center rounded h-96" alt="{{ $project->projectable?->title }}" src="{{ asset('storage/'.$image->image_path) }}">
+                        </div>
+                        </div>
+                    </section>
+                @else
+                    <section class="text-gray-600 body-font">
+                        <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
+                            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                                <img class="object-cover object-center rounded h-96" alt="{{ $project->projectable?->title }}" src="{{ asset('storage/'.$image->image_path) }}">
+                            </div>
+                                <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $image->title }}</h1>
+                                    <p class="mb-8 leading-relaxed">{{ $image->caption }}</p>
+                                </div>
+                            </div>
+                    </section>
+                @endif
+            @endforeach
+        @elseif (isset($project->projectable?->incomingProjectImages))
+            @foreach ($project->projectable->incomingProjectImages as $key => $image)
+                @if ($key % 2 == 0)
+                    <section class="text-gray-600 body-font">
+                        <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
+                        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $image->title }}</h1>
+                            <p class="mb-8 leading-relaxed">{{ $image->caption }}</p>
+                        </div>
+                        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                            <img class="object-cover object-center rounded h-96" alt="{{ $project->projectable?->title }}" src="{{ asset('storage/'.$image->image_path) }}">
+                        </div>
+                        </div>
+                    </section>
+                @else
+                    <section class="text-gray-600 body-font">
+                        <div class="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
+                            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                                <img class="object-cover object-center rounded h-96" alt="{{ $project->projectable?->title }}" src="{{ asset('storage/'.$image->image_path) }}">
+                            </div>
+                                <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $image->title }}</h1>
+                                    <p class="mb-8 leading-relaxed">{{ $image->caption }}</p>
+                                </div>
+                            </div>
+                    </section>
+                @endif
+            @endforeach
+        @endif
+    </div>
+
+    <div class="flex flex-wrap w-full text-center sm:mx-auto sm:mb-2 -mx-2 my-10">
+        <div class="p-2 w-full">
+            <a href="#" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+        </div>
+    </div>
 @endsection

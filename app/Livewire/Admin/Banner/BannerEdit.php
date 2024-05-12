@@ -139,21 +139,13 @@ class BannerEdit extends Component
         $this->bannerJumbotron = $bannerJumbotron;
     }
 
+    public $runSummernote;
+
     public function render()
     {
+        $this->runSummernote = true;
+
         return view('livewire.admin.banner.banner-edit');
-    }
-
-    public function updatedTitle()
-    {
-        $this->banner_file_name = strtolower($this->title);
-        $this->banner_file_name = str_replace(' ', '_', $this->banner_file_name);
-    }
-
-    public function updatedBannerFileName()
-    {
-        $this->banner_file_name = strtolower($this->banner_file_name);
-        $this->banner_file_name = str_replace(' ', '_', $this->banner_file_name);
     }
 
     public $previewBanner = false;
@@ -175,6 +167,9 @@ class BannerEdit extends Component
 
     public function uploadBanner()
     {
+        $this->banner_file_name = strtolower($this->title);
+        $this->banner_file_name = str_replace(' ', '_', $this->banner_file_name);
+
         $this->banner_image_path = '';
 
         $this->validate([
@@ -218,6 +213,9 @@ class BannerEdit extends Component
 
     public function uploadEditBanner()
     {
+        $this->banner_file_name = strtolower($this->title);
+        $this->banner_file_name = str_replace(' ', '_', $this->banner_file_name);
+
         $folderPath = strtolower($this->banner_file_name);
         $folderPath = str_replace(' ', '_', $folderPath);
         $fileName = $this->banner_file_name.'.jpg';
@@ -259,6 +257,9 @@ class BannerEdit extends Component
 
     public function editBannerDetails()
     {
+        $this->banner_file_name = strtolower($this->title);
+        $this->banner_file_name = str_replace(' ', '_', $this->banner_file_name);
+
         $this->validate([
             'title' => 'required|string',
             'banner_file_name' => [

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class IncomingProject extends Model
@@ -27,5 +28,10 @@ class IncomingProject extends Model
     public function project(): MorphOne
     {
         return $this->morphOne(project::class, 'projectable');
+    }
+
+    public function incomingProjectImages() : HasMany
+    {
+        return $this->hasMany(ProjectImage::class, 'referenced_id');
     }
 }

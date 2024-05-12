@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -25,13 +27,18 @@ class Project extends Model
         return $this->morphTo();
     }
 
-    public function projectDonation()
+    public function projectDonation() : HasMany
     {
         return $this->hasMany(ProjectDonation::class, 'project_id');
     }
 
-    public function donationDetail()
+    public function donationDetail() : HasOne
     {
         return $this->hasOne(DonationDetail::class, 'project_id');
+    }
+
+    public function banner() : HasOne
+    {
+        return $this->hasOne(ProjectBanner::class, 'project_id');
     }
 }

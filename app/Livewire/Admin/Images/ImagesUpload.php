@@ -12,29 +12,29 @@ class ImagesUpload extends Component
 {
     use WithFileUploads;
 
+    //modal untuk notification
+    public $showAlertModal = false;
+
+    public $alertModalType = '';
+    public $alertModalDescription = '';
+
+    public function openAlertModal()
+    {
+        $this->showAlertModal = true;
+    }
+
+    public function closeAlertModal()
+    {
+        $this->showAlertModal = false;
+    }
+
     public $folder_path;
     public $project;
-
-    //upload gambar
-    public $uploadedImages = [];
-    public $showUploadImagesModal = false;
-
-    public function openUploadImagesModal()
-    {
-        $this->showUploadImagesModal = true;
-    }
-
-    public function closeUploadImagesModal()
-    {
-        $this->showUploadImagesModal = false;
-    }
 
     public function mount(Project $project)
     {
         $this->folder_path = $project->folder_path;
         $this->project = $project;
-
-        $this->openUploadImagesModal();
     }
 
     public function render()
@@ -43,54 +43,57 @@ class ImagesUpload extends Component
     }
 
     //untuk upload gambar
-    public $images_upload;
-    public $images_path = [];
+    public $imagesUpload = [
+        'uploaded_images' => [],
+        'title' => [],
+        'caption' => [],
+        'image_path' => [],
+        'arrangement' => null,
+    ];
 
-    public function uploadImages()
+    public function uploadImages(Project $project)
     {
-        $this->images_path = [];
         $this->validate([
-            'images_upload.*' => 'required|image|max:5120',
+            'imagesUpload.uploaded_images.*' => 'required|image|max:5120',
         ],[],[
-            'images_upload.*' => 'Image Uploaded',
+            'imagesUpload.uploaded_images.*' => 'Image Uploaded',
         ]);
 
-        $folderPath = strtolower($this->folder_path);
-        $folderPath = str_replace(' ', '_', $folderPath);
+        $uploadedImages = (object)$this->imagesUpload['uploaded_images'];
+
+        foreach ($uploadedImages as $key => $image) {
+            $image->storeAs('projects/'.$this->folder_path, $key.'.jpg', 'public');
+            $this->imagesUpload['image_path'][] = 'projects/'.$this->folder_path.'/'.$key.'.jpg';
+        }
 
         try {
             DB::beginTransaction();
 
-            foreach ($this->images_upload as $key => $photo) {
-                $fileName = $key.'.jpg';
-                $photo->storeAs($folderPath, $fileName, 'public');
-                $this->images_path[] = asset($folderPath.'/'.$fileName);
-            }
-
-            foreach ($this->images_path as $key => $imagePath) {
-                ProjectImage::updateOrCreate(
-                    [
-                        'image_path' => $imagePath,
-                    ],
-                    [
-                        'reference_type' => $this->project->projectable_type,
-                        'referenced_id' => $this->project->projectable?->id,
-                        'title' => '',
-                        'caption' => '',
-                    ]
-                );
+            foreach ($this->imagesUpload['image_path'] as $key => $imagePath) {
+                ProjectImage::updateOrCreate([
+                    'image_path' => $imagePath,
+                ],[
+                    'reference_type' => $project->projectable_type,
+                    'referenced_id' => $project->projectable_id,
+                    'title' => $this->imagesUpload['title'][$key],
+                    'caption' => $this->imagesUpload['caption'][$key],
+                    'arrangement' => $key,
+                ]);
             }
 
             DB::commit();
+
+            $this->alertModalType = 'success';
+            $this->alertModalDescription = 'Other images successfully edited.';
+
+            $this->openAlertModal();
+
+            return redirect()->route('images.edit', $this->project);
 
         } catch (\Throwable $th) {
             DB::rollback();
             throw $th;
         }
-
-        $this->closeUploadImagesModal();
-
-        return redirect()->route('images.edit', ['edit', $this->project]);
     }
 
 }

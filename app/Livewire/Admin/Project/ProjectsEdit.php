@@ -84,20 +84,11 @@ class ProjectsEdit extends Component
         return view('livewire.admin.project.projects-edit');
     }
 
-    public function updatedTitle()
+    public function save(Project $project)
     {
         $this->folder_path = strtolower($this->title);
         $this->folder_path = str_replace(' ', '_', $this->folder_path);
-    }
 
-    public function updatedFolderPath()
-    {
-        $this->folder_path = strtolower($this->folder_path);
-        $this->folder_path = str_replace(' ', '_', $this->folder_path);
-    }
-
-    public function save(Project $project)
-    {
         $this->validate([
             'title' => [
                 'required',
@@ -114,8 +105,8 @@ class ProjectsEdit extends Component
             ],
         ]);
 
-        $currentFolderPath = public_path('storage/'.$project->folder_path);
-        $newFolderPath = public_path('storage/'.$this->folder_path);
+        $currentFolderPath = public_path('storage/projects/'.$project->folder_path);
+        $newFolderPath = public_path('storage/projects/'.$this->folder_path);
         if (File::exists($currentFolderPath)) {
             File::move($currentFolderPath, $newFolderPath);
         }
@@ -125,9 +116,6 @@ class ProjectsEdit extends Component
         if (File::exists($currentPosterPath)) {
             File::move($currentPosterPath, $newPosterPath);
         }
-
-        $this->alertModalType = 'success';
-        $this->alertModalDescription = 'Project ' . $this->title . ' successfully edited.';
 
         $poster_image_path = 'poster/'.$this->folder_path.'.jpg';
 
@@ -154,8 +142,22 @@ class ProjectsEdit extends Component
                     'transportation' => $this->transportation,
                     'poster_image_path' => $poster_image_path ?? null,
                 ]);
+
+                if(!is_null($project->projectable?->pastProjectImages)){
+                    foreach($project->projectable?->incomingProjectImages as $key => $image){
+                        $image->update([
+                            'image_path' => 'projects/'.$this->folder_path.'/'.$key.'.jpg',
+                        ]);
+                    }
+                }
+
+                if(!is_null($project->banner)){
+                    $project->banner?->update([
+                        'image_path' => 'projects/'.$this->folder_path.'/banner_image.jpg',
+                    ]);
+                }
             }
-            else{
+            elseif($project->projectable_type == PastProject::class){
                 $project->projectable?->update([
                     'title' => $this->title,
                     'subtitle' => $this->subtitle,
@@ -166,9 +168,26 @@ class ProjectsEdit extends Component
                     'transportation' => $this->transportation,
                     'poster_image_path' => $poster_image_path ?? null,
                 ]);
+
+                if(!is_null($project->projectable?->pastProjectImages)){
+                    foreach($project->projectable?->pastProjectImages as $key => $image){
+                        $image->update([
+                            'image_path' => 'projects/'.$this->folder_path.'/'.$key.'.jpg',
+                        ]);
+                    }
+                }
+
+                if(!is_null($project->banner)){
+                    $project->banner?->update([
+                        'image_path' => 'projects/'.$this->folder_path.'/banner_image.jpg',
+                    ]);
+                }
             }
 
             DB::commit();
+
+            $this->alertModalType = 'success';
+            $this->alertModalDescription = 'Project ' . $this->title . ' successfully edited.';
 
             $this->openAlertModal();
 

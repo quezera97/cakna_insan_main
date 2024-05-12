@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('reference_type');
             $table->bigInteger('referenced_id');
             $table->string('title')->nullable();
-            $table->string('caption')->nullable();
+            $table->longText('caption')->nullable();
             $table->string('image_path');
+            $table->integer('arrangement');
             $table->timestamps();
         });
     }

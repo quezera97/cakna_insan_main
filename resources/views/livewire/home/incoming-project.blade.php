@@ -1,9 +1,10 @@
 <div>
     @if ($incomingRandomProjects->isNotEmpty())
-        <section class="text-gray-700 body-font border-t border-gray-200">
+        <section class="text-gray-700 body-font">
             <div class="container px-5 py-10 mx-auto">
-                <div class="flex flex-col text-center w-full mb-5">
-                    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Incoming Projects</h1>
+                <div class="flex flex-col text-center w-full my-5 mb-10">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">CURRENT PROJECTS</h1>
+                    <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">- Mengambil Berat & Peduli Sesama Insan -</h2>
                 </div>
                 <div class="flex flex-wrap -m-4">
                     @forelse ($incomingRandomProjects ?? [] as $project)
@@ -13,7 +14,7 @@
                                     <h2 class="text-gray-900 text-lg title-font font-medium">{{ $project->projectable?->title }}</h2>
                                 </div>
                                 <div class="flex-grow">
-                                    <p class="leading-relaxed text-base">{{ $project->projectable?->details }}</p>
+                                    <p class="leading-relaxed text-base">{{ $project->projectable?->subtitle }}</p>
                                     <a href="{{ route('project_detail', $project) }}" class="mt-3 text-indigo-500 inline-flex items-center">Details
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                             <path d="M5 12h14M12 5l7 7-7 7"></path>

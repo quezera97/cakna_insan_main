@@ -3,16 +3,19 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeBanner;
 use App\Http\Controllers\Admin\ImagesController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonationController;
-use App\Http\Controllers\IncomingProjectController;
+use App\Http\Controllers\Projects\IncomingProjectController;
 use App\Http\Controllers\JoinUsController;
-use App\Http\Controllers\PastProjectController;
+use App\Http\Controllers\Projects\PastProjectController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\DonationDetailController;
-use App\Http\Controllers\ProjectDetail;
+use App\Http\Controllers\News\DomesticNewsController;
+use App\Http\Controllers\News\GlobalNewsController;
+use App\Http\Controllers\Projects\ProjectDetail;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +41,11 @@ Route::get('/join-us', [JoinUsController::class, 'index'])->name('join_us');
 Route::get('/incoming-project', [IncomingProjectController::class, 'index'])->name('incoming_project');
 Route::get('/past-project', [PastProjectController::class, 'index'])->name('past_project');
 Route::get('/project-detail/{project}', [ProjectDetail::class, 'index'])->name('project_detail');
+
+Route::prefix('/news')->name('news.')->group( function () {
+    Route::get('/global', [GlobalNewsController::class, 'index'])->name('global');
+    Route::get('/domestic', [DomesticNewsController::class, 'index'])->name('domestic');
+});
 
 Route::get('/about-us', function () {
     return view('about_us');
@@ -87,17 +95,25 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::controller(ProjectController::class)->prefix('/project')->name('project.')->group(function () {
         Route::get('/index', 'index')->name('index');
-        Route::get('/edit-project/{project}', 'editProject')->name('edit');
         Route::get('/add-project', 'addProject')->name('add');
+        Route::get('/edit-project/{project}', 'editProject')->name('edit');
+
+        Route::get('/banner', 'banner')->name('banner');
     });
 
     Route::controller(PosterController::class)->prefix('/poster')->name('poster.')->group(function () {
         Route::get('/index', 'index')->name('index');
     });
 
+    Route::controller(NewsController::class)->prefix('/news')->name('news.')->group(function () {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/add-news', 'addNews')->name('add');
+        Route::get('/edit-news/{newsDetail}', 'editNews')->name('edit');
+        Route::get('/edit-news-images/{newsDetail}', 'editNewsImages')->name('edit-images');
+    });
+
     Route::controller(ImagesController::class)->prefix('/images')->name('images.')->group(function () {
         Route::get('/index', 'index')->name('index');
-        Route::get('/edit-images/{type}/{project}', 'editImages')->name('edit');
-        Route::get('/delete-all-images/{project}', 'deleteAllImages')->name('deleteAllImages');
+        Route::get('/edit-images/{project}', 'editImages')->name('edit');
     });
 });

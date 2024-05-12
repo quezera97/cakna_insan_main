@@ -69,20 +69,11 @@ class ProjectsAdd extends Component
         }
     }
 
-    public function updatedTitle()
+    public function save()
     {
         $this->folder_path = strtolower($this->title);
         $this->folder_path = str_replace(' ', '_', $this->folder_path);
-    }
 
-    public function updatedFolderPath()
-    {
-        $this->folder_path = strtolower($this->folder_path);
-        $this->folder_path = str_replace(' ', '_', $this->folder_path);
-    }
-
-    public function save()
-    {
         $this->validate([
             'title' => 'required|string|min:6|unique:incoming_projects|unique:past_projects',
             'folder_path' => 'required|string|min:6|unique:projects',

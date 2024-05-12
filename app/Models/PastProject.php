@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class PastProject extends Model
@@ -26,8 +27,8 @@ class PastProject extends Model
         return $this->morphOne(Project::class, 'projectable');
     }
 
-    public function pastProjectImages()
+    public function pastProjectImages() : HasMany
     {
-        return $this->hasMany(ProjectImage::class, 'referenced_id');
+        return $this->hasMany(ProjectImage::class, 'referenced_id')->where('reference_type', PastProject::class);
     }
 }

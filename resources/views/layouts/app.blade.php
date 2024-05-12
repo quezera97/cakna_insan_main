@@ -10,13 +10,22 @@
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
-
-        {{-- buat sementara pakai ni utk production --}}
-        {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+        {{-- <script src="{{ asset('assets/js/tailwind-script.js') }}"></script> --}}
 
         @vite('resources/css/app.css')
+
+        <style>
+            .tiptap ul p,
+                .tiptap ol p {
+                @apply inline;
+            }
+
+            .tiptap p.is-editor-empty:first-child::before {
+                @apply pointer-events-none float-left h-0 text-sm;
+            }
+        </style>
 
         @stack('css')
 
@@ -50,12 +59,35 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
         @stack('js')
 
         @livewireScripts
 
         @stack('js-livewire')
+
+        <script>
+            $(document).ready(function(){
+                $('.summernote').summernote({
+                    placeholder: 'Enter Here',
+                    tabsize: 2,
+                    height: 120,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        // ['para', ['ul', 'ol', 'paragraph']],
+                        ['para', ['paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                    ],
+                });
+            });
+        </script>
     </body>
 </html>

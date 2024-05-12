@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Admin\Images;
 
+use App\Models\IncomingProject;
+use App\Models\PastProject;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +15,11 @@ class ImagesEdit extends Component
 {
     use WithFileUploads;
 
-    public $key;
     public $projectImage;
+    public $title;
+    public $caption;
     public $previewImage = false;
+    public $editImage = false;
 
     public $showConfirmationModal = false;
 
@@ -48,11 +52,10 @@ class ImagesEdit extends Component
         $this->showConfirmationModal = false;
     }
 
-    public function mount(projectImage $projectImage, $key)
+    public function mount(ProjectImage $projectImage)
     {
         $this->showConfirmationModal = false;
 
-        $this->key = $key;
         $this->projectImage = $projectImage;
     }
 
@@ -65,19 +68,61 @@ class ImagesEdit extends Component
     {
         $this->previewImage = true;
     }
+
     public function closeSelectedImage()
     {
         $this->previewImage = false;
     }
 
+    public function editSelectedImage(ProjectImage $projectImage)
+    {
+        $this->title = $projectImage->title;
+        $this->caption = $projectImage->caption;
+        $this->editImage = true;
+    }
+
+    public function closeEditSelectedImage()
+    {
+        $this->editImage = false;
+    }
+
+    public function edit(ProjectImage $projectImage)
+    {
+        if($projectImage->reference_type == PastProject::class){
+            $project = $projectImage->pastProject?->project;
+        }
+        elseif($projectImage->reference_type == IncomingProject::class){
+            $project = $projectImage->incomingProject?->project;
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $projectImage->update([
+                'title' => $this->title,
+                'caption' => $this->caption,
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('images.edit', $project);
+
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $th;
+        }
+    }
+
     public function deleteImages($projectImageId)
     {
-        $imageName = $this->key;
+        if($this->projectImage->reference_type == PastProject::class){
+            $project = $this->projectImage->pastProject?->project;
+        }
+        elseif($this->projectImage->reference_type == IncomingProject::class){
+            $project = $this->projectImage->incomingProject?->project;
+        }
 
-        $projectImage = ProjectImage::with(['pastProject', 'pastProject.project'])->find($projectImageId);
-        $project = $projectImage->pastProject?->project;
-
-        $imagePath = public_path('storage/'.$project->folder_path.'/'.$imageName.'.jpg');
+        $imagePath = public_path('storage/'.$this->projectImage->image_path);
 
         try {
             DB::beginTransaction();
@@ -86,12 +131,11 @@ class ImagesEdit extends Component
                 unlink($imagePath);
             }
 
-            $projectImage->delete();
+            $this->projectImage->delete();
 
             DB::commit();
 
-
-            return redirect()->route('images.edit', ['type' => 'edit', 'project' => $project]);
+            return redirect()->route('images.edit', $project);
 
         } catch (\Throwable $th) {
             DB::rollback();

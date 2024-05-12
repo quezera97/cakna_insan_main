@@ -108,6 +108,8 @@ class PosterEdit extends Component
         }
 
         $this->closeUploadPosterModal();
+
+        return redirect()->route('poster.index');
     }
 
     public function deletePoster($projectId)
@@ -128,6 +130,8 @@ class PosterEdit extends Component
             ]);
 
             DB::commit();
+
+            return redirect()->route('poster.index');
 
         } catch (\Throwable $th) {
             DB::rollback();

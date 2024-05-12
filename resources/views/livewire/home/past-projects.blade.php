@@ -1,9 +1,10 @@
 <div>
     @if ($pastRandomProjects->isNotEmpty())
-        <section class="text-gray-700 body-font border-t border-gray-200">
+        <section class="text-gray-700 body-font">
             <div class="container px-5 py-10 mx-auto">
                 <div class="flex flex-wrap w-full mb-5 flex-col items-center text-center">
-                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Past Projects</h1>
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">PAST PROJECTS</h1>
+                    <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">- Mengambil Berat & Peduli Sesama Insan -</h2>
                 </div>
                 <div class="flex flex-wrap -m-4">
                     @forelse ($pastRandomProjects ?? [] as $project)
@@ -15,7 +16,7 @@
 
                                     @endif
                                     <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{{ $project->projectable?->title }}</h2>
-                                    <p class="leading-relaxed text-base">{{ $project->projectable?->details }}</p>
+                                    <p class="leading-relaxed text-base">{{ $project->projectable?->subtitle }}</p>
                                 </div>
                             </a>
                         </div>

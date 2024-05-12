@@ -4,7 +4,8 @@
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">Incoming Projects</h1>
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">CURRENT PROJECTS</h1>
+                <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">- Mengambil Berat & Peduli Sesama Insan -</h2>
             </div>
             <div class="flex flex-wrap -m-4">
                 @forelse ($incomingProjects as $key => $project)
@@ -13,12 +14,12 @@
                             <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="{{ asset('storage/'.$project->projectable?->poster_image_path) }}">
                             <div class="flex-grow sm:pl-8 mb-2">
                                 <h2 class="title-font font-medium text-lg text-gray-900">{{ $project->projectable?->title }}</h2>
-                                <p class="mb-4">{{ $project->projectable?->details }}</p>
+                                <p class="mb-4">{{ $project->projectable?->subtitle }}</p>
                                 <span class="inline-flex">
                                     @if (isset($project->donationDetail) && !is_null($project->donationDetail?->donation_url))
-                                        <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                                        <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 mr-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
                                     @endif
-                                    <a href="{{ route('project_detail', $project) }}" class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
+                                    <a href="{{ route('project_detail', $project) }}" class="inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
                                 </span>
                                 @if (!empty($project->donation_needed) && $project->donation_needed != 0)
                                     <div class="mt-1">

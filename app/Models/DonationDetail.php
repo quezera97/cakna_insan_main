@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DonationDetail extends Model
 {
@@ -14,7 +15,7 @@ class DonationDetail extends Model
         'donation_url',
     ];
 
-    public function project()
+    public function project() : BelongsTo
     {
         return $this->belongsTo(Project::class, 'project_id');
     }
