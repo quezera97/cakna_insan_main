@@ -9,6 +9,10 @@
     </div>
 
     <div>
+        @livewire('home.news-letter')
+    </div>
+
+    <div>
         @livewire('home.incoming-projects')
     </div>
 

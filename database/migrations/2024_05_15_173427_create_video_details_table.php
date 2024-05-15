@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('project_images', function (Blueprint $table) {
+        Schema::create('video_details', function (Blueprint $table) {
             $table->id();
-            $table->string('reference_type');
-            $table->bigInteger('referenced_id');
+            $table->foreignId('project_id');
+            $table->string('video_type')->nullable();
+            $table->string('iframe_components');
             $table->string('title')->nullable();
-            $table->longText('caption')->nullable();
-            $table->string('image_path');
+            $table->string('subtitle')->nullable();
+            $table->longText('details')->nullable();
             $table->integer('arrangement')->nullable();
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_images');
+        Schema::dropIfExists('video_details');
     }
 };

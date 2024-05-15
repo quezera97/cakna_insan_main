@@ -46,4 +46,9 @@ class Project extends Model
     {
         return $this->hasOne(ProjectBanner::class, 'project_id');
     }
+
+    public function video() : HasMany
+    {
+        return $this->hasMany(VideoDetail::class, 'project_id');
+    }
 }
