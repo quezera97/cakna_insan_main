@@ -87,7 +87,7 @@ class DonationDetailEdit extends Component
     public $projects;
     public function mount()
     {
-        $this->projects = Project::with(['projectable', 'donationDetail'])->get();
+        $this->projects = Project::with(['projectable', 'donationDetail'])->orderBy('created_at', 'desc')->get();
     }
 
     public function render()

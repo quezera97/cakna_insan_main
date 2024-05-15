@@ -29,14 +29,19 @@
                         {{ $newsDetail->title }}
                     </th>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{ ucwords($newsDetail->type_of_news) }}
+                        {{ $newsDetail->type_of_news }}
                     </th>
                     <td class="px-6 py-4 flex flex-col space-y-3 items-center">
                         <a href="#" wire:click="editNews({{ $newsDetail }})" class="font-medium text-blue-600 hover:underline">Edit News</a>
-                        <a href="#" wire:click="editNewsImages({{ $newsDetail }})" class="font-medium text-blue-600 hover:underline">Edit Images</a>
+                        <a href="#" wire:click="editNewsImages({{ $newsDetail }})" class="font-medium text-indigo-600 hover:underline">Edit Images</a>
+                        <a href="#" wire:click="openConfirmationModal('deleteNews', {{ $newsDetail->id }})" class="font-medium text-red-600 hover:underline">Delete News</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    @if ($showConfirmationModal)
+        @include('livewire.components.confirmation-modal', ['confirmationModalTitle' => $confirmationModalTitle])
+    @endif
 </div>

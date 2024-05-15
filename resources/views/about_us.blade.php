@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="text-gray-600 body-font">
+    <section class="bg-white body-font rounded-lg shadow-lg p-6 text-gray-700 border border-gray-100 lg:m-10 m-5">
         <div class="container px-5 py-10 mx-auto flex flex-wrap">
             <div class="flex flex-col text-center w-full mb-10">
                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">PERTUBUHAN CAKNA INSAN MALAYSIA</h1>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-                <img alt="sijil" class="border border-black border-4 w-full lg:h-auto object-cover object-center rounded" src="{{ asset('assets/img/sijil.jpg') }}">
+                <img alt="sijil" class="w-full lg:h-auto object-cover object-center rounded" src="{{ asset('assets/img/sijil.jpg') }}">
             </div>
         </div>
     </section>

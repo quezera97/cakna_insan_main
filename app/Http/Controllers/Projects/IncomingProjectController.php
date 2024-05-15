@@ -10,7 +10,7 @@ class IncomingProjectController extends Controller
 {
     public function index()
     {
-        $incomingProjects = Project::with(['projectable', 'donationDetail'])->where('projectable_type', IncomingProject::class)->paginate(6);
+        $incomingProjects = Project::with(['projectable', 'donationDetail'])->where('projectable_type', IncomingProject::class)->orderBy('created_at', 'desc')->paginate(6);
 
         return view('project.incoming_project', compact(['incomingProjects']));
     }

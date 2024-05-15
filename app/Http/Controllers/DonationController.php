@@ -13,7 +13,7 @@ class DonationController extends Controller
 {
     public function index()
     {
-        $donationDetails = DonationDetail::with(['project', 'project.projectable'])->get();
+        $donationDetails = DonationDetail::with(['project', 'project.projectable'])->orderBy('created_at', 'desc')->get();
 
         return view('admin.donation.donation_progress', compact(['donationDetails']));
     }

@@ -18,6 +18,7 @@ class NewsEdit extends Component
     public $details;
     public $date;
     public $related_url;
+    public $author;
     public $folder_path;
 
     //modal untuk notification
@@ -46,6 +47,7 @@ class NewsEdit extends Component
         $this->details = $newsDetail->details;
         $this->date = $newsDetail->date;
         $this->related_url = $newsDetail->related_url;
+        $this->author = $newsDetail->author;
         $this->folder_path = $newsDetail->folder_path;
     }
 
@@ -92,6 +94,7 @@ class NewsEdit extends Component
                 'details' => $this->details,
                 'date' => $this->date,
                 'related_url' => $this->related_url,
+                'author' => $this->author,
                 'folder_path' => $this->folder_path,
             ]);
 

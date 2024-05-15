@@ -6,13 +6,13 @@
             <div x-data="{ selectedIncoming: @entangle('forIncomingProject'), selectedPast: @entangle('forPastProject') }" class="flex flex-wrap -m-4">
                 <button wire:click="selectProject('incoming')" class="lg:w-1/2 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedIncoming === true }">
                     <div class="bg-gray-400 bg-opacity-75 rounded-lg overflow-hidden text-center p-2">
-                        <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Incoming Project</h1>
+                        <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Current Projects</h1>
                     </div>
                 </button>
 
                 <button wire:click="selectProject('past')" class="lg:w-1/2 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedPast === true }">
                     <div class="bg-gray-400 bg-opacity-75 rounded-lg overflow-hidden text-center p-2">
-                        <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Past Project</h1>
+                        <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Past Projects</h1>
                     </div>
                 </button>
             </div>

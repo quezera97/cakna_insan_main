@@ -31,6 +31,7 @@
 
         @livewireStyles
     </head>
+    {{-- @guest bg-gradient-to-b from-sky-50 to-sky-200 @endguest --}}
     <body>
         @auth
             @include('layouts.admin.header')

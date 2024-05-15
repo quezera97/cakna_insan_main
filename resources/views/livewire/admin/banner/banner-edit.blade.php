@@ -78,6 +78,30 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="p-2 w-full">
+                            <label for="details_button_url" class="block mb-2 text-sm font-medium text-gray-900">Select an option</label>
+                            <select id="details_button_url" wire:model="details_button_url" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option selected value="" >Choose a project</option>
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->id }}">
+                                        {{ $project->projectable?->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('details_button_url') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="p-2 w-full">
+                            <label for="donation_button_url" class="block mb-2 text-sm font-medium text-gray-900">Donation URL</label>
+                            <div class="flex">
+                                <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
+                                    {{ "https://toyyibpay.com/" }}
+                                </span>
+                                <input type="text" id="donation_button_url" wire:model="donation_button_url" required lowercase class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                            @error('donation_button_url') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </div>
                         {{-- <div class="p-2 w-full">
                             <label for="banner_file_name" class="block mb-2 text-sm font-medium text-gray-900">Banner File Name <span class="text-red-600">*</span></label>
                             <input type="text" id="banner_file_name" wire:model="banner_file_name" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">

@@ -4,14 +4,16 @@
     {{-- Jumbotron --}}
     @livewire('home.welcome-banner')
 
-    {{-- Tazkirah/Hadis/Ayat Quran --}}
+    <div>
+        @livewire('home.featured-projects')
+    </div>
 
-    {{-- Featured Project --}}
-    @livewire('home.featured-projects')
+    <div>
+        @livewire('home.incoming-projects')
+    </div>
 
-    {{-- Incoming Project --}}
-    @livewire('home.incoming-projects')
+    <div>
+        @livewire('home.past-projects')
+    </div>
 
-    {{-- Past Projects --}}
-    @livewire('home.past-projects')
 @endsection

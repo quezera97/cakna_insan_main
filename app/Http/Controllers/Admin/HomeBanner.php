@@ -10,7 +10,7 @@ class HomeBanner extends Controller
 {
     public function index()
     {
-        $bannerJumbotron = BannerJumbotron::get();
+        $bannerJumbotron = BannerJumbotron::orderBy('created_at', 'desc')->get();
 
         return view('admin.banner.index', compact(['bannerJumbotron']));
     }

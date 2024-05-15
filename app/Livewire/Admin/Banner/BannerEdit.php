@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Banner;
 
 use App\Models\BannerJumbotron;
+use App\Models\Project;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
@@ -16,6 +17,8 @@ class BannerEdit extends Component
     public $bannerJumbotron;
     public $selectedBanner;
 
+    public $projects;
+
     public $title;
     public $subtitle;
     public $details;
@@ -23,6 +26,8 @@ class BannerEdit extends Component
     public $date_to;
     public $featured;
     public $banner_file_name;
+    public $details_button_url;
+    public $donation_button_url;
 
     public $showAlertModal = false;
 
@@ -84,6 +89,8 @@ class BannerEdit extends Component
         $this->date_to = null;
         $this->featured = null;
         $this->banner_file_name = null;
+        $this->details_button_url = null;
+        $this->donation_button_url = null;
 
         $this->banner_image_path = null;
         $this->banner_image_upload = null;
@@ -125,6 +132,8 @@ class BannerEdit extends Component
         $this->date_to = $this->selectedBanner->date_to;
         $this->featured = $this->selectedBanner->is_featured;
         $this->banner_file_name = $this->selectedBanner->banner_file_name;
+        $this->details_button_url = $this->selectedBanner->details_button_url;
+        $this->donation_button_url = $this->selectedBanner->donation_button_url;
 
         $this->showEditBannerDetailsModal = true;
     }
@@ -136,6 +145,7 @@ class BannerEdit extends Component
 
     public function mount($bannerJumbotron)
     {
+        $this->projects = Project::with(['projectable', 'donationDetail'])->orderBy('created_at', 'desc')->get();
         $this->bannerJumbotron = $bannerJumbotron;
     }
 
@@ -199,6 +209,8 @@ class BannerEdit extends Component
                 'is_featured' => $this->featured ?? 0,
                 'banner_file_name' => $this->banner_file_name ?? null,
                 'banner_image_path' => $this->banner_image_path ?? null,
+                'details_button_url' => $this->details_button_url ?? null,
+                'donation_button_url' => $this->donation_button_url ?? null,
             ]);
 
             DB::commit();
@@ -298,6 +310,8 @@ class BannerEdit extends Component
                 'is_featured' => $this->featured ?? 0,
                 'banner_file_name' => $this->banner_file_name ?? null,
                 'banner_image_path' => $this->banner_image_path ?? null,
+                'details_button_url' => $this->details_button_url ?? null,
+                'donation_button_url' => $this->donation_button_url ?? null,
             ]);
 
             DB::commit();

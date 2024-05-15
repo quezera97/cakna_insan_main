@@ -11,7 +11,7 @@ class WelcomeBanner extends Component
 
     public function mount()
     {
-        $this->bannerJumbotrons = BannerJumbotron::where('is_featured', true)->get();
+        $this->bannerJumbotrons = BannerJumbotron::where('is_featured', true)->orderBy('created_at', 'desc')->get();
     }
 
     public function render()

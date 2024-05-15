@@ -21,6 +21,9 @@ return new class extends Migration
             $table->boolean('is_featured')->nullable();
             $table->string('banner_file_name')->nullable()->unique();
             $table->string('banner_image_path')->nullable();
+
+            $table->string('donation_button_url')->nullable();
+            $table->foreignId('details_button_url')->nullable();
             $table->timestamps();
         });
     }

@@ -108,22 +108,20 @@ class ProjectsTable extends Component
     public function deleteProject($projectId)
     {
         $project = Project::with(['projectDonation', 'donationDetail'])->find($projectId);
-        $folderPath = public_path('storage/'.$project->folder_path);
+        $folderPath = public_path('storage/projects/'.$project->folder_path);
 
         try {
             DB::beginTransaction();
 
-            if($project->projectable_type == PastProject::class){
 
-                $projectImages = ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->get();
+            $projectImages = ProjectImage::where('reference_type', $project->projectable_type)->where('referenced_id', $project->projectable?->id)->get();
 
-                foreach ($projectImages as $projectImage) {
-                    $projectImage->delete();
-                }
+            foreach ($projectImages as $projectImage) {
+                $projectImage->delete();
+            }
 
-                if (File::exists($folderPath)) {
-                    File::deleteDirectory($folderPath);
-                }
+            if (File::exists($folderPath)) {
+                File::deleteDirectory($folderPath);
             }
 
             $posterPath = public_path('storage/poster/'.$project->folder_path.'.jpg');

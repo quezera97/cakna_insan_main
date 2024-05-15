@@ -32,6 +32,11 @@ class Project extends Model
         return $this->hasMany(ProjectDonation::class, 'project_id');
     }
 
+    public function bannerJumbotron() : HasMany
+    {
+        return $this->hasMany(BannerJumbotron::class, 'details_button_url');
+    }
+
     public function donationDetail() : HasOne
     {
         return $this->hasOne(DonationDetail::class, 'project_id');

@@ -9,7 +9,7 @@ class PosterController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('projectable')->get();
+        $projects = Project::with('projectable')->orderBy('created_at', 'desc')->get();
 
         return view('admin.poster.index', compact(['projects']));
     }

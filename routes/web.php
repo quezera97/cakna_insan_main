@@ -13,6 +13,8 @@ use App\Http\Controllers\Projects\PastProjectController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\DonationDetailController;
+use App\Http\Controllers\News\CaknaInsanMalaysia;
+use App\Http\Controllers\News\CaknaInsanMalaysiaNewsController;
 use App\Http\Controllers\News\DomesticNewsController;
 use App\Http\Controllers\News\GlobalNewsController;
 use App\Http\Controllers\Projects\ProjectDetail;
@@ -45,6 +47,8 @@ Route::get('/project-detail/{project}', [ProjectDetail::class, 'index'])->name('
 Route::prefix('/news')->name('news.')->group( function () {
     Route::get('/global', [GlobalNewsController::class, 'index'])->name('global');
     Route::get('/domestic', [DomesticNewsController::class, 'index'])->name('domestic');
+    Route::get('/cakna-insan-malaysia', [CaknaInsanMalaysiaNewsController::class, 'index'])->name('cakna_insan_malaysia');
+    Route::get('/cakna-insan-malaysia/{newsDetail}', [CaknaInsanMalaysiaNewsController::class, 'caknaNewsDetails'])->name('cakna_insan_malaysia_details');
 });
 
 Route::get('/about-us', function () {

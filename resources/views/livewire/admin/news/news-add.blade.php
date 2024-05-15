@@ -3,14 +3,19 @@
         <div class="container px-5 py-10 mx-auto">
             <h1 class="text-gray-900 text-2xl title-font font-medium mb-4">Please Choose Type of News</h1>
             <hr><br>
-            <div x-data="{ selectedGlobal: @entangle('forGlobalNews'), selectedDomestic: @entangle('forDomesticNews') }" class="flex flex-wrap -m-4">
-                <button wire:click="selectNews('global')" class="lg:w-1/2 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedGlobal === true }">
+            <div x-data="{ selectedGlobal: @entangle('forGlobalNews'), selectedDomestic: @entangle('forDomesticNews'), selectedCaknaInsan: @entangle('forCaknaInsanNews') }" class="flex flex-wrap -m-4">
+                <button wire:click="selectNews('global')" class="lg:w-1/3 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedGlobal === true }">
                     <div class="bg-gray-400 bg-opacity-75 rounded-lg overflow-hidden text-center p-2">
                         <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Global News</h1>
                     </div>
                 </button>
+                <button wire:click="selectNews('cakna_insan')" class="lg:w-1/3 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedCaknaInsan === true }">
+                    <div class="bg-gray-400 bg-opacity-75 rounded-lg overflow-hidden text-center p-2">
+                        <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Cakna Insan Malaysia</h1>
+                    </div>
+                </button>
 
-                <button wire:click="selectNews('domestic')" class="lg:w-1/2 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedDomestic === true }">
+                <button wire:click="selectNews('domestic')" class="lg:w-1/3 p-2" x-bind:class="{ 'border border-indigo-700 border-2 rounded': selectedDomestic === true }">
                     <div class="bg-gray-400 bg-opacity-75 rounded-lg overflow-hidden text-center p-2">
                         <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Domestic News</h1>
                     </div>
@@ -50,6 +55,10 @@
                                         <input id="date" datepicker-format="dd/mm/yyyy" type="date" wire:model="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="p-2 w-full">
+                                <label for="author" class="block mb-2 text-sm font-medium text-gray-900">Author</label>
+                                <input type="text" id="author" wire:model="author" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-full">
                                 <label for="related_url" class="block mb-2 text-sm font-medium text-gray-900">Related Link</label>

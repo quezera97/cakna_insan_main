@@ -14,6 +14,7 @@ class NewsAdd extends Component
     public $details;
     public $date;
     public $related_url;
+    public $author;
     public $folder_path;
 
     public function render()
@@ -24,20 +25,34 @@ class NewsAdd extends Component
     public $typeOfNews;
     public $forGlobalNews = false;
     public $forDomesticNews = false;
+    public $forCaknaInsanNews = false;
 
     public function selectNews($type)
     {
+        $this->typeOfNews = $this->type_of_news = '';
+
         if($type == 'global'){
             $this->typeOfNews = $this->type_of_news = 'global';
 
             $this->forGlobalNews = true;
             $this->forDomesticNews = false;
+            $this->forCaknaInsanNews = false;
         }
-        else{
+        elseif($type == 'domestic'){
             $this->typeOfNews = $this->type_of_news = 'domestic';
 
             $this->forGlobalNews = false;
             $this->forDomesticNews = true;
+            $this->forCaknaInsanNews = false;
+        }
+        elseif($type == 'cakna_insan'){
+            $this->typeOfNews = $this->type_of_news = 'cakna_insan';
+
+            $this->forGlobalNews = false;
+            $this->forDomesticNews = false;
+            $this->forCaknaInsanNews = true;
+
+            $this->author = 'Cakna Insan Malaysia';
         }
     }
 
@@ -60,6 +75,7 @@ class NewsAdd extends Component
                 'details' => $this->details,
                 'date' => $this->date,
                 'related_url' => $this->related_url,
+                'author' => $this->author,
                 'folder_path' => $this->folder_path,
             ]);
 
@@ -72,5 +88,4 @@ class NewsAdd extends Component
             throw $th;
         }
     }
-
 }

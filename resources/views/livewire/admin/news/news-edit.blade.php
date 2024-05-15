@@ -34,6 +34,10 @@
                         </div>
                     </div>
                     <div class="p-2 w-full">
+                        <label for="author" class="block mb-2 text-sm font-medium text-gray-900">Author</label>
+                        <input type="text" id="author" wire:model="author" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    </div>
+                    <div class="p-2 w-full">
                         <label for="related_url" class="block mb-2 text-sm font-medium text-gray-900">Related Link</label>
                         <input type="text" id="related_url" wire:model="related_url" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                     </div>
