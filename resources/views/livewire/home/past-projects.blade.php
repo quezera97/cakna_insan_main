@@ -3,7 +3,7 @@
         <section class="bg-white body-font rounded-lg shadow-lg p-6 text-gray-700 border border-gray-100 lg:m-10 m-5">
             <div class="container px-5 py-10 mx-auto">
                 <div class="flex flex-wrap w-full mb-5 flex-col items-center text-center">
-                    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">PAST PROJECTS</h1>
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ strtoupper(__('ui_text.past_projects')) }}</h1>
                     <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">- Mengambil Berat & Peduli Sesama Insan -</h2>
                 </div>
                 <div class="flex flex-wrap -m-4">
@@ -17,7 +17,8 @@
                                     <p class="leading-relaxed mb-3">{{ $project->projectable?->details }}</p>
                                     <div class="flex items-center flex-wrap justify-between">
                                         <div></div>
-                                        <a href="{{ route('project_detail', $project) }}" target="_blank" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Read More
+                                        <a href="{{ route('project_detail', $project) }}" target="_blank" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                                            {{ __('ui_text.read_more') }}
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M5 12h14"></path>
                                                 <path d="M12 5l7 7-7 7"></path>
@@ -38,7 +39,7 @@
                     @endforelse
                 </div>
                 <a href="{{ route('past_project') }}">
-                    <button  class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Explore More</button>
+                    <button  class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.explore_more') }}</button>
                 </a>
             </div>
         </section>

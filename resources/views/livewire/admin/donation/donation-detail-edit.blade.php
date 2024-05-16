@@ -80,7 +80,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">Save</button>
+                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.save') }}</button>
                         </div>
                     </form>
                 </div>

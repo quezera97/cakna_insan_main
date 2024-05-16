@@ -8,9 +8,9 @@
         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $selectedNewsImage->caption }}</h3>
     </div>
     <div class="flex justify-between my-5 text-center">
-        <button wire:click="previewSelectedImage" class="mx-auto text-white bg-sky-500 border-0 py-2 px-8 focus:outline-none hover:bg-sky-600 rounded text-lg">Preview</button>
-        <button wire:click="editSelectedImage('{{ $selectedNewsImage->id }}')" class="mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Edit</button>
-        <button wire:click="openConfirmationModal('deleteImages', {{ $selectedNewsImage->id }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Delete</button>
+        <button wire:click="previewSelectedImage" class="mx-auto text-white bg-sky-500 border-0 py-2 px-8 focus:outline-none hover:bg-sky-600 rounded text-lg">{{ __('ui_text.preview') }}</button>
+        <button wire:click="editSelectedImage('{{ $selectedNewsImage->id }}')" class="mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.edit') }}</button>
+        <button wire:click="openConfirmationModal('deleteImages', {{ $selectedNewsImage->id }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">{{ __('ui_text.delete') }}</button>
     </div>
 
     @if ($previewImage)
@@ -52,7 +52,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">Save</button>
+                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.save') }}</button>
                         </div>
                     </form>
                 </div>

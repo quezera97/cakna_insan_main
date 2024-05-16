@@ -13,6 +13,7 @@ use App\Http\Controllers\Projects\PastProjectController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\DonationDetailController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\News\CaknaInsanMalaysia;
 use App\Http\Controllers\News\CaknaInsanMalaysiaNewsController;
 use App\Http\Controllers\News\DomesticNewsController;
@@ -36,6 +37,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('lang/home', [LangController::class, 'index'])->name('lang.home');
+Route::get('lang/change', [LangController::class, 'change'])->name('lang.change');
 
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact_us');
 Route::get('/join-us', [JoinUsController::class, 'index'])->name('join_us');

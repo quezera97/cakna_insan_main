@@ -3,7 +3,7 @@
         <section class="bg-white body-font rounded-lg p-6 text-gray-700 lg:m-10 m-5">
             <div class="container px-5 py-10 mx-auto">
                 <div class="flex flex-col text-start w-full my-5 mb-10">
-                    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Latest News</h1>
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ __('ui_text.latest_news') }}</h1>
                 </div>
                 <div class="flex flex-wrap -m-4">
                     @foreach ($newsDetail as $news)

@@ -7,9 +7,9 @@
                     <p class="mb-8 leading-relaxed">{{ $featuredProject[$currentProjectIndex]->projectable?->details }}</p>
                     <div class="flex justify-center">
                         @if (isset($featuredProject[$currentProjectIndex]->donationDetail) && !is_null($featuredProject[$currentProjectIndex]->donationDetail?->donation_url))
-                            <a href="{{ 'https://toyyibpay.com/'.$featuredProject[$currentProjectIndex]->donationDetail?->donation_url }}" target="__blank" class="mr-4 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                            <a href="{{ 'https://toyyibpay.com/'.$featuredProject[$currentProjectIndex]->donationDetail?->donation_url }}" target="__blank" class="mr-4 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.infaq_now') }}</a>
                         @endif
-                        <a href="{{ route('project_detail', $featuredProject[$currentProjectIndex]) }}" class="inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Details</a>
+                        <a href="{{ route('project_detail', $featuredProject[$currentProjectIndex]) }}" class="inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">{{ __('ui_text.details') }}</a>
                     </div>
                 </div>
                 @if (!is_null($featuredProject[$currentProjectIndex]->projectable?->poster_image_path))

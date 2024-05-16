@@ -36,7 +36,7 @@
             </div>
             <div class="lg:w-1/2 md:w-1/2 w-full px-4">
                 <a href="{{ route('about_us') }}">
-                    <h2 class="title-font font-medium text-white tracking-widest text-xl mb-3">OFFICE</h2>
+                    <h2 class="title-font font-medium text-white tracking-widest text-xl mb-3">{{ strtoupper(__('ui_text.office')) }}</h2>
                     <p class="text-white">18 Jalan 9H, Taman Cheras Jaya,</p>
                     <p class="text-white">Batu 11 Jalan Cheras, Cheras, Selangor</p>
                 </a>

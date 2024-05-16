@@ -3,10 +3,10 @@
         <thead class="text-xs uppercase bg-gray-700">
             <tr>
                 <th scope="col" class="w-4/6 px-6 py-5">
-                    Title
+                    {{ __('ui_text.title') }}
                 </th>
                 <th scope="col" class="w-2/6 px-6 py-5 text-center">
-                    Action
+                    {{ __('ui_text.action') }}
                 </th>
             </tr>
         </thead>
@@ -16,7 +16,7 @@
                     Add Banner
                 </th>
                 <td class="px-6 py-4 flex flex-col space-y-3 items-center">
-                    <a href="#" wire:click="openUploadBannerModal" class="font-medium text-blue-600 hover:underline">Add</a>
+                    <a href="#" wire:click="openUploadBannerModal" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.add') }}</a>
                 </td>
             </tr>
             @foreach ($bannerJumbotron ?? [] as $banner)
@@ -25,10 +25,10 @@
                         {{ $banner->title }}
                     </th>
                     <td class="px-6 py-4 flex flex-col space-y-3 items-center">
-                        <a href="#" wire:click="previewSelectedBanner('{{ $banner->banner_image_path }}')" class="font-medium text-indigo-600 hover:underline">Preview Banner</a>
+                        <a href="#" wire:click="previewSelectedBanner('{{ $banner->banner_image_path }}')" class="font-medium text-indigo-600 hover:underline"{{ __('ui_text.preview') }}</a>
                         <a href="#" wire:click="openEditBannerModal('{{ $banner->banner_image_path }}', '{{ $banner->banner_file_name }}')" class="font-medium text-blue-600 hover:underline">Edit Banner</a>
                         <a href="#" wire:click="openEditBannerDetailsModal('{{ $banner->id }}')" class="font-medium text-green-600 hover:underline">Edit Banner Details</a>
-                        <a href="#" wire:click="openConfirmationModal('deleteBanner', {{ $banner->id }})" class="font-medium text-red-600 hover:underline">Delete Banner</a>
+                        <a href="#" wire:click="openConfirmationModal('deleteBanner', {{ $banner->id }})" class="font-medium text-red-600 hover:underline">{{ __('ui_text.delete') }}</a>
                     </td>
                 </tr>
             @endforeach
@@ -59,7 +59,7 @@
                             <input type="text" id="subtitle" wire:model="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="p-2 w-full">
-                            <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details</label>
+                            <label for="details" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.details') }}</label>
                             <textarea id="details" wire:model="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="p-2 w-full">
@@ -142,7 +142,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">Upload</button>
+                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
                         </div>
                     </form>
                 </div>
@@ -201,7 +201,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">Upload</button>
+                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
                         </div>
                     </form>
                 </div>
@@ -233,7 +233,7 @@
                             <input type="text" id="subtitle" wire:model="subtitle" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="p-2 w-full">
-                            <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details</label>
+                            <label for="details" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.details') }}</label>
                             <textarea id="details" wire:model="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="p-2 w-full">
@@ -274,7 +274,7 @@
 
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">Save</button>
+                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.save') }}</button>
                         </div>
                     </form>
                 </div>

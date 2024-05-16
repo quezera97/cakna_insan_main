@@ -43,7 +43,7 @@
                             @endif
                             <div class="flex flex-wrap w-full text-center sm:mx-auto sm:mb-2 -mx-2">
                                 <div class="p-2 w-full">
-                                    <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                                    <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.infaq_now') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             @endif
                             <div class="flex flex-wrap w-full text-center sm:mx-auto sm:mb-2 -mx-2">
                                 <div class="p-2 w-full">
-                                    <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+                                    <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.infaq_now') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -104,9 +104,6 @@
                 </section>
             @endforeach
         @endif
-
-
-
     </div>
 
     <div class="hidden lg:block md:block">
@@ -171,7 +168,7 @@
 
     <div class="flex flex-wrap w-full text-center sm:mx-auto sm:mb-2 -mx-2 my-10">
         <div class="p-2 w-full">
-            <a href="#" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Infaq Now</a>
+            <a href="#" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.infaq_now') }}</a>
         </div>
     </div>
 @endsection

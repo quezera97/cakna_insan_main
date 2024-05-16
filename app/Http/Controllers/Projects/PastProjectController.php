@@ -11,7 +11,9 @@ class PastProjectController extends Controller
 {
     public function index()
     {
-        $pastProjects = Project::with('projectable')->where('projectable_type', PastProject::class)->orderBy('created_at', 'desc')->get();
+        $pastProjects = Project::with('projectable')
+                        ->where('projectable_type', PastProject::class)
+                        ->orderBy('created_at', 'desc')->paginate(9);
 
         return view('project.past_project', compact(['pastProjects']));
     }

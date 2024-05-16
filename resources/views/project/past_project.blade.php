@@ -4,7 +4,7 @@
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">PAST PROJECTS</h1>
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ strtoupper(__('ui_text.past_projects')) }}</h1>
                 <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">- Mengambil Berat & Peduli Sesama Insan -</h2>
             </div>
             <div class="flex flex-wrap -m-2">
@@ -17,8 +17,9 @@
                                 <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-3">{{ $project->projectable?->subtitle }}</h2>
                                 <p class="leading-relaxed mb-3">{{ $project->projectable?->details }}</p>
                                 <div class="flex items-center flex-wrap justify-between my-10">
-                                    <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 mr-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm">Infaq Now</a>
-                                    <a href="{{ route('project_detail', $project) }}" target="_blank" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Read More
+                                    <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 mr-4 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm">{{ __('ui_text.infaq_now') }}</a>
+                                    <a href="{{ route('project_detail', $project) }}" target="_blank" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                                        {{ __('ui_text.read_more') }}
                                         <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M5 12h14"></path>
                                             <path d="M12 5l7 7-7 7"></path>
@@ -39,11 +40,14 @@
                     <div class="p-4 w-full">
                         <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                             <div class="flex items-center mb-3">
-                                <h2 class="text-gray-900 text-lg title-font font-medium">No Projects</h2>
+                                <h2 class="text-gray-900 text-lg title-font font-medium">{{ __('ui_text.no_projects') }}</h2>
                             </div>
                         </div>
                     </div>
                 @endforelse
+            </div>
+            <div class="mt-10">
+                {{ $pastProjects->withQueryString()->links('layouts.pagination') }}
             </div>
         </div>
     </section>
