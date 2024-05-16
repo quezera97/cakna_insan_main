@@ -1,6 +1,6 @@
 <div>
     @if ($newsDetail->isNotEmpty())
-        <section class="bg-white body-font rounded-lg p-6 text-gray-700 lg:m-10 m-5">
+        <section class="bg-white body-font rounded-lg p-6 text-gray-700">
             <div class="container px-5 py-10 mx-auto">
                 <div class="flex flex-col text-start w-full my-5 mb-10">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ __('ui_text.latest_news') }}</h1>
@@ -24,7 +24,7 @@
                         @endphp
 
                         <a href="{{ $route }}" @if($news->type_of_news != 'cakna_insan') target="_blank" @endif>
-                            <div class="lg:w-1/3">
+                            <div class="lg:w-1/2">
                                 <div class="py-8 px-4 shadow-lg mx-3">
                                     <div class="h-full flex items-start">
                                         <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">

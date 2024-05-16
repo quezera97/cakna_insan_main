@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeBanner;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonationController;
@@ -109,6 +110,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::controller(PosterController::class)->prefix('/poster')->name('poster.')->group(function () {
+        Route::get('/index', 'index')->name('index');
+    });
+
+    Route::controller(PostController::class)->prefix('/post')->name('post.')->group(function () {
         Route::get('/index', 'index')->name('index');
     });
 

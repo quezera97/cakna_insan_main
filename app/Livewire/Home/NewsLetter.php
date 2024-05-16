@@ -11,7 +11,7 @@ class NewsLetter extends Component
 
     public function render()
     {
-        $this->newsDetail = NewsDetail::orderBy('date', 'desc')->limit(3)->get();
+        $this->newsDetail = NewsDetail::orderBy('date', 'desc')->limit(4)->get();
 
         return view('livewire.home.news-letter');
     }

@@ -1,7 +1,7 @@
 <div>
     @if ($incomingRandomProjects->isNotEmpty())
-        <section class="bg-white body-font rounded-lg shadow-lg p-6 text-gray-700 border border-gray-100 lg:m-10 m-5">
-            <div class="container px-5 py-10 mx-auto">
+        <section class="bg-white body-font rounded-lg shadow-lg p-2 text-gray-700 border border-gray-100 lg:m-10 m-5">
+            <div class="container px-5 py-5 mx-auto">
                 <div class="flex flex-col text-center w-full my-5 mb-10">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ strtoupper(__('ui_text.current_projects')) }}</h1>
                     <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">- Mengambil Berat & Peduli Sesama Insan -</h2>

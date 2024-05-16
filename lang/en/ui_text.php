@@ -48,6 +48,7 @@ return [
     'infaq_progress' => 'Infaq Progress',
     'infaq_now' => 'Infaq Now',
     'no_projects' => 'No Projects',
+    'no_post' => 'No Post',
     'read_more' => 'Read More',
     'name' => 'Name',
     'organisation' => 'Organisation',

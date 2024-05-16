@@ -48,6 +48,7 @@ return [
     'infaq_progress' => 'Kemajuan Infaq',
     'infaq_now' => 'Infaq Sekarang',
     'no_projects' => 'Tiada Projek',
+    'no_post' => 'Tiada Catatan',
     'read_more' => 'Baca Lebih Lanjut',
     'name' => 'Nama',
     'organisation' => 'Organisasi',
