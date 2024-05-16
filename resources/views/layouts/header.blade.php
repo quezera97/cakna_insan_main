@@ -5,9 +5,9 @@
             <span class="ml-3 text-xl">CAKNA INSAN MALAYSIA</span>
         </a>
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a href="{{ route('welcome') }}" class="mr-5 hover:text-gray-900">Homepage</a>
+            <a href="{{ route('welcome') }}" class="mr-5 hover:text-gray-900">Home Page</a>
             <button id="dropdownProjectLink" data-dropdown-toggle="dropdownProjectNavbar" class="flex items-center py-2 mr-5 hover:text-gray-900">
-                Project
+                Projects
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
