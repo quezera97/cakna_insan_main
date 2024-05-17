@@ -41,6 +41,19 @@
             @include('layouts.header')
         @endguest
 
+
+        {{-- <div x-data="{ showSummernote: false }">
+            <div x-show="showSummernote">
+                @livewire('components.rich-text-editor')
+            </div>
+        </div> --}}
+
+        {{-- callbacks: {
+            onChange: function (contents, $editable) {
+                 @this.set("{{ '$wireModel' }}", contents);
+            }
+        } --}}
+
         <div class="flex flex-col min-h-screen">
             <main class="flex-grow">
                 @yield('content')
@@ -70,25 +83,5 @@
         @livewireScripts
 
         @stack('js-livewire')
-
-        <script>
-            $(document).ready(function(){
-                $('.summernote').summernote({
-                    placeholder: 'Enter Here',
-                    tabsize: 2,
-                    height: 120,
-                    toolbar: [
-                        ['style', ['style']],
-                        ['font', ['bold', 'underline', 'clear']],
-                        ['color', ['color']],
-                        // ['para', ['ul', 'ol', 'paragraph']],
-                        ['para', ['paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture', 'video']],
-                        ['view', ['fullscreen', 'codeview', 'help']]
-                    ],
-                });
-            });
-        </script>
     </body>
 </html>

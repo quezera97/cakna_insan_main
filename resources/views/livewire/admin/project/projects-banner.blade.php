@@ -16,12 +16,12 @@
                 <div class="w-full">
                     <h1 class="title-font font-medium text-lg text-gray-900">{{ $project->projectable?->title }}</h1>
 
-                    <div class="flex justify-between my-5 text-center">
-                        <button wire:click="openUploadBannerModal({{ $project }})" class="mx-auto text-white bg-sky-500 border-0 py-2 px-8 focus:outline-none hover:bg-sky-600 rounded text-lg">{{ __('ui_text.upload') }}</button>
+                    <div class="p-2 mt-5 justice-between">
+                        <button wire:click="openUploadBannerModal({{ $project }})" class="mx-auto text-white bg-sky-500 border-0 py-2 px-3 focus:outline-none hover:bg-sky-600 rounded text-sm">{{ __('ui_text.upload') }}</button>
 
                         @if (isset($project->banner))
-                            <button wire:click="editSelectedImage('{{ $project->id }}')" class="mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.edit') }}</button>
-                            <button wire:click="openConfirmationModal('deleteBanner', {{ $project->id }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">{{ __('ui_text.delete') }}</button>
+                            <button wire:click="editSelectedImage('{{ $project->id }}')" class="mx-auto text-white bg-indigo-500 border-0 py-2 px-3 focus:outline-none hover:bg-indigo-600 rounded text-sm">{{ __('ui_text.edit') }}</button>
+                            <button wire:click="openConfirmationModal('deleteBanner', {{ $project->id }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded text-sm">{{ __('ui_text.delete') }}</button>
                         @endif
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
+                            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
                         </div>
                     </form>
                 </div>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.save') }}</button>
+                            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.save') }}</button>
                         </div>
                     </form>
                 </div>

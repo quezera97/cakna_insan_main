@@ -13,6 +13,7 @@ use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\Projects\PastProjectController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PosterController;
+use App\Http\Controllers\Admin\SummernoteController;
 use App\Http\Controllers\DonationDetailController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\News\CaknaInsanMalaysia;
@@ -63,6 +64,9 @@ Route::get('/login', [AuthController::class, 'indexLogin'])->name('login');
 
 
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::post('/summernote', [SummernoteController::class, 'edit'])->name('summernote.edit');
+
     Route::get('/symlink', function () {
         Artisan::call('storage:link');
     });

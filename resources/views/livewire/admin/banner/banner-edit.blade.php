@@ -2,8 +2,11 @@
     <table class="w-full text-sm text-left rtl:text-right text-white">
         <thead class="text-xs uppercase bg-gray-700">
             <tr>
-                <th scope="col" class="w-4/6 px-6 py-5">
+                <th scope="col" class="w-2/6 px-6 py-5">
                     {{ __('ui_text.title') }}
+                </th>
+                <th scope="col" class="w-2/6 px-6 py-5">
+                    Donation Url
                 </th>
                 <th scope="col" class="w-2/6 px-6 py-5 text-center">
                     {{ __('ui_text.action') }}
@@ -15,6 +18,7 @@
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     Add Banner
                 </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"></th>
                 <td class="px-6 py-4 flex flex-col space-y-3 items-center">
                     <a href="#" wire:click="openUploadBannerModal" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.add') }}</a>
                 </td>
@@ -23,6 +27,9 @@
                 <tr class="bg-white border-b border-gray-400">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $banner->title }}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{ $banner->donation_button_url }}
                     </th>
                     <td class="px-6 py-4 flex flex-col space-y-3 items-center">
                         <a href="#" wire:click="previewSelectedBanner('{{ $banner->banner_image_path }}')" class="font-medium text-indigo-600 hover:underline"{{ __('ui_text.preview') }}</a>
@@ -62,27 +69,10 @@
                             <label for="details" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.details') }}</label>
                             <textarea id="details" wire:model="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
-                        <div class="p-2 w-full">
-                            <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Date</label>
-                            <div id="div-date-range" class="flex items-center">
-                                <div class="relative">
-                                    <div class="relative max-w-sm">
-                                        <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-                                    </div>
-                                </div>
-                                <span class="mx-4 text-gray-500">to</span>
-                                <div class="relative">
-                                    <div class="relative max-w-sm">
-                                        <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
 
                         <div class="p-2 w-full">
                             <label for="details_button_url" class="block mb-2 text-sm font-medium text-gray-900">Select an option</label>
-                            <select id="details_button_url" wire:model="details_button_url" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <select id="details_button_url" wire:model="details_button_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option selected value="" >Choose a project</option>
                                 @foreach ($projects as $project)
                                     <option value="{{ $project->id }}">
@@ -90,7 +80,6 @@
                                     </option>
                                 @endforeach
                             </select>
-                            @error('details_button_url') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="p-2 w-full">
                             <label for="donation_button_url" class="block mb-2 text-sm font-medium text-gray-900">Donation URL</label>
@@ -98,9 +87,8 @@
                                 <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
                                     {{ "https://toyyibpay.com/" }}
                                 </span>
-                                <input type="text" id="donation_button_url" wire:model="donation_button_url" required lowercase class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <input type="text" id="donation_button_url" wire:model="donation_button_url" lowercase class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
-                            @error('donation_button_url') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                         {{-- <div class="p-2 w-full">
                             <label for="banner_file_name" class="block mb-2 text-sm font-medium text-gray-900">Banner File Name <span class="text-red-600">*</span></label>
@@ -142,7 +130,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
+                            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
                         </div>
                     </form>
                 </div>
@@ -201,7 +189,7 @@
                         </div>
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
+                            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.upload') }}</button>
                         </div>
                     </form>
                 </div>
@@ -237,25 +225,24 @@
                             <textarea id="details" wire:model="details" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="p-2 w-full">
-                            <label for="div-date-range" class="block mb-2 text-sm font-medium text-gray-900">Date</label>
-                            <div id="div-date-range" class="flex items-center">
-                                <div class="relative">
-                                    <div class="relative max-w-sm">
-                                        <input id="date-start" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-                                    </div>
-                                </div>
-                                <span class="mx-4 text-gray-500">to</span>
-                                <div class="relative">
-                                    <div class="relative max-w-sm">
-                                        <input id="date-end" datepicker-format="dd/mm/yyyy" type="date" wire:model="date_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5">
-                                    </div>
-                                </div>
-                            </div>
+                            <label for="details_button_url" class="block mb-2 text-sm font-medium text-gray-900">Select an option</label>
+                            <select id="details_button_url" wire:model="details_button_url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option selected value="" >Choose a project</option>
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->id }}">
+                                        {{ $project->projectable?->title }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="p-2 w-full">
-                            <label for="banner_file_name" class="block mb-2 text-sm font-medium text-gray-900">Banner File Name <span class="text-red-600">*</span></label>
-                            <input type="text" id="banner_file_name" wire:model="banner_file_name" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                            @error('banner_file_name') <span class="text-red-500">{{ $message }}</span> @enderror
+                            <label for="donation_button_url" class="block mb-2 text-sm font-medium text-gray-900">Donation URL</label>
+                            <div class="flex">
+                                <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
+                                    {{ "https://toyyibpay.com/" }}
+                                </span>
+                                <input type="text" id="donation_button_url" wire:model="donation_button_url" lowercase class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
                         </div>
                         <div class="p-2 w-full">
                             <label for="div-donation-needed" class="block mb-2 text-sm font-medium text-gray-900">Featured <span class="text-red-600">*</span></label>
@@ -274,7 +261,7 @@
 
                         <div class="flex justify-between mt-10">
                             <div></div>
-                            <button type="submit" wire:loading.attr="disabled" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.save') }}</button>
+                            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded mr-2">{{ __('ui_text.save') }}</button>
                         </div>
                     </form>
                 </div>

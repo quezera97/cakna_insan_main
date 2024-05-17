@@ -12,11 +12,11 @@
             <hr><br>
             <div class="flex flex-wrap -m-4">
                 @if (isset($project->projectable?->pastProjectImages))
-                    @foreach ($project->projectable?->pastProjectImages as $key => $projectImage)
+                    @foreach ($project->projectable?->pastProjectImages->where('reference_type', $project->projectable_type) as $key => $projectImage)
                         @livewire('admin.images.images-edit', ['projectImage' => $projectImage])
                     @endforeach
                 @elseif (isset($project->projectable?->incomingProjectImages))
-                    @foreach ($project->projectable?->incomingProjectImages as $key => $projectImage)
+                    @foreach ($project->projectable?->incomingProjectImages->where('reference_type', $project->projectable_type) as $key => $projectImage)
                         @livewire('admin.images.images-edit', ['projectImage' => $projectImage])
                     @endforeach
                 @endif

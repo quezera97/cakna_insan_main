@@ -22,8 +22,6 @@ class BannerEdit extends Component
     public $title;
     public $subtitle;
     public $details;
-    public $date_from;
-    public $date_to;
     public $featured;
     public $banner_file_name;
     public $details_button_url;
@@ -85,8 +83,6 @@ class BannerEdit extends Component
         $this->title = null;
         $this->subtitle = null;
         $this->details = null;
-        $this->date_from = null;
-        $this->date_to = null;
         $this->featured = null;
         $this->banner_file_name = null;
         $this->details_button_url = null;
@@ -128,8 +124,6 @@ class BannerEdit extends Component
         $this->title = $this->selectedBanner->title;
         $this->subtitle = $this->selectedBanner->subtitle;
         $this->details = $this->selectedBanner->details;
-        $this->date_from = $this->selectedBanner->date_from;
-        $this->date_to = $this->selectedBanner->date_to;
         $this->featured = $this->selectedBanner->is_featured;
         $this->banner_file_name = $this->selectedBanner->banner_file_name;
         $this->details_button_url = $this->selectedBanner->details_button_url;
@@ -204,8 +198,6 @@ class BannerEdit extends Component
                 'title' => $this->title ?? null,
                 'subtitle' => $this->subtitle ?? null,
                 'details' => $this->details ?? null,
-                'date_from' => $this->date_from ?? null,
-                'date_to' => $this->date_to ?? null,
                 'is_featured' => $this->featured ?? 0,
                 'banner_file_name' => $this->banner_file_name ?? null,
                 'banner_image_path' => $this->banner_image_path ?? null,
@@ -305,8 +297,6 @@ class BannerEdit extends Component
                 'title' => $this->title ?? null,
                 'subtitle' => $this->subtitle ?? null,
                 'details' => $this->details ?? null,
-                'date_from' => $this->date_from ?? null,
-                'date_to' => $this->date_to ?? null,
                 'is_featured' => $this->featured ?? 0,
                 'banner_file_name' => $this->banner_file_name ?? null,
                 'banner_image_path' => $this->banner_image_path ?? null,

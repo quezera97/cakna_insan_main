@@ -13,7 +13,18 @@
                             <div class="p-6">
                                 <h1 class="title-font text-lg font-medium text-gray-900">{{ $news->title }}</h1>
                                 <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-3">{{ $news->subtitle }}</h2>
-                                <p class="leading-relaxed mb-3">{{ $news->details }}</p>
+                                @auth
+                                    <button
+                                        class="w-24 open-modal bg-indigo-500 hover:bg-indigo-600 text-white font-bold p-2 rounded-full mr-2"
+                                        data-id="{{ $news->id }}"
+                                        data-model="{{ $news::class }}"
+                                        data-details="{{ $news->details }}"
+                                        data-column="details"
+                                        aria-label="Edit">
+                                        @include('livewire.components.svg-edit')
+                                    </button>
+                                @endauth
+                                <p class="leading-relaxed mb-3">{!! $news->details !!}</p>
                                 <div class="flex items-center flex-wrap ">
                                     <a href="{{ $news->related_url }}" target="_blank" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
                                         {{ __('ui_text.read_more') }}
@@ -39,4 +50,7 @@
             </div>
         </div>
     </section>
+    @auth
+        @include('livewire.components.rich-text-editor')
+    @endauth
 @endsection

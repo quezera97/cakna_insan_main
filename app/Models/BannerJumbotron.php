@@ -14,8 +14,6 @@ class BannerJumbotron extends Model
         'title',
         'subtitle',
         'details',
-        'date_from',
-        'date_to',
         'is_featured',
         'banner_file_name',
         'banner_image_path',

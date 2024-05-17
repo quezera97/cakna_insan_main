@@ -26,12 +26,20 @@
                     <div class="relative flex justify-center items-center h-full overflow-hidden">
                         @foreach ($bannerJumbotrons as $banner)
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <a href="{{ route('project_detail', $banner->details_button_url) }}">
+                                @if ($banner->details_button_url)
+                                    <a href="{{ route('project_detail', $banner->details_button_url) }}">
+                                        <img src="{{ asset('storage/'.$banner->banner_image_path) }}" class="absolute inset-0 w-full h-full" alt="...">
+                                    </a>
+                                @else
                                     <img src="{{ asset('storage/'.$banner->banner_image_path) }}" class="absolute inset-0 w-full h-full" alt="...">
-                                </a>
+                                @endif
                                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 flex space-x-4">
-                                    <a href="{{ 'https://toyyibpay.com/'.$banner->donation_button_url }}" target="__blank" class="flex items-center justify-center text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.infaq_now') }}</a>
-                                    <a href="{{ route('project_detail', $banner->details_button_url) }}" class="flex items-center justify-center text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">{{ __('ui_text.details') }}</a>
+                                    @if ($banner->donation_button_url)
+                                        <a href="{{ 'https://toyyibpay.com/'.$banner->donation_button_url }}" target="__blank" class="flex items-center justify-center text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.infaq_now') }}</a>
+                                    @endif
+                                    @if ($banner->details_button_url)
+                                        <a href="{{ route('project_detail', $banner->details_button_url) }}" class="flex items-center justify-center text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">{{ __('ui_text.details') }}</a>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach

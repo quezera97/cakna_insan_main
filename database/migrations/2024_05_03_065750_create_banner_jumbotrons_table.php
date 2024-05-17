@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();
             $table->longText('details')->nullable();
-            $table->date('date_from')->nullable();
-            $table->date('date_to')->nullable();
             $table->boolean('is_featured')->nullable();
             $table->string('banner_file_name')->nullable()->unique();
             $table->string('banner_image_path')->nullable();
