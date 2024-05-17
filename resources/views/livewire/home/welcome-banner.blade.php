@@ -37,7 +37,9 @@
                                     @if ($banner->donation_button_url)
                                         <a href="{{ 'https://toyyibpay.com/'.$banner->donation_button_url }}" target="__blank" class="flex items-center justify-center text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.infaq_now') }}</a>
                                     @endif
-                                    @if ($banner->details_button_url)
+                                    @if ($banner->details_button_url && (is_int($banner->details_button_url) || is_numeric($details_button_url)))
+                                        <a href="{{ route('project_detail', $banner->project) }}" class="flex items-center justify-center text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">{{ __('ui_text.details') }}</a>
+                                    @else
                                         <a href="{{ route('project_detail', $banner->details_button_url) }}" class="flex items-center justify-center text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">{{ __('ui_text.details') }}</a>
                                     @endif
                                 </div>

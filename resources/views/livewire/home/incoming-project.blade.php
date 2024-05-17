@@ -28,7 +28,7 @@
                                     <p class="leading-relaxed mb-3">{!! $project->projectable?->details !!}</p>
                                     <div class="flex items-center flex-wrap justify-between my-10">
                                         <a href="{{ 'https://toyyibpay.com/'.$project->donationDetail?->donation_url }}" target="__blank" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-sm">{{ __('ui_text.infaq_now') }}</a>
-                                        <a href="{{ route('project_detail', $project) }}" target="_blank" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+                                        <a href="{{ route('project_detail', $project) }}" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
                                             {{ __('ui_text.read_more') }}
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M5 12h14"></path>

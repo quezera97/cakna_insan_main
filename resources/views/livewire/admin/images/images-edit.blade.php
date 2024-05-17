@@ -6,10 +6,10 @@
         <h2 class="text-gray-900 title-font text-lg font-medium">{{ $projectImage->title }}</h2>
         <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $projectImage->caption }}</h3>
     </div>
-    <div class="flex justify-between my-5 text-center">
-        <button wire:click="previewSelectedImage" class="mx-auto text-white bg-sky-500 border-0 py-2 px-8 focus:outline-none hover:bg-sky-600 rounded text-lg">{{ __('ui_text.preview') }}</button>
-        <button wire:click="editSelectedImage('{{ $projectImage->id }}')" class="mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">{{ __('ui_text.edit') }}</button>
-        <button wire:click="openConfirmationModal('deleteImages', {{ $projectImage->id }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">{{ __('ui_text.delete') }}</button>
+    <div class="my-5 text-center">
+        <button wire:click="previewSelectedImage" class="mx-auto text-white bg-sky-500 border-0 py-2 px-3 focus:outline-none hover:bg-sky-600 rounded text-sm">{{ __('ui_text.preview') }}</button>
+        <button wire:click="editSelectedImage('{{ $projectImage->id }}')" class="mx-auto text-white bg-indigo-500 border-0 py-2 px-3 focus:outline-none hover:bg-indigo-600 rounded text-sm">{{ __('ui_text.edit') }}</button>
+        <button wire:click="openConfirmationModal('deleteImages', {{ $projectImage->id }})" class="mx-auto text-white bg-red-500 border-0 py-2 px-3 focus:outline-none hover:bg-red-600 rounded text-sm">{{ __('ui_text.delete') }}</button>
     </div>
 
     @if ($previewImage)

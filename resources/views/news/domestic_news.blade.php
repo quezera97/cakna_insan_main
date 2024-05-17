@@ -8,7 +8,11 @@
                     <div class="p-4 md:w-1/3">
                         <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                             @if($news->newsImage->where('type', 'main')->isNotEmpty())
-                                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{ asset('storage/'.$news->newsImage->where('type', 'main')[0]->image_path) }}" alt="blog">
+                                @php
+                                    $mainImage = $news->newsImage->where('type', 'main')->first();
+                                @endphp
+
+                                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{ asset('storage/'.$mainImage->image_path) }}" alt="blog">
                             @endif
                             <div class="p-6">
                                 <h1 class="title-font text-lg font-medium text-gray-900">{{ $news->title }}</h1>

@@ -196,6 +196,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Vinkla\Hashids\HashidsServiceProvider::class,
+
     ],
 
     /*
@@ -212,4 +214,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+
+    'Hashids' => Vinkla\Hashids\Facades\Hashids::class
 ];
