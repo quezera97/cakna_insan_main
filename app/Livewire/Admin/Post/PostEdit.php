@@ -6,9 +6,12 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PostEdit extends Component
 {
+    use WithPagination;
+
     public $posts;
     public $selectedPost;
 
@@ -70,9 +73,16 @@ class PostEdit extends Component
         $this->posts = Post::orderBy('created_at', 'desc')->get();
     }
 
+    public function postRender()
+    {
+        return Post::paginate(5);
+    }
+
     public function render()
     {
-        return view('livewire.admin.post.post-edit');
+        return view('livewire.admin.post.post-edit', [
+            'paginatedPost' => $this->postRender()
+        ]);
     }
 
     //create new post
@@ -120,6 +130,9 @@ class PostEdit extends Component
         $this->validate([
             'title' => 'required|string|min:6',
             'featured' => 'required|unique:posts',
+        ],[],[
+            'title' => __('ui_text.title'),
+            'featured' => __('ui_text.featured'),
         ]);
 
         try {
@@ -154,6 +167,9 @@ class PostEdit extends Component
                 'required',
                 Rule::unique('posts')->ignore($this->selectedPost->id),
             ],
+        ],[],[
+            'title' => __('ui_text.title'),
+            'featured' => __('ui_text.featured'),
         ]);
 
         try {

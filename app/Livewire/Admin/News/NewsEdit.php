@@ -68,6 +68,8 @@ class NewsEdit extends Component
                 'min:6',
                 Rule::unique('news_details')->ignore($newsDetail->id),
             ],
+        ],[],[
+            'title' => __('ui_text.title'),
         ]);
 
         $currentNewsPath = public_path('storage/news/'.$newsDetail->folder_path);

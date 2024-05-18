@@ -30,7 +30,7 @@
                                         <span class="font-medium text-lg text-gray-800 title-font leading-none">{{ $dayOfMonth }}</span>
                                     </div>
                                     <div class="flex-grow pl-6">
-                                        <h2 class="tracking-widest text-xs title-font font-medium text-indigo-500 mb-1">{{ ucwords(str_replace('_', ' ', $news->type_of_news)) .' '. 'News' }}</h2>
+                                        <h2 class="tracking-widest text-xs title-font font-medium text-indigo-500 mb-1">{{ ucwords(str_replace('_', ' ', $news->type_of_news)) }}</h2>
                                         <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ $news->title }}</h1>
                                         <p class="leading-relaxed mb-5">{{ $news->subtitle }}</p>
                                         <a class="inline-flex items-center">

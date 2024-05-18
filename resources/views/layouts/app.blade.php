@@ -41,19 +41,6 @@
             @include('layouts.header')
         @endguest
 
-
-        {{-- <div x-data="{ showSummernote: false }">
-            <div x-show="showSummernote">
-                @livewire('components.rich-text-editor')
-            </div>
-        </div> --}}
-
-        {{-- callbacks: {
-            onChange: function (contents, $editable) {
-                 @this.set("{{ '$wireModel' }}", contents);
-            }
-        } --}}
-
         <div class="flex flex-col min-h-screen">
             <main class="flex-grow">
                 @yield('content')

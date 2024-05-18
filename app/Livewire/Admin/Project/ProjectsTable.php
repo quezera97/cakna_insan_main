@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class ProjectsTable extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     public $listOfProjects;
     public $incomingProject = IncomingProject::class;
@@ -148,8 +149,15 @@ class ProjectsTable extends Component
         }
     }
 
+    public function projectRender()
+    {
+        return Project::paginate(5);
+    }
+
     public function render()
     {
-        return view('livewire.admin.project.projects-table');
+        return view('livewire.admin.project.projects-table', [
+            'paginatedProject' => $this->projectRender()
+        ]);
     }
 }

@@ -41,7 +41,7 @@
                                         {{ \Carbon\Carbon::parse($news->date)->format('d M Y') }}
                                     </span>
                                     <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                                        {{ $news->author }}
+                                        {{__('ui_text.author').': '. $news->author }}
                                     </span>
                                 </div>
                             </div>

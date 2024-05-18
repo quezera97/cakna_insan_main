@@ -8,7 +8,7 @@
                     <div class="relative w-full p-4">
                         <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                             <div class="flex items-center mb-3">
-                                <h2 class="text-gray-900 text-lg title-font font-medium">No Images</h2>
+                                <h2 class="text-gray-900 text-lg title-font font-medium">{{ __('ui_text.no_images') }}</h2>
                             </div>
                         </div>
                     </div>
@@ -26,9 +26,9 @@
         <div class="p-4 w-full">
             <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                 <div class="flex items-center mb-3">
-                    <h2 class="text-gray-900 text-lg title-font font-medium">No Poster</h2>
+                    <h2 class="text-gray-900 text-lg title-font font-medium">{{ __('ui_text.no_images') }}</h2>
                 </div>
-                <a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">Add Project</a>
+                <a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.add').' '.__('ui_text.projects') }}</a>
             </div>
         </div>
     @endforelse
@@ -38,7 +38,7 @@
             <div class="flex items-center justify-center min-h-screen">
                 <div class="bg-white w-1/2 h-auto rounded shadow-lg p-8">
                     <div class="flex justify-between items-center mb-4">
-                        <label for="upload-poster" class="text-xl font-bold">Upload Poster</label>
+                        <label for="upload-poster" class="text-xl font-bold">{{ __('ui_text.upload') }}</label>
                         <button wire:click="closeUploadPosterModal" class="text-gray-600 hover:text-gray-800 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -51,14 +51,14 @@
                             <input id="upload-poster" type="file" wire:model="poster_image_upload" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300" required>
                             @error('poster_image_upload') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
-                        <div class="p-2 w-full mt-5" wire:loading wire:target="poster_image_upload">Uploading...</div>
+                        <div class="p-2 w-full mt-5" wire:loading wire:target="poster_image_upload">{{ __('ui_text.uploading') }}...</div>
                         <div class="p-2 w-full mt-5">
                             @if ($poster_image_upload)
-                                Photo Preview:
+                                {{ __('ui_text.preview') }}:
                                 <img src="{{ $poster_image_upload->temporaryUrl() }}">
                             @else
                                 @if (Illuminate\Support\Facades\File::exists('storage/poster/'.$folder_path.'.jpg'))
-                                    Photo Uploaded:
+                                    {{ __('ui_text.uploaded') }}:
                                     <img src="{{ asset('storage/poster/'.$folder_path.'.jpg') }}">
                                 @endif
                             @endif

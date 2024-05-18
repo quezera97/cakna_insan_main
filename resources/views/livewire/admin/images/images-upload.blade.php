@@ -7,23 +7,23 @@
                     <div class="w-1/4 mx-auto">
                         <input id="upload-main-images" type="file" wire:model="imagesUpload.uploaded_images" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300" multiple required>
                         @error('imagesUpload.uploaded_images.*') <span class="text-red-500">{{ $message }}</span> @enderror
-                        <div wire:loading wire:target="imagesUpload.uploaded_images">Uploading...</div>
+                        <div wire:loading wire:target="imagesUpload.uploaded_images">{{ __('ui_text.uploading') }}...</div>
                     </div>
-                    <div class="p-2 w-3/4 mx-auto flex flex-col block object-cover object-center rounded mt-5">
+                    <div class="p-2 w-3/4 mx-auto flex flex-col object-cover object-center rounded mt-5">
                         @foreach($imagesUpload['uploaded_images'] ?? [] as $key => $image)
                             @if ($image)
-                                Photo Preview:
+                                {{ __('ui_text.preview') }}:
                                 <div class="flex w-full">
                                     <div class="w-1/2">
                                         <img class="mb-3 h-96 w-96" src="{{ $image->temporaryUrl() }}">
                                     </div>
                                     <div class="p-2 w-1/2">
                                         <div class="mb-5">
-                                            <label for="title-{{ $key }}" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
+                                            <label for="title-{{ $key }}" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.title') }}</label>
                                             <input type="text" id="title-{{ $key }}" wire:model="imagesUpload.title.{{ $key }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                         <div>
-                                            <label for="caption-{{ $key }}" class="block mb-2 text-sm font-medium text-gray-900">Caption</label>
+                                            <label for="caption-{{ $key }}" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.caption') }}</label>
                                             <textarea id="caption-{{ $key }}" wire:model="imagesUpload.caption.{{ $key }}" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                                         </div>
                                     </div>

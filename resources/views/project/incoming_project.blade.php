@@ -7,7 +7,7 @@
                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">{{ strtoupper(__('ui_text.current_projects')) }}</h1>
                 <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">- Mengambil Berat & Peduli Sesama Insan -</h2>
             </div>
-            <div class="flex flex-wrap -m-4">
+            <div class="flex flex-wrap -m-2">
                 @forelse ($incomingProjects as $key => $project)
                     <div class="p-4 lg:w-1/3 md:w-1/2">
                         <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">

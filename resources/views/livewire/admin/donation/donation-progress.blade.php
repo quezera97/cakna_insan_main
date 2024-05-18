@@ -3,24 +3,24 @@
         <thead class="text-xs uppercase bg-gray-700">
             <tr>
                 <th scope="col" class="w-2/6 px-6 py-5">
-                    Project
+                    {{ __('ui_text.projects') }}
                 </th>
                 <th scope="col" class="w-2/6 px-6 py-5">
-                    Url
+                    {{ __('ui_text.donation_link') }}
                 </th>
                 <th scope="col" class="w-2/6 px-6 py-5 text-center">
-                    Action
+                    {{ __('ui_text.action') }}
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr class="bg-white border-b border-gray-400">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Add Donation Detail
+                    {{ __('ui_text.add').' '.__('ui_text.donation_details') }}
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"></th>
                 <td class="px-6 py-4 flex flex-col space-y-3 items-center">
-                    <a href="{{ route('donation.donation-detail') }}" class="font-medium text-blue-600 hover:underline">Add</a>
+                    <a href="{{ route('donation.donation-detail') }}" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.add') }}</a>
                 </td>
             </tr>
             @foreach ($donationDetails ?? [] as $donation)
@@ -32,7 +32,7 @@
                         {{ $donation->project?->donationDetail?->donation_url }}
                     </th>
                     <td class="px-6 py-4 flex flex-col space-y-3 items-center">
-                        <a href="#" wire:click="updateDonationProgress('{{ $donation->id }}')" class="font-medium text-blue-600 hover:underline">Update Donation Progress</a>
+                        <a href="#" wire:click="updateDonationProgress('{{ $donation->id }}')" class="font-medium text-blue-600 hover:underline">{{__('ui_text.edit').' '.__('ui_text.donation_progress') }}</a>
                     </td>
                 </tr>
             @endforeach

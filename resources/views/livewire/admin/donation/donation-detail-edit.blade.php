@@ -3,27 +3,27 @@
         <thead class="text-xs uppercase bg-gray-700">
             <tr>
                 <th scope="col" class="w-2/6 px-6 py-5">
-                    Project
+                    {{ __('ui_text.projects') }}
                 </th>
                 <th scope="col" class="w-2/6 px-6 py-5">
-                    Url
+                    {{ __('ui_text.donation_link') }}
                 </th>
                 <th scope="col" class="w-2/6 px-6 py-5 text-center">
-                    Action
+                    {{ __('ui_text.action') }}
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr class="bg-white border-b border-gray-400">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Add Donation Detail
+                    {{ __('ui_text.add').' '.__('ui_text.donation_details') }}
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"></th>
                 <td class="px-6 py-4 flex flex-col space-y-3 items-center">
-                    <a href="#" wire:click="openDonationDetailModal('', 'create')" class="font-medium text-blue-600 hover:underline">Add</a>
+                    <a href="#" wire:click="openDonationDetailModal('', 'create')" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.add') }}</a>
                 </td>
             </tr>
-            @foreach ($projects ?? [] as $project)
+            @foreach ($paginatedDonationDetail ?? [] as $project)
                 @if (isset($project->donationDetail))
                     <tr class="bg-white border-b border-gray-400">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
@@ -33,14 +33,17 @@
                             {{ $project->donationDetail?->donation_url }}
                         </th>
                         <td class="px-6 py-4 flex flex-col space-y-3 items-center">
-                            <a href="#" wire:click="openDonationDetailModal('{{ $project->id }}', 'edit')" class="font-medium text-blue-600 hover:underline">Edit</a>
-                            <a href="#" wire:click="openConfirmationModal('deleteUrl', {{ $project->id }})" class="font-medium text-red-600 hover:underline">Delete</a>
+                            <a href="#" wire:click="openDonationDetailModal('{{ $project->id }}', 'edit')" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.edit') }}</a>
+                            <a href="#" wire:click="openConfirmationModal('deleteUrl', {{ $project->id }})" class="font-medium text-red-600 hover:underline">{{ __('ui_text.delete') }}</a>
                         </td>
                     </tr>
                 @endif
             @endforeach
         </tbody>
     </table>
+    <div class="mt-4">
+        {{ $paginatedDonationDetail->links() }}
+    </div>
 
     @if ($showDonationDetailModal)
         <div class="bg-gray-100 bg-opacity-75 fixed z-10 inset-0 overflow-y-auto">
@@ -57,9 +60,9 @@
                     <form wire:submit.prevent="saveDonationDetail">
                         @csrf
                         <div class="p-2 w-full">
-                            <label for="project" class="block mb-2 text-sm font-medium text-gray-900">Select an option <span class="text-red-600">*</span></label>
+                            <label for="project" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.select_an_option') }} <span class="text-red-600">*</span></label>
                             <select id="project" wire:model="project" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <option selected value="" >Choose a project</option>
+                                <option selected value="" >{{ __('ui_text.choose_a_project') }}</option>
                                 @foreach ($projects as $project)
                                     <option value="{{ $project->id }}">
                                         {{ $project->projectable?->title }}
@@ -69,7 +72,7 @@
                             @error('project') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                         <div class="p-2 w-full">
-                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Donation URL <span class="text-red-600">*</span></label>
+                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.donation_link') }} <span class="text-red-600">*</span></label>
                             <div class="flex">
                                 <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md">
                                     {{ "https://toyyibpay.com/" }}

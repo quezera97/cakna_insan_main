@@ -100,6 +100,8 @@ class ProjectsBanner extends Component
     {
         $this->validate([
             'image_upload' => 'required|image|max:5120',
+        ],[],[
+            'image_upload' => __('ui_text.images'),
         ]);
 
         $bannerImageUpload = (object) $this->image_upload;

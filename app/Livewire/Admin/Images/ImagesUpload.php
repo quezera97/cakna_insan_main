@@ -56,7 +56,7 @@ class ImagesUpload extends Component
         $this->validate([
             'imagesUpload.uploaded_images.*' => 'required|image|max:5120',
         ],[],[
-            'imagesUpload.uploaded_images.*' => 'Image Uploaded',
+            'imagesUpload.uploaded_images.*' => __('ui_text.images'),
         ]);
 
         $uploadedImages = (object)$this->imagesUpload['uploaded_images'];

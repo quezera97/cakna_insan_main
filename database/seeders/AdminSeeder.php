@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DonorDetail;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -26,6 +27,12 @@ class AdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('87654321'),
+        ]);
+
+        DonorDetail::create([
+            'name' => 'Cakna Insan Malaysia',
+            'email' => 'caknainsanmalaysia@gmail.com',
+            'phone_no' => '60123903309',
         ]);
     }
 }

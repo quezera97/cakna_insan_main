@@ -32,7 +32,7 @@
             <div class="flex items-center justify-center min-h-screen">
                 <div class="bg-white w-1/2 h-auto rounded shadow-lg p-8">
                     <div class="flex justify-between items-center mb-4">
-                        <label for="edit-image-details" class="text-xl font-bold">Edit Image Details</label>
+                        <label for="edit-image-details" class="text-xl font-bold">{{ __('ui_text.edit').' '.__('ui_text.images') }}</label>
                         <button wire:click="closeEditSelectedImage" class="text-gray-600 hover:text-gray-800 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -42,11 +42,11 @@
                     <form wire:submit.prevent="edit('{{ $projectImage->id }}')">
                         @csrf
                         <div class="mb-5">
-                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
+                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.title') }}</label>
                             <input type="text" id="title" wire:model="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div>
-                            <label for="caption" class="block mb-2 text-sm font-medium text-gray-900">Caption</label>
+                            <label for="caption" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.caption') }}</label>
                             <textarea id="caption" wire:model="caption" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="flex justify-between mt-10">

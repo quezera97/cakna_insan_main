@@ -6,9 +6,12 @@ use App\Models\DonationDetail;
 use App\Models\Project;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DonationDetailEdit extends Component
 {
+    use WithPagination;
+
     public $donation_url;
     public $project;
     public $projectWithDonationDetail;
@@ -90,9 +93,16 @@ class DonationDetailEdit extends Component
         $this->projects = Project::with(['projectable', 'donationDetail'])->orderBy('created_at', 'desc')->get();
     }
 
+    public function donationDetailRender()
+    {
+        return Project::paginate(5);
+    }
+
     public function render()
     {
-        return view('livewire.admin.donation.donation-detail-edit');
+        return view('livewire.admin.donation.donation-detail-edit', [
+            'paginatedDonationDetail' => $this->donationDetailRender()
+        ]);
     }
 
     public function saveDonationDetail()
@@ -100,6 +110,9 @@ class DonationDetailEdit extends Component
         $this->validate([
             'project' => 'required',
             'donation_url' => 'required|string',
+        ],[],[
+            'project' => __('ui_text.projects'),
+            'donation_url' => __('ui_text.donation_link'),
         ]);
 
         try {

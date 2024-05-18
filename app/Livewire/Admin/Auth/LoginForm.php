@@ -36,9 +36,12 @@ class LoginForm extends Component
 
     public function save()
     {
-        $validatedData = $this->validate([
+        $this->validate([
             'email' => 'required|string|email',
             'password' => 'required',
+        ],[],[
+            'email' => __('ui_text.email'),
+            'password' => __('ui_text.password'),
         ]);
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {

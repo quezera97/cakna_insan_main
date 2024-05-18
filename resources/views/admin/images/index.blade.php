@@ -32,7 +32,7 @@
                             @empty
                                 <tr>
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ __('ui_text.no_projects') }}</th>
-                                    <td class="px-6 py-4 flex flex-col space-y-3 items-center"><a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">Add</a></td>
+                                    <td class="px-6 py-4 flex flex-col space-y-3 items-center"><a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.add') }}</a></td>
                                 </tr>
                             @endforelse
                         </tbody>

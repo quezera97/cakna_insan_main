@@ -83,6 +83,8 @@ class PosterEdit extends Component
 
         $this->validate([
             'poster_image_upload' => 'required|image|max:5120',
+        ],[],[
+            'poster_image_upload' => __('ui_text.images'),
         ]);
 
         $folderPath = strtolower($this->folder_path);

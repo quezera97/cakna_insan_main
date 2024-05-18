@@ -45,6 +45,12 @@ class JoinUsForm extends Component
             'phone' => 'string|min:6',
             'help_needed' => 'nullable',
             'expertise' => 'string|max:500',
+        ],[],[
+            'name' => __('ui_text.name'),
+            'email' => __('ui_text.email'),
+            'phone' => __('ui_text.phone_no'),
+            'help_needed' => __('ui_text.help_needed'),
+            'expertise' => __('ui_text.expertise'),
         ]);
 
         $this->help_needed = json_encode($this->help_needed);

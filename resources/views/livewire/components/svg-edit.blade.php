@@ -1,4 +1,4 @@
-<div class="flex flex-row">
+<div class="flex flex-row justify-center">
     <span class="text-xs mr-2">{{ __('ui_text.edit') }}</span>
     <svg fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         width="15px" height="15px" viewBox="0 0 494.936 494.936"

@@ -103,6 +103,8 @@ class ProjectsEdit extends Component
                 'min:6',
                 Rule::unique('projects')->ignore($project->id),
             ],
+        ],[],[
+            'title' => __('ui_text.title'),
         ]);
 
         $currentFolderPath = public_path('storage/projects/'.$project->folder_path);

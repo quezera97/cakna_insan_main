@@ -8,7 +8,7 @@
                     <div class="relative w-full p-4">
                         <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                             <div class="flex items-center mb-3">
-                                <h2 class="text-gray-900 text-lg title-font font-medium">No Banner</h2>
+                                <h2 class="text-gray-900 text-lg title-font font-medium">{{ __('ui_text.no_banner') }}</h2>
                             </div>
                         </div>
                     </div>
@@ -31,9 +31,9 @@
         <div class="p-4 w-full">
             <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">
                 <div class="flex items-center mb-3">
-                    <h2 class="text-gray-900 text-lg title-font font-medium">No Banner</h2>
+                    <h2 class="text-gray-900 text-lg title-font font-medium">{{ __('ui_text.no_banner') }}</h2>
                 </div>
-                <a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">Add Project</a>
+                <a href="{{ route('project.add') }}" class="font-medium text-blue-600 hover:underline">{{ __('ui_text.add').' '.__('ui_text.projects') }}</a>
             </div>
         </div>
     @endforelse
@@ -43,7 +43,7 @@
             <div class="flex items-center justify-center min-h-screen">
                 <div class="bg-white w-1/2 h-auto rounded shadow-lg p-8">
                     <div class="flex justify-between items-center mb-4">
-                        <label for="upload-poster" class="text-xl font-bold">Upload Banner</label>
+                        <label for="upload-poster" class="text-xl font-bold">{{ __('ui_text.upload') }}</label>
                         <button wire:click="closeUploadBannerModal" class="text-gray-600 hover:text-gray-800 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -56,19 +56,19 @@
                             <input id="upload-poster" type="file" wire:model="image_upload" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300" required>
                             @error('image_upload') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
-                        <div class="p-2 w-full mt-5" wire:loading wire:target="image_upload">Uploading...</div>
+                        <div class="p-2 w-full mt-5" wire:loading wire:target="image_upload">{{ __('ui_text.uploading') }}...</div>
                         <div class="p-2 w-full mt-5">
                             @if ($image_upload)
-                                Photo Preview:
+                                {{ __('ui_text.preview') }}:
                                 <img src="{{ $image_upload->temporaryUrl() }}">
                             @endif
                         </div>
                         <div class="p-2 w-full">
-                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
+                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.title') }}</label>
                             <input type="text" id="title" wire:model="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="p-2 w-full">
-                            <label for="caption" class="block mb-2 text-sm font-medium text-gray-900">Caption</label>
+                            <label for="caption" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.caption') }}</label>
                             <textarea id="caption" wire:model="caption" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="flex justify-between mt-10">
@@ -86,7 +86,7 @@
             <div class="flex items-center justify-center min-h-screen">
                 <div class="bg-white w-1/2 h-auto rounded shadow-lg p-8">
                     <div class="flex justify-between items-center mb-4">
-                        <label for="edit-image-details" class="text-xl font-bold">Edit Image Details</label>
+                        <label for="edit-image-details" class="text-xl font-bold">{{ __('ui_text.edit').' '.__('ui_text.images') }}</label>
                         <button wire:click="closeEditSelectedImage" class="text-gray-600 hover:text-gray-800 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -96,11 +96,11 @@
                     <form wire:submit.prevent="edit('{{ $project->id }}')">
                         @csrf
                         <div class="mb-5">
-                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
+                            <label for="title" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.title') }}</label>
                             <input type="text" id="title" wire:model="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div>
-                            <label for="caption" class="block mb-2 text-sm font-medium text-gray-900">Caption</label>
+                            <label for="caption" class="block mb-2 text-sm font-medium text-gray-900">{{ __('ui_text.caption') }}</label>
                             <textarea id="caption" wire:model="caption" style="height: 123px;" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div class="flex justify-between mt-10">

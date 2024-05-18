@@ -63,6 +63,8 @@ class NewsAdd extends Component
 
         $this->validate([
             'title' => 'required|string|min:6|unique:news_details',
+        ],[],[
+            'title' => __('ui_text.title'),
         ]);
 
         try {

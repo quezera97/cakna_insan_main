@@ -6,9 +6,12 @@ use App\Models\NewsDetail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class NewsIndex extends Component
 {
+    use WithPagination;
+
     public $newsDetails = [];
 
     public $showConfirmationModal = false;
@@ -47,9 +50,16 @@ class NewsIndex extends Component
         $this->newsDetails = NewsDetail::orderBy('created_at', 'desc')->get();
     }
 
+    public function newsDetailRender()
+    {
+        return NewsDetail::paginate(5);
+    }
+
     public function render()
     {
-        return view('livewire.admin.news.news-index');
+        return view('livewire.admin.news.news-index', [
+            'paginatedNewsDetail' => $this->newsDetailRender()
+        ]);
     }
 
     public function addNews()

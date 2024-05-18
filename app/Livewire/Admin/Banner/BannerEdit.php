@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class BannerEdit extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     public $bannerJumbotron;
     public $selectedBanner;
@@ -143,13 +144,16 @@ class BannerEdit extends Component
         $this->bannerJumbotron = $bannerJumbotron;
     }
 
-    public $runSummernote;
+    public function bannerRender()
+    {
+        return BannerJumbotron::paginate(5);
+    }
 
     public function render()
     {
-        $this->runSummernote = true;
-
-        return view('livewire.admin.banner.banner-edit');
+        return view('livewire.admin.banner.banner-edit', [
+            'paginatedBannerJumbotron' => $this->bannerRender()
+        ]);
     }
 
     public $previewBanner = false;
@@ -177,10 +181,14 @@ class BannerEdit extends Component
         $this->banner_image_path = '';
 
         $this->validate([
-            'title' => 'required|string',
+            'title' => 'required|unique:banner_jumbotrons|string',
             'banner_file_name' => 'required|min:6|unique:banner_jumbotrons|string',
             'banner_image_upload' => 'required|image|max:5120',
             'featured' => 'required',
+        ],[],[
+            'title' => __('ui_text.title'),
+            'banner_image_upload' => __('ui_text.images'),
+            'featured' => __('ui_text.featured'),
         ]);
 
         $folderPath = strtolower($this->banner_file_name);
@@ -273,6 +281,9 @@ class BannerEdit extends Component
                 Rule::unique('banner_jumbotrons')->ignore($this->selectedBanner->id),
             ],
             'featured' => 'required',
+        ],[],[
+            'title' => __('ui_text.title'),
+            'featured' => __('ui_text.featured'),
         ]);
 
         $folderPath = strtolower($this->banner_file_name);

@@ -81,6 +81,8 @@ class NewsAddImages extends Component
 
             $this->validate([
                 'mainImage.main_image' => 'required|image|max:5120',
+            ],[],[
+                'mainImage.main_image' => __('ui_text.image'),
             ]);
 
             $mainImageUpload = (object) $this->mainImage['main_image'];
@@ -117,6 +119,8 @@ class NewsAddImages extends Component
         elseif($selectedImage == $this->bannerImage['links']){
             $this->validate([
                 'bannerImage.banner_image' => 'required|image|max:5120',
+            ],[],[
+                'mainImage.banner_image' => __('ui_text.image'),
             ]);
 
             $bannerImageUpload = (object) $this->bannerImage['banner_image'];
@@ -154,6 +158,8 @@ class NewsAddImages extends Component
         elseif($selectedImage == $this->otherImages['links']){
             $this->validate([
                 'otherImages.other_images.*' => 'required|image|max:5120',
+            ],[],[
+                'otherImages.other_images.*' => __('ui_text.image'),
             ]);
 
             $otherImagesUpload = $this->otherImages['other_images'];

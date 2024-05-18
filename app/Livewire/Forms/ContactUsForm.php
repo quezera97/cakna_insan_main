@@ -44,6 +44,11 @@ class ContactUsForm extends Component
             'email' => 'required|string|email',
             'organization' => 'string|min:6',
             'message' => 'string|max:500',
+        ],[],[
+            'name' => __('ui_text.name'),
+            'email' => __('ui_text.email'),
+            'organization' => __('ui_text.organisation'),
+            'message' => __('ui_text.message'),
         ]);
 
         try {

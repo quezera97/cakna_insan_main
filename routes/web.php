@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeBanner;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\NotificationSettingController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
@@ -16,7 +17,6 @@ use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\SummernoteController;
 use App\Http\Controllers\DonationDetailController;
 use App\Http\Controllers\LangController;
-use App\Http\Controllers\News\CaknaInsanMalaysia;
 use App\Http\Controllers\News\CaknaInsanMalaysiaNewsController;
 use App\Http\Controllers\News\DomesticNewsController;
 use App\Http\Controllers\News\GlobalNewsController;
@@ -65,8 +65,7 @@ Route::get('/login', [AuthController::class, 'indexLogin'])->name('login');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::post('/summernote', [SummernoteController::class, 'edit'])->name('summernote.edit');
-
+    //exec route
     Route::get('/symlink', function () {
         Artisan::call('storage:link');
     });
@@ -91,6 +90,9 @@ Route::group(['middleware' => 'auth'], function () {
             return 'Symbolic link created successfully.';
         }
     });
+
+    //main route
+    Route::post('/summernote', [SummernoteController::class, 'edit'])->name('summernote.edit');
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -132,4 +134,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/index', 'index')->name('index');
         Route::get('/edit-images/{project}', 'editImages')->name('edit');
     });
+
+    Route::get('/notification-settings', [NotificationSettingController::class, 'index'])->name('notification-settings');
+
 });

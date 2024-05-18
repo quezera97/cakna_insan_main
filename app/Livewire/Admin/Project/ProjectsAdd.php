@@ -77,6 +77,8 @@ class ProjectsAdd extends Component
         $this->validate([
             'title' => 'required|string|min:6|unique:incoming_projects|unique:past_projects',
             'folder_path' => 'required|string|min:6|unique:projects',
+        ],[],[
+            'title' => __('ui_text.title'),
         ]);
 
         try {
