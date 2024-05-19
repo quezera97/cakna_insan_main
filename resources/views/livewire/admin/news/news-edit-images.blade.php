@@ -22,7 +22,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
-                    <img src="{{ asset('storage/'.$selectedNewsImage->image_path) }}" alt="Full Size Image" class="lg:h-auto md:h-auto h-full lg:w-1/2 md:w-1/2 w-full mx-auto">
+                    <img src="{{ asset('storage/'.$selectedNewsImage->image_path) }}" alt="{{ $selectedNewsImage->title }}" class="lg:h-auto md:h-auto h-full lg:w-1/2 md:w-1/2 w-full mx-auto">
                 </div>
             </div>
         </div>

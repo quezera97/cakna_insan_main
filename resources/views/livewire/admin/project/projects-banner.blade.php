@@ -3,7 +3,7 @@
         <div class="p-4 lg:w-1/4 md:w-1/2">
             <div class="h-full flex flex-col items-center text-center">
                 @if ($project->banner?->image_path)
-                    <img alt="Poster {{ $project->banner?->title }}" class="flex-shrink-0 rounded-lg w-full object-cover object-center mb-4" src="{{ asset('storage/'.$project->banner?->image_path) }}">
+                    <img alt="{{ $project->banner?->title }}" class="flex-shrink-0 rounded-lg w-full object-cover object-center mb-4" src="{{ asset('storage/'.$project->banner?->image_path) }}">
                 @else
                     <div class="relative w-full p-4">
                         <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col items-center">

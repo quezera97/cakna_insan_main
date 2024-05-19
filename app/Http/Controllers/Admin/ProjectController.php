@@ -9,9 +9,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('projectable')->orderBy('created_at', 'desc')->get();
-
-        return view('admin.project.index', compact(['projects']));
+        return view('admin.project.index');
     }
 
     public function banner()

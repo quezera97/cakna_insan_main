@@ -32,7 +32,7 @@
                 <div class="flex items-center lg:w-3/5 md:w-1/2 mx-auto m-5 sm:flex-col">
                     <div class="flex flex-col sm:flex-row items-center mb-6">
                         <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full">
-                            <img class="object-cover object-center rounded" alt="hero" src="{{ asset('assets/img/vision.png') }}">
+                            <img class="object-cover object-center rounded" alt="Vision Logo" src="{{ asset('assets/img/vision.png') }}">
                         </div>
                         <div class="flex-grow sm:text-left text-center">
                             <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-2">{{ __('ui_text.vision') }}</h1>
@@ -42,7 +42,7 @@
                     {{-- mission --}}
                     <div class="flex flex-col sm:flex-row items-center">
                         <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full">
-                            <img class="object-cover object-center rounded" alt="hero" src="{{ asset('assets/img/mission.png') }}">
+                            <img class="object-cover object-center rounded" alt="Mission Logo" src="{{ asset('assets/img/mission.png') }}">
                         </div>
                         <div class="flex-grow sm:text-left text-center">
                             <h1 class="sm:text-2xl text-2xl font-medium title-font text-gray-900 mb-2">{{ __('ui_text.mission') }}</h1>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
-                <img alt="sijil" class="w-full lg:h-auto object-cover object-center rounded" src="{{ asset('assets/img/sijil.jpg') }}">
+                <img alt="Certificate" class="w-full lg:h-auto object-cover object-center rounded" src="{{ asset('assets/img/sijil.jpg') }}">
             </div>
         </div>
     </section>

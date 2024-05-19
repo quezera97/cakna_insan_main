@@ -18,7 +18,6 @@ class ProjectsTable extends Component
 {
     use WithFileUploads, WithPagination;
 
-    public $listOfProjects;
     public $incomingProject = IncomingProject::class;
     public $pastProject = PastProject::class;
 
@@ -54,9 +53,16 @@ class ProjectsTable extends Component
         $this->showConfirmationModal = false;
     }
 
-    public function mount($projects)
+    public function projectRender()
     {
-        $this->listOfProjects = $projects;
+        return Project::paginate(5);
+    }
+
+    public function render()
+    {
+        return view('livewire.admin.project.projects-table', [
+            'paginatedProject' => $this->projectRender()
+        ]);
     }
 
     public function editProject(Project $project)
@@ -147,17 +153,5 @@ class ProjectsTable extends Component
             DB::rollback();
             throw $th;
         }
-    }
-
-    public function projectRender()
-    {
-        return Project::paginate(5);
-    }
-
-    public function render()
-    {
-        return view('livewire.admin.project.projects-table', [
-            'paginatedProject' => $this->projectRender()
-        ]);
     }
 }

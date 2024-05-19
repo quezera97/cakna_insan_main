@@ -92,7 +92,7 @@ return [
     'date' => 'Date',
     'author' => 'Author',
     'related_link' => 'Related Link',
-    'place' => 'Place / Tempat',
+    'place' => 'Place',
     'transportation_provided' => 'Transportation Provided',
     'donation_needed' => 'Donation Needed',
     'start_time' => 'Start Time',
@@ -104,6 +104,8 @@ return [
     'notification' => "Notification",
     'send_notification' => "Send Notification",
     'donor' => "Donor",
+    'settings' => "Settings",
+    'has_been_here' => "Has Been Here",
 ];
 
 

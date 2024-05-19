@@ -15,7 +15,11 @@
         </div>
     </div>
 
+    @livewire('home.statistics-details')
+
     @livewire('home.incoming-projects')
+
+    @livewire('home.where-we-helped')
 
     @livewire('home.past-projects')
 @endsection

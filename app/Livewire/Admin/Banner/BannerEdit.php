@@ -15,7 +15,6 @@ class BannerEdit extends Component
 {
     use WithFileUploads, WithPagination;
 
-    public $bannerJumbotron;
     public $selectedBanner;
 
     public $projects;
@@ -138,10 +137,9 @@ class BannerEdit extends Component
         $this->showEditBannerDetailsModal = false;
     }
 
-    public function mount($bannerJumbotron)
+    public function mount()
     {
         $this->projects = Project::with(['projectable', 'donationDetail'])->orderBy('created_at', 'desc')->get();
-        $this->bannerJumbotron = $bannerJumbotron;
     }
 
     public function bannerRender()

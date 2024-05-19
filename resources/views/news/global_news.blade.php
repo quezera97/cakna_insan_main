@@ -13,7 +13,7 @@
                                     $mainImage = $news->newsImage->where('type', 'main')->first();
                                 @endphp
 
-                                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{ asset('storage/'.$mainImage->image_path) }}" alt="blog">
+                                <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{{ asset('storage/'.$mainImage->image_path) }}" alt="{{ $news->title }}">
                             @endif
 
                             <div class="p-6">

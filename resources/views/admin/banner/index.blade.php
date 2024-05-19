@@ -8,7 +8,7 @@
             </div>
 
             <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                @livewire('admin.banner.banner-edit', ['bannerJumbotron' => $bannerJumbotron])
+                @livewire('admin.banner.banner-edit')
             </div>
         </div>
     </section>

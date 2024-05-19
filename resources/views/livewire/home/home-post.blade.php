@@ -1,6 +1,6 @@
 <div>
     @if (!is_null($featuredPost))
-        <section class="text-gray-600 body-font">
+        <section class="text-gray-600 body-font bg-sky-50">
             <div class="container px-10 py-10 mx-auto">
                 <div class="w-full mx-auto text-center">
                     <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 my-5">{{ $featuredPost->title }}</h1>

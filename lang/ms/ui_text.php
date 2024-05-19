@@ -104,4 +104,6 @@ return [
     'notification' => "Notifikasi",
     'send_notification' => "Hantar Notifikasi",
     'donor' => "Penderma",
+    'settings' => "Tetapan",
+    'has_been_here' => "Telah Berada Di Sini",
 ];

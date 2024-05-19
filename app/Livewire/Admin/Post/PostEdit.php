@@ -12,7 +12,6 @@ class PostEdit extends Component
 {
     use WithPagination;
 
-    public $posts;
     public $selectedPost;
 
     public $title;
@@ -66,11 +65,6 @@ class PostEdit extends Component
         }
 
         $this->showConfirmationModal = false;
-    }
-
-    public function mount()
-    {
-        $this->posts = Post::orderBy('created_at', 'desc')->get();
     }
 
     public function postRender()

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Notification;
+namespace App\Livewire\Admin\Settings;
 
 use App\Models\DonorDetail;
 use Illuminate\Support\Facades\DB;
@@ -86,7 +86,7 @@ class NotificationSetting extends Component
 
     public function render()
     {
-        return view('livewire.admin.notification.notification-setting', [
+        return view('livewire.admin.settings.notification-setting', [
             'paginatedDonorDetail' => $this->donorDetailRender()
         ]);
     }

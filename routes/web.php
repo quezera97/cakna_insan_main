@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\HelpedLocationSettingController;
 use App\Http\Controllers\Admin\HomeBanner;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\NewsController;
@@ -136,5 +137,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/notification-settings', [NotificationSettingController::class, 'index'])->name('notification-settings');
+    Route::get('/helped-location-settings', [HelpedLocationSettingController::class, 'index'])->name('helped-location-settings');
 
 });

@@ -3,7 +3,7 @@
         <div class="w-80 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             <a href="#" class="mb-3 flex title-font font-medium items-center md:justify-start justify-center text-white">
                 <div class="bg-white rounded-full p-2">
-                    <img class="h-12 w-12 rounded-full" src="{{ asset('assets/img/logo.png') }}" alt="">
+                    <img class="h-12 w-12 rounded-full" src="{{ asset('assets/img/logo.png') }}" alt="Cakna Insan Malaysia Icon">
                 </div>
                 <div class="flex flex-col">
                   <span class="ml-3 text-xl">CAKNA INSAN MALAYSIA</span>

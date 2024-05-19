@@ -11,6 +11,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
         {{-- <script src="{{ asset('assets/js/tailwind-script.js') }}"></script> --}}
 
@@ -48,7 +49,7 @@
                 {{-- floating button --}}
                 <a id="floating-button" target="__blank" href="https://wa.me/60123903309" class="fixed bottom-0 right-5">
                     <button class="flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                        <img id="whatsapp-icon" class="h-5 mr-2" alt="hero" src="{{ asset('assets/img/chat_whatsapp.png') }}">
+                        <img id="whatsapp-icon" class="h-5 mr-2" alt="Whatsapp Icon" src="{{ asset('assets/img/chat_whatsapp.png') }}">
                         <span>{{ __('ui_text.contact_us') }}</span>
                     </button>
                 </a>
@@ -64,6 +65,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
         @stack('js')
 

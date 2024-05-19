@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\BannerJumbotron;
+use App\Models\LocationCoordinate;
 use Illuminate\Http\Request;
 
-class HomeBanner extends Controller
+class HelpedLocationSettingController extends Controller
 {
     public function index()
     {
-        return view('admin.banner.index');
+        return view('admin.settings.helped-location-index');
     }
 }

@@ -12,8 +12,6 @@ class NewsIndex extends Component
 {
     use WithPagination;
 
-    public $newsDetails = [];
-
     public $showConfirmationModal = false;
 
     public $functionPassed;
@@ -43,11 +41,6 @@ class NewsIndex extends Component
         }
 
         $this->showConfirmationModal = false;
-    }
-
-    public function mount()
-    {
-        $this->newsDetails = NewsDetail::orderBy('created_at', 'desc')->get();
     }
 
     public function newsDetailRender()

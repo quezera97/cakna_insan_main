@@ -28,10 +28,10 @@
                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                                 @if ($banner->details_button_url)
                                     <a href="{{ route('project_detail', $banner->details_button_url) }}">
-                                        <img src="{{ asset('storage/'.$banner->banner_image_path) }}" class="absolute inset-0 w-full h-full" alt="...">
+                                        <img src="{{ asset('storage/'.$banner->banner_image_path) }}" class="absolute inset-0 w-full h-full" alt="Banner">
                                     </a>
                                 @else
-                                    <img src="{{ asset('storage/'.$banner->banner_image_path) }}" class="absolute inset-0 w-full h-full" alt="...">
+                                    <img src="{{ asset('storage/'.$banner->banner_image_path) }}" class="absolute inset-0 w-full h-full" alt="Banner">
                                 @endif
                                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 flex space-x-4">
                                     @if ($banner->donation_button_url)

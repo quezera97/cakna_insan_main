@@ -13,6 +13,6 @@ class NotificationSettingController extends Controller
     {
         $donorDetail = DonorDetail::get();
 
-        return view('admin.notification.index', compact(['donorDetail']));
+        return view('admin.settings.notification-index', compact(['donorDetail']));
     }
 }
