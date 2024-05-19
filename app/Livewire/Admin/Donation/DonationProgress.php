@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Donation;
 
 use App\Models\DonationDetail;
+use App\Models\DonorDetail;
 use App\Models\ProjectDonation;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
@@ -85,6 +86,13 @@ class DonationProgress extends Component
                         'billEmail' => $result['billEmail'],
                         'billPhone' => $result['billPhone'],
                         'billPaymentDate' => $result['billPaymentDate'],
+                    ]);
+
+                    DonorDetail::updateOrCreate([
+                        'name' => $result['billTo']
+                    ],[
+                        'email' => $result['billEmail'],
+                        'phone_no' => $result['billPaymentDate'],
                     ]);
                 }
 
