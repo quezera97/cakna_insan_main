@@ -105,5 +105,8 @@ return [
     'send_notification' => "Hantar Notifikasi",
     'donor' => "Penderma",
     'settings' => "Tetapan",
+    'volunteers' => "Sukarelawan",
+    'individu_helped' => "Individu Dibantu",
+    'happy_families' => "Keluarga Bahagia",
     'has_been_here' => "Telah Berada Di Sini",
 ];

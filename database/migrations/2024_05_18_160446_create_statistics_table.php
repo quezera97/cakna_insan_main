@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->longText('details');
             $table->integer('volunteers');
-            $table->integer('individual_helped');
-            $table->integer('happy_individual');
+            $table->integer('individu_helped');
+            $table->integer('happy_families');
             $table->integer('no_of_projects');
             $table->timestamps();
         });

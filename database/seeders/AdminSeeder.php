@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\DonorDetail;
+use App\Models\LocationCoordinate;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -33,6 +34,13 @@ class AdminSeeder extends Seeder
             'name' => 'Cakna Insan Malaysia',
             'email' => 'caknainsanmalaysia@gmail.com',
             'phone_no' => '60123903309',
+        ]);
+
+        LocationCoordinate::create([
+            'longitude' => '101.2501',
+            'latitude' => '6.8648',
+            'place_or_country' => 'Pattani, Thailand',
+            'date' => '2024-05-19',
         ]);
     }
 }

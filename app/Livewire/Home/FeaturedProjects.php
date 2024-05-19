@@ -8,13 +8,14 @@ use Livewire\Component;
 class FeaturedProjects extends Component
 {
     public $featuredProject;
-    public $currentProjectIndex = 0;
+    public $currentProjectIndex;
 
     protected $listeners = ['changeProjectIndex'];
 
     public function mount()
     {
         $this->getFeaturedProjects();
+        $this->currentProjectIndex = 0;
     }
 
     public function getFeaturedProjects()
@@ -29,12 +30,9 @@ class FeaturedProjects extends Component
 
     public function changeProjectIndex()
     {
-        $this->currentProjectIndex = ($this->currentProjectIndex + 1) % count($this->featuredProject);
-    }
-
-    public function updatedCurrentProjectIndex()
-    {
-        $this->emit('projectIndexChanged', $this->currentProjectIndex);
+        if (count($this->featuredProject) > 0) {
+            $this->currentProjectIndex = ($this->currentProjectIndex + 1) % count($this->featuredProject);
+        }
     }
 }
 

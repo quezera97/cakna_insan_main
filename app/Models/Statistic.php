@@ -13,8 +13,8 @@ class Statistic extends Model
         'title',
         'details',
         'volunteers',
-        'individual_helped',
-        'happy_individual',
+        'individu_helped',
+        'happy_families',
         'no_of_projects',
     ];
 }

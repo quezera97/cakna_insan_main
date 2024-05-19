@@ -43,11 +43,19 @@
 
         // Add pins to the map
         locations.forEach(function(location) {
+            var date = new Date(location.date);
+            var formattedDate = date.toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+
             var marker = L.marker([location.lat, location.lng]).addTo(map);
             marker.bindPopup('<div class="bg-yellow-200 p-2 rounded shadow-md">' +
                             '<strong>' + location.place + '</strong><br>' +
-                            'Date: ' + location.date +
+                            'Date: ' + formattedDate +
                             '</div>');
         });
+
     </script>
 @endpush

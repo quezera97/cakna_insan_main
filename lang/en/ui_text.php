@@ -105,6 +105,9 @@ return [
     'send_notification' => "Send Notification",
     'donor' => "Donor",
     'settings' => "Settings",
+    'volunteers' => "Volunteers",
+    'individu_helped' => "Individuals Helped",
+    'happy_families' => "Happy Families",
     'has_been_here' => "Has Been Here",
 ];
 

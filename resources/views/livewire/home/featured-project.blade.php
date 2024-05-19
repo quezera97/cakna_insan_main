@@ -23,10 +23,6 @@
         @push('js-livewire')
             <script>
                 $(document).ready(function() {
-                    Livewire.on('projectIndexChanged', newIndex => {
-                        $('#featured-project-title').text("{{ $featuredProject }}[newIndex].projectable.title");
-                    });
-
                     setInterval(() => {
                         Livewire.dispatch('changeProjectIndex');
                     }, 5000);
