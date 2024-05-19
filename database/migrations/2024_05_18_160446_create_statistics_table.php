@@ -15,10 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('details');
-            $table->integer('volunteers');
-            $table->integer('individu_helped');
-            $table->integer('happy_families');
-            $table->integer('no_of_projects');
+            $table->string('statistic_1');
+            $table->string('statistic_2');
+            $table->string('statistic_3');
+            $table->string('statistic_4');
+            $table->string('statistic_1_value');
+            $table->string('statistic_2_value');
+            $table->string('statistic_3_value');
+            $table->string('statistic_4_value');
             $table->timestamps();
         });
     }

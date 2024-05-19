@@ -143,6 +143,9 @@
                     <li>
                         <a href="{{ route('helped-location-settings') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">{{ __('ui_text.has_been_here') }}</a>
                     </li>
+                    <li>
+                        <a href="{{ route('statistics-settings') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">{{ __('ui_text.statistics') }}</a>
+                    </li>
                 </ul>
             </div>
         </nav>

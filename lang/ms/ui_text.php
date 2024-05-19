@@ -105,6 +105,8 @@ return [
     'send_notification' => "Hantar Notifikasi",
     'donor' => "Penderma",
     'settings' => "Tetapan",
+    'statistics' => "Perangkaan",
+    'statistics_value' => "Nilai Perangkaan",
     'volunteers' => "Sukarelawan",
     'individu_helped' => "Individu Dibantu",
     'happy_families' => "Keluarga Bahagia",

@@ -12,9 +12,13 @@ class Statistic extends Model
     protected $fillable = [
         'title',
         'details',
-        'volunteers',
-        'individu_helped',
-        'happy_families',
-        'no_of_projects',
+        'statistic_1',
+        'statistic_2',
+        'statistic_3',
+        'statistic_4',
+        'statistic_1_value',
+        'statistic_2_value',
+        'statistic_3_value',
+        'statistic_4_value',
     ];
 }

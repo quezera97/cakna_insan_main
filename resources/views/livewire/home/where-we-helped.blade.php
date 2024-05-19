@@ -1,7 +1,16 @@
 <div>
     <section class="flex items-center justify-center h-1/5">
         <div class="bg-white w-full h-auto rounded p-8">
-            <h2 class="text-2xl font-bold mb-4">Cakna Insan Malaysia {{ __('ui_text.has_been_here') }}</h2>
+            <h2 class="text-2xl font-bold mb-4">
+                Cakna Insan Malaysia {{ __('ui_text.has_been_here') }}
+                @auth
+                    <a href="{{ route('helped-location-settings') }}">
+                        <button class="w-24 bg-indigo-500 hover:bg-indigo-600 text-white font-bold p-2 rounded-full mr-2">
+                            @include('livewire.components.svg-edit')
+                        </button>
+                    </a>
+                @endauth
+            </h2>
             <div id="map"></div>
         </div>
     </section>

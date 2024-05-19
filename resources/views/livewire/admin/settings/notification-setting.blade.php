@@ -31,8 +31,7 @@
                     <td class="px-3 py-4">
                     </td>
                     <td class="px-2 py-4">
-                        <a href="#" wire:click="openDonorDetailModal"
-                            class="font-medium text-indigo-600 hover:underline">{{ __('ui_text.add') }}</a>
+                        <a href="#" wire:click="openDonorDetailModal" class="font-medium text-indigo-600 hover:underline">{{ __('ui_text.add') }}</a>
                     </td>
                 </tr>
                 @foreach ($paginatedDonorDetail as $donor)
@@ -47,11 +46,8 @@
                             {{ $donor->phone_no }}
                         </td>
                         <td class="px-2 py-4 flex flex-col space-y-3">
-                            <a href="#" wire:click="openEditDonorDetailsModal('{{ $donor->id }}')"
-                                class="font-medium text-green-600 hover:underline">{{ __('ui_text.edit') }}</a>
-                            <a href="#"
-                                wire:click="openConfirmationModal('deleteDonorDetail', {{ $donor->id }})"
-                                class="font-medium text-red-600 hover:underline">{{ __('ui_text.delete') }}</a>
+                            <a href="#" wire:click="openEditDonorDetailsModal('{{ $donor->id }}')" class="font-medium text-green-600 hover:underline">{{ __('ui_text.edit') }}</a>
+                            <a href="#" wire:click="openConfirmationModal('deleteDonorDetail', {{ $donor->id }})" class="font-medium text-red-600 hover:underline">{{ __('ui_text.delete') }}</a>
                         </td>
                     </tr>
                 @endforeach

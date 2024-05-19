@@ -15,6 +15,7 @@ use App\Http\Controllers\JoinUsController;
 use App\Http\Controllers\Projects\PastProjectController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\PosterController;
+use App\Http\Controllers\Admin\StatisticsSettingController;
 use App\Http\Controllers\Admin\SummernoteController;
 use App\Http\Controllers\DonationDetailController;
 use App\Http\Controllers\LangController;
@@ -138,5 +139,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/notification-settings', [NotificationSettingController::class, 'index'])->name('notification-settings');
     Route::get('/helped-location-settings', [HelpedLocationSettingController::class, 'index'])->name('helped-location-settings');
+    Route::get('/statistics-settings', [StatisticsSettingController::class, 'index'])->name('statistics-settings');
 
 });
