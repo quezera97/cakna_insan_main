@@ -77,8 +77,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/symlink_public', function () {
-        $targetDir = '/home6/caknains/cakna_insan/public';
-        $linkDir = '/home6/caknains/public_test';
+        $targetDir = '/home7/caknains/cakna_insan/public';
+        $linkDir = '/home7/caknains/public_test';
 
         $command = "ln -nfs $targetDir $linkDir";
         $output = [];
@@ -90,6 +90,23 @@ Route::group(['middleware' => 'auth'], function () {
             return 'Error creating symbolic link: ' . implode("\n", $output);
         } else {
             return 'Symbolic link created successfully.';
+        }
+    });
+
+    Route::get('/symlink_storage', function () {
+        $targetDir = '/home7/caknains/cakna_insan_storage';
+        $linkDir = '/home7/caknains/cakna_insan/storage_test';
+
+        $command = "ln -nfs $targetDir $linkDir";
+        $output = [];
+        $returnValue = 0;
+
+        exec($command, $output, $returnValue);
+
+        if ($returnValue !== 0) {
+            return 'Error creating storage symbolic link: ' . implode("\n", $output);
+        } else {
+            return 'Storage symbolic link created successfully.';
         }
     });
 

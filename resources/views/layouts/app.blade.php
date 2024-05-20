@@ -13,9 +13,9 @@
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
-        {{-- <script src="{{ asset('assets/js/tailwind-script.js') }}"></script> --}}
+        <script src="{{ asset('assets/js/tailwind-script.js') }}"></script>
 
-        @vite('resources/css/app.css')
+        {{-- @vite('resources/css/app.css') --}}
 
         <style>
             .tiptap ul p,

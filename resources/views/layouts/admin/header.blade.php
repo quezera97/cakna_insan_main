@@ -112,7 +112,7 @@
                                     <a href="{{ route('news.domestic') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">{{ __('ui_text.domestic_news') }}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news.cakna_insan_malaysia') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Cakna Insan Malaysia News</a>
+                                    <a href="{{ route('news.cakna_insan_malaysia') }}" class="block px-4 py-2 mx-2 hover:bg-gray-300">Cakna Insan Malaysia {{ __('ui_text.news') }}</a>
                                 </li>
                             </ul>
                         </div>
